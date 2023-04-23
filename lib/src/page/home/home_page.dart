@@ -1,6 +1,7 @@
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatelessWidget {
@@ -9,7 +10,7 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: const NavBar(),
+      appBar: const _NavBarSection(),
       body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
@@ -22,19 +23,62 @@ class HomePage extends StatelessWidget {
                   right: 16,
                   bottom: 12,
                 ),
-                child: Header(),
+                child: _HeaderSection(),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
-                child: MenuDope(),
+                child: _MenuDopeSection(
+                  menuDopes: [
+                    _MenuDope(
+                      title: "Renungan Harian",
+                      backgroundColor: Color(0xFF4B62EA),
+                      deeplink: "",
+                    ),
+                    _MenuDope(
+                      title: "Kegiatan Rutin",
+                      backgroundColor: Color(0xFFF918A8),
+                      deeplink: "",
+                    ),
+                    _MenuDope(
+                      title: "Event",
+                      backgroundColor: Color(0xFF7F18F9),
+                      deeplink: "/event",
+                    ),
+                    _MenuDope(
+                      title: "Buddhavacana",
+                      backgroundColor: Color(0xFFFF6369),
+                      deeplink: "",
+                    ),
+                    _MenuDope(
+                      title: "Lagu Buddhis",
+                      backgroundColor: Color(0xFFFF63F6),
+                      deeplink: "",
+                    ),
+                    _MenuDope(
+                      title: "Ebook Buddhis",
+                      backgroundColor: Color(0xFF4BC1EA),
+                      deeplink: "",
+                    ),
+                    _MenuDope(
+                      title: "Kalendar Lunar",
+                      backgroundColor: Color(0xFF20C98F),
+                      deeplink: "",
+                    ),
+                    _MenuDope(
+                      title: "Tentang Ekayana",
+                      backgroundColor: Color(0xFFFF8C00),
+                      deeplink: "",
+                    ),
+                  ],
+                ),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16.0),
-                child: InComingEvent(),
+                child: _InComingEventSection(),
               ),
               Padding(
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16.0),
-                child: Agenda(),
+                child: _AgendaSection(),
               ),
             ],
           ),
@@ -44,8 +88,8 @@ class HomePage extends StatelessWidget {
   }
 }
 
-class NavBar extends StatelessWidget implements PreferredSizeWidget {
-  const NavBar({Key? key}) : super(key: key);
+class _NavBarSection extends StatelessWidget implements PreferredSizeWidget {
+  const _NavBarSection({Key? key}) : super(key: key);
 
   static const double defaultHeight = 76;
 
@@ -68,8 +112,8 @@ class NavBar extends StatelessWidget implements PreferredSizeWidget {
   Size get preferredSize => const Size.fromHeight(defaultHeight);
 }
 
-class Header extends StatelessWidget {
-  const Header({Key? key}) : super(key: key);
+class _HeaderSection extends StatelessWidget {
+  const _HeaderSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -132,21 +176,16 @@ class Header extends StatelessWidget {
   }
 }
 
-class MenuDope extends StatelessWidget {
-  const MenuDope({Key? key}) : super(key: key);
+class _MenuDopeSection extends StatelessWidget {
+  final List<_MenuDope> menuDopes;
+
+  const _MenuDopeSection({
+    Key? key,
+    required this.menuDopes,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    final Map<String, Color> menus = {
-      'Renungan Harian': const Color(0xFF4B62EA),
-      'Kegiatan Rugin': const Color(0xFFF918A8),
-      'Event': const Color(0xFF7F18F9),
-      'Buddhavacana': const Color(0xFFFF6369),
-      'Lagu Buddhis': const Color(0xFFFF63F6),
-      'Ebook Buddhis': const Color(0xFF4BC1EA),
-      'Kalendar Lunar': const Color(0xFF20C98F),
-      'Tentang Ekayana': const Color(0xFFFF8C00),
-    };
     return GridView.builder(
       gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
         crossAxisCount: 2,
@@ -154,23 +193,26 @@ class MenuDope extends StatelessWidget {
         mainAxisSpacing: 8,
         childAspectRatio: 160 / 64,
       ),
-      itemCount: menus.length,
+      itemCount: menuDopes.length,
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return SizedBox(
+        return InkWell(
+          onTap: () {
+            Get.toNamed(menuDopes[index].deeplink);
+          },
           child: Container(
             height: 64,
             alignment: Alignment.bottomLeft,
             padding: const EdgeInsets.all(8),
             decoration: BoxDecoration(
-              color: menus.values.elementAt(index),
+              color: menuDopes[index].backgroundColor,
               borderRadius: BorderRadius.circular(8),
             ),
             child: Text(
-              menus.keys.elementAt(index),
+              menuDopes[index].title,
               style: TypographyToken.textMediumBold.copyWith(
-                color: ColorToken.black,
+                color: ColorToken.white,
               ),
             ),
           ),
@@ -180,8 +222,20 @@ class MenuDope extends StatelessWidget {
   }
 }
 
-class InComingEvent extends StatelessWidget {
-  const InComingEvent({Key? key}) : super(key: key);
+class _MenuDope {
+  final String title;
+  final Color backgroundColor;
+  final String deeplink;
+
+  const _MenuDope({
+    required this.title,
+    required this.backgroundColor,
+    required this.deeplink,
+  });
+}
+
+class _InComingEventSection extends StatelessWidget {
+  const _InComingEventSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -223,8 +277,8 @@ class InComingEvent extends StatelessWidget {
   }
 }
 
-class Agenda extends StatelessWidget {
-  const Agenda({Key? key}) : super(key: key);
+class _AgendaSection extends StatelessWidget {
+  const _AgendaSection({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -237,7 +291,8 @@ class Agenda extends StatelessWidget {
         ),
         const AgendaItemComponent(
           title: "Kebaktian Umum",
-          time: "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
+          time:
+              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
           location: "Wihara Ekayana Arama",
         ),
         const SizedBox(
@@ -245,7 +300,8 @@ class Agenda extends StatelessWidget {
         ),
         const AgendaItemComponent(
           title: "Kebaktian Umum",
-          time: "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
+          time:
+              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
           location: "Wihara Ekayana Arama",
         ),
         const SizedBox(
@@ -253,7 +309,8 @@ class Agenda extends StatelessWidget {
         ),
         const AgendaItemComponent(
           title: "Kebaktian Umum",
-          time: "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
+          time:
+              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
           location: "Wihara Ekayana Arama",
         ),
         const SizedBox(
@@ -261,7 +318,8 @@ class Agenda extends StatelessWidget {
         ),
         const AgendaItemComponent(
           title: "Kebaktian Umum",
-          time: "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
+          time:
+              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
           location: "Wihara Ekayana Arama",
         ),
         const SizedBox(
