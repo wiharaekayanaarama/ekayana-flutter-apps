@@ -27,7 +27,7 @@ class InComingEventComposite extends StatelessWidget {
             pageSnapping: true,
             itemBuilder: (context, index) {
               return const Padding(
-                padding: EdgeInsets.only(left: 12.0),
+                padding: EdgeInsets.only(right: 12.0),
                 child: EventItemComponent(),
               );
             },

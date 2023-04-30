@@ -40,12 +40,6 @@ class _PreviousEvent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // return Container(
-    //   height: 200,
-    //   child: Expanded(
-    //     child: Text("asda"),
-    //   ),
-    // );
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
