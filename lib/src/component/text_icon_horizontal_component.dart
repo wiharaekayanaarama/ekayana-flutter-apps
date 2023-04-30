@@ -5,25 +5,30 @@ import 'package:flutter_svg/flutter_svg.dart';
 
 class TextIconComponent extends StatelessWidget {
   final String text;
+  final TextStyle? textStyle;
   final String icon;
-  final Color color;
+  final Color iconColor;
 
   const TextIconComponent({
     Key? key,
     required this.text,
     required this.icon,
-    this.color = ColorToken.black,
+    this.textStyle,
+    this.iconColor = ColorToken.black,
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
+    final textStyle = this.textStyle ?? TypographyToken.textSmallSemiBold.apply(
+      color: ColorToken.white,
+    );
     return Row(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
         SvgPicture.asset(
           icon,
           colorFilter: ColorFilter.mode(
-            color,
+            iconColor,
             BlendMode.srcIn,
           ),
           width: 16,
@@ -34,9 +39,7 @@ class TextIconComponent extends StatelessWidget {
         ),
         Text(
           text,
-          style: TypographyToken.textSmallSemiBold.apply(
-            color: color,
-          ),
+          style: textStyle,
         ),
       ],
     );

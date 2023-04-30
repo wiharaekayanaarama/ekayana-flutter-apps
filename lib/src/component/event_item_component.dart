@@ -95,7 +95,7 @@ class EventItemComponent extends StatelessWidget {
                   child: TextIconComponent(
                     text: "08:00 - 12:00 WIB",
                     icon: Iconography.clock,
-                    color: ColorToken.white,
+                    iconColor: ColorToken.white,
                   ),
                 ),
                 const SizedBox(
@@ -105,7 +105,7 @@ class EventItemComponent extends StatelessWidget {
                   child: TextIconComponent(
                     text: "Indonesia  (ICE) BSD City",
                     icon: Iconography.markerPin_01,
-                    color: ColorToken.white,
+                    iconColor: ColorToken.white,
                   ),
                 ),
               ],

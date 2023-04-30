@@ -9,3 +9,6 @@ export 'package:ekayanaarama/src/design_system/token/color_token.dart';
 export 'package:ekayanaarama/src/component/agenda_item_component.dart';
 export 'package:ekayanaarama/src/component/event_item_component.dart';
 export 'package:ekayanaarama/src/component/text_icon_horizontal_component.dart';
+
+// Composite
+export 'package:ekayanaarama/src/page/composite/incoming_event_composite.dart';

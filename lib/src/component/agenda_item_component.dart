@@ -46,7 +46,11 @@ class AgendaItemComponent extends StatelessWidget {
             padding: const EdgeInsets.only(left: 10.0),
             child: TextIconComponent(
               text: time,
+              textStyle: TypographyToken.textSmallSemiBold.apply(
+                color: ColorToken.gray_500,
+              ),
               icon: Iconography.clock,
+              iconColor: ColorToken.gray_500,
             ),
           ),
           const SizedBox(
@@ -56,7 +60,11 @@ class AgendaItemComponent extends StatelessWidget {
             padding: const EdgeInsets.only(left: 10.0),
             child: TextIconComponent(
               text: location,
+              textStyle: TypographyToken.textSmallSemiBold.apply(
+                color: ColorToken.gray_500,
+              ),
               icon: Iconography.markerPin_01,
+              iconColor: ColorToken.gray_500,
             ),
           )
         ],

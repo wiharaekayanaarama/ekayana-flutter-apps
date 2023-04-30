@@ -243,21 +243,8 @@ class _InComingEventSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text("Event yang akan datang", style: TypographyToken.headingSmall),
-        const SizedBox(
-          height: 24,
-        ),
-        SizedBox(
-          height: 280,
-          child: PageView.builder(
-            controller: pageController,
-            padEnds: false,
-            itemCount: 3,
-            pageSnapping: true,
-            itemBuilder: (context, index) {
-              return const EventItemComponent();
-            },
-          ),
+        InComingEventComposite(
+          pageController: pageController,
         ),
         Center(
           child: Padding(
@@ -267,6 +254,9 @@ class _InComingEventSection extends StatelessWidget {
               effect: const ExpandingDotsEffect(
                 activeDotColor: ColorToken.primary_500,
                 dotColor: ColorToken.primary_50,
+                dotHeight: 6,
+                dotWidth: 6,
+                expansionFactor: 4,
               ),
               controller: pageController,
             ),
