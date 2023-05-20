@@ -15,7 +15,6 @@ class EventItemComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // debugPaintSizeEnabled = true;
     return Stack(
       children: [
         ClipRRect(

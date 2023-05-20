@@ -1,6 +1,7 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/component/nav_bar_component.dart';
+import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -71,41 +72,46 @@ class _PreviousEvent extends StatelessWidget {
               const SizedBox(
                 width: 12,
               ),
-              SizedBox(
-                height: 72,
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.only(top: 4.0),
-                      child: Text(
-                        "Title Event",
-                        style: TypographyToken.textMediumBold,
-                      ),
-                    ),
-                    Text(
-                      "Dari Ekayana",
-                      style: TypographyToken.textSmallRegular.apply(
-                        color: ColorToken.gray_500,
-                      ),
-                    ),
-                    Expanded(
-                      child: Align(
-                        alignment: Alignment.bottomCenter,
-                        child: Padding(
-                          padding: const EdgeInsets.only(bottom: 4.0),
-                          child: TextIconComponent(
-                            text: "28 November 2023",
-                            textStyle: TypographyToken.textSmallRegular.apply(
-                              color: ColorToken.gray_500,
-                            ),
-                            icon: Iconography.calendar,
-                            iconColor: ColorToken.gray_500,
-                          ),
+              InkWell(
+                onTap: () async {
+                  Get.toNamed(RouteName.eventDetail);
+                },
+                child: SizedBox(
+                  height: 72,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(
+                        padding: const EdgeInsets.only(top: 4.0),
+                        child: Text(
+                          "Title Event",
+                          style: TypographyToken.textMediumBold,
                         ),
                       ),
-                    )
-                  ],
+                      Text(
+                        "Dari Ekayana",
+                        style: TypographyToken.textSmallRegular.apply(
+                          color: ColorToken.gray_500,
+                        ),
+                      ),
+                      Expanded(
+                        child: Align(
+                          alignment: Alignment.bottomCenter,
+                          child: Padding(
+                            padding: const EdgeInsets.only(bottom: 4.0),
+                            child: TextIconComponent(
+                              text: "28 November 2023",
+                              textStyle: TypographyToken.textSmallRegular.apply(
+                                color: ColorToken.gray_500,
+                              ),
+                              icon: Iconography.calendar,
+                              iconColor: ColorToken.gray_500,
+                            ),
+                          ),
+                        ),
+                      )
+                    ],
+                  ),
                 ),
               )
             ],

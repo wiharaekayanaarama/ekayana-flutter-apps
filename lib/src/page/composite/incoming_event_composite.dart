@@ -22,14 +22,11 @@ class InComingEventComposite extends StatelessWidget {
           height: 280,
           child: PageView.builder(
             controller: pageController,
-            padEnds: false,
+            padEnds: true,
             itemCount: 3,
             pageSnapping: true,
             itemBuilder: (context, index) {
-              return const Padding(
-                padding: EdgeInsets.only(right: 12.0),
-                child: EventItemComponent(),
-              );
+              return EventItemComponent();
             },
           ),
         ),
