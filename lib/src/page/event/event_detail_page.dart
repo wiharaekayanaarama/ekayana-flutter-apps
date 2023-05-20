@@ -14,24 +14,7 @@ class EventDetailPage extends StatelessWidget {
         slivers: [
           CollapsingNavBarComponent(
             title: 'Detail Event',
-            flexibleSpace: LayoutBuilder(
-              builder: (BuildContext context, BoxConstraints constraints) {
-                return FlexibleSpaceBar(
-                  background: Image.network(
-                    "https://via.placeholder.com/250x280",
-                    fit: BoxFit.cover,
-                  ),
-                  centerTitle: true,
-                  title: AnimatedOpacity(
-                      duration: const Duration(milliseconds: 300),
-                      opacity: constraints.biggest.height == MediaQuery.of(context).padding.top + kToolbarHeight ? 1.0 : 0.0,
-                      child: Text(
-                        "Detail event",
-                        style: TypographyToken.textLargeBold.apply(color: ColorToken.black),
-                      )),
-                );
-              }
-            ),
+            image: "https://via.placeholder.com/250x280",
             onNavigationTap: () {},
           ),
           SliverToBoxAdapter(
