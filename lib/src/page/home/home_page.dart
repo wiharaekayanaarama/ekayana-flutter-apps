@@ -47,7 +47,7 @@ class HomePage extends StatelessWidget {
                     _MenuDope(
                       title: "Buddhavacana",
                       backgroundColor: Color(0xFFFF6369),
-                      deeplink: "",
+                      deeplink: "/buddhavacana",
                     ),
                     _MenuDope(
                       title: "Lagu Buddhis",
@@ -136,10 +136,7 @@ class _HeaderSection extends StatelessWidget {
             children: [
               SvgPicture.asset(
                 Iconography.lightBulb_02,
-                colorFilter: const ColorFilter.mode(
-                  ColorToken.primary_500,
-                  BlendMode.srcIn,
-                ),
+                color: ColorToken.primary_500,
               ),
               const SizedBox(
                 width: 8,
@@ -163,10 +160,7 @@ class _HeaderSection extends StatelessWidget {
               ),
               SvgPicture.asset(
                 Iconography.chevronRight,
-                colorFilter: const ColorFilter.mode(
-                  ColorToken.primary_500,
-                  BlendMode.srcIn,
-                ),
+                color: ColorToken.primary_500,
               ),
             ],
           ),
@@ -282,7 +276,7 @@ class _AgendaSection extends StatelessWidget {
         const AgendaItemComponent(
           title: "Kebaktian Umum",
           time:
-              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
+              "Minggu, 08.json:00 - 12.json:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
           location: "Wihara Ekayana Arama",
         ),
         const SizedBox(
@@ -291,7 +285,7 @@ class _AgendaSection extends StatelessWidget {
         const AgendaItemComponent(
           title: "Kebaktian Umum",
           time:
-              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
+              "Minggu, 08.json:00 - 12.json:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
           location: "Wihara Ekayana Arama",
         ),
         const SizedBox(
@@ -300,7 +294,7 @@ class _AgendaSection extends StatelessWidget {
         const AgendaItemComponent(
           title: "Kebaktian Umum",
           time:
-              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
+              "Minggu, 08.json:00 - 12.json:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
           location: "Wihara Ekayana Arama",
         ),
         const SizedBox(
@@ -309,7 +303,7 @@ class _AgendaSection extends StatelessWidget {
         const AgendaItemComponent(
           title: "Kebaktian Umum",
           time:
-              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
+              "Minggu, 08.json:00 - 12.json:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
           location: "Wihara Ekayana Arama",
         ),
         const SizedBox(

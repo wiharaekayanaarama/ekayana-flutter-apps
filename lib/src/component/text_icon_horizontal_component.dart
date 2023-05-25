@@ -27,10 +27,7 @@ class TextIconComponent extends StatelessWidget {
       children: [
         SvgPicture.asset(
           icon,
-          colorFilter: ColorFilter.mode(
-            iconColor,
-            BlendMode.srcIn,
-          ),
+          color: iconColor,
           width: 16,
           height: 16,
         ),

@@ -5,10 +5,12 @@ import 'package:flutter_svg/flutter_svg.dart';
 class NavBarComponent extends StatelessWidget implements PreferredSizeWidget {
   final VoidCallback? onNavigationTap;
   final String title;
+  final String backIcon;
 
   const NavBarComponent({
     Key? key,
     required this.title,
+    this.backIcon = Iconography.chevronLeft,
     this.onNavigationTap,
   }) : super(key: key);
 
@@ -27,7 +29,7 @@ class NavBarComponent extends StatelessWidget implements PreferredSizeWidget {
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: SvgPicture.asset(
-                    Iconography.chevronLeft,
+                    backIcon,
                   ),
                 ),
               ),

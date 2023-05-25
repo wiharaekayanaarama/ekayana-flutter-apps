@@ -48,10 +48,7 @@ class EventDetailPage extends StatelessWidget {
                       ),
                       SvgPicture.asset(
                         Iconography.share_07,
-                        colorFilter: const ColorFilter.mode(
-                          ColorToken.primary_500,
-                          BlendMode.srcIn,
-                        ),
+                        color: ColorToken.primary_500,
                         width: 16,
                         height: 16,
                       ),
@@ -63,7 +60,7 @@ class EventDetailPage extends StatelessWidget {
                   const _EventIconText(
                     icon: Iconography.calendar,
                     title: "28 November 2023",
-                    subtitle: "08:00 - 12:00 WIB",
+                    subtitle: "08.json:00 - 12.json:00 WIB",
                   ),
                   const SizedBox(
                     height: 24,
@@ -125,10 +122,7 @@ class _EventIconText extends StatelessWidget {
             padding: const EdgeInsets.all(8.0),
             child: SvgPicture.asset(
               icon,
-              colorFilter: const ColorFilter.mode(
-                ColorToken.gray_200,
-                BlendMode.srcIn,
-              ),
+              color: ColorToken.gray_200,
             ),
           ),
         ),

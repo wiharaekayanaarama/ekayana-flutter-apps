@@ -1,3 +1,7 @@
+import 'package:ekayanaarama/src/bindings/buddhavacana_binding.dart';
+import 'package:ekayanaarama/src/bindings/buddhavacana_detail_binding.dart';
+import 'package:ekayanaarama/src/page/buddhavacana/buddhavacana_detail_page.dart';
+import 'package:ekayanaarama/src/page/buddhavacana/buddhavacana_page.dart';
 import 'package:ekayanaarama/src/page/event/event_detail_page.dart';
 import 'package:ekayanaarama/src/page/event/event_page.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
@@ -12,6 +16,16 @@ class RoutePage {
     GetPage(
       name: RouteName.eventDetail,
       page: () => const EventDetailPage(),
+    ),
+    GetPage(
+      name: RouteName.buddavacana,
+      page: () => const BuddhavacanaPage(),
+      binding: BuddhavacanaBinding(),
+    ),
+    GetPage(
+      name: RouteName.buddavacanaDetail,
+      page: () => const BuddhavacanaDetailPage(),
+      binding: BuddhavacanaDetailBinding(),
     )
   ];
 }
