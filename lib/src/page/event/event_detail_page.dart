@@ -60,7 +60,7 @@ class EventDetailPage extends StatelessWidget {
                   const _EventIconText(
                     icon: Iconography.calendar,
                     title: "28 November 2023",
-                    subtitle: "08.json:00 - 12.json:00 WIB",
+                    subtitle: "08:00 - 12:00 WIB",
                   ),
                   const SizedBox(
                     height: 24,
