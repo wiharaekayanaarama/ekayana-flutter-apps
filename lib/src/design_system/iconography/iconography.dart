@@ -7,4 +7,6 @@ class Iconography {
   static const String markerPin_01 = "asset/icon/marker-pin-01.svg";
   static const String share_07 = "asset/icon/share-07.svg";
   static const String close = "asset/icon/x-close.svg";
+  static const String volumeMax = "asset/icon/volume-max.svg";
+  static const String columns = "asset/icon/columns-01.svg";
 }

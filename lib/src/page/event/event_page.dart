@@ -73,7 +73,7 @@ class _PreviousEvent extends StatelessWidget {
                 width: 12,
               ),
               InkWell(
-                onTap: () async {
+                onTap: () {
                   Get.toNamed(RouteName.eventDetail);
                 },
                 child: SizedBox(

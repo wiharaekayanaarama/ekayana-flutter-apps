@@ -121,19 +121,19 @@ class _HeaderSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Container(
-          padding: const EdgeInsets.symmetric(
-            vertical: 18,
-            horizontal: 16,
-          ),
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            border: Border.all(
-              color: ColorToken.gray_50,
+        InkWell(
+          onTap: () => Get.toNamed(RouteName.dailyReflection),
+          child: Container(
+            padding: const EdgeInsets.symmetric(
+              vertical: 18,
+              horizontal: 16,
             ),
-          ),
-          child: InkWell(
-            onTap: () => Get.toNamed(RouteName.dailyReflection),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              border: Border.all(
+                color: ColorToken.gray_50,
+              ),
+            ),
             child: Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
