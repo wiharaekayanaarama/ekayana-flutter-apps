@@ -1,4 +1,5 @@
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -131,38 +132,41 @@ class _HeaderSection extends StatelessWidget {
               color: ColorToken.gray_50,
             ),
           ),
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SvgPicture.asset(
-                Iconography.lightBulb_02,
-                color: ColorToken.primary_500,
-              ),
-              const SizedBox(
-                width: 8,
-              ),
-              Expanded(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      "Renungan Hari ini",
-                      style: TypographyToken.textMediumBold,
-                    ),
-                    Text(
-                      "Karakteristik & Esensi Ajaran Zen",
-                      style: TypographyToken.textSmallSemiBold.copyWith(
-                        color: ColorToken.gray_500,
-                      ),
-                    ),
-                  ],
+          child: InkWell(
+            onTap: () => Get.toNamed(RouteName.dailyReflection),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                SvgPicture.asset(
+                  Iconography.lightBulb_02,
+                  color: ColorToken.primary_500,
                 ),
-              ),
-              SvgPicture.asset(
-                Iconography.chevronRight,
-                color: ColorToken.primary_500,
-              ),
-            ],
+                const SizedBox(
+                  width: 8,
+                ),
+                Expanded(
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        "Renungan Hari ini",
+                        style: TypographyToken.textMediumBold,
+                      ),
+                      Text(
+                        "Karakteristik & Esensi Ajaran Zen",
+                        style: TypographyToken.textSmallSemiBold.copyWith(
+                          color: ColorToken.gray_500,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+                SvgPicture.asset(
+                  Iconography.chevronRight,
+                  color: ColorToken.primary_500,
+                ),
+              ],
+            ),
           ),
         ),
       ],
