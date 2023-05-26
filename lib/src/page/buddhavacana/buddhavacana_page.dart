@@ -70,7 +70,7 @@ class BuddhavacanaPage extends GetView<BuddhavacanaController> {
                           controller.currentPage.value = page;
                         },
                         config: const NumberPaginatorUIConfig(
-                          height: 45,
+                          height: 42,
                           buttonSelectedForegroundColor: ColorToken.primary_500,
                           buttonSelectedBackgroundColor: ColorToken.primary_0,
                           buttonUnselectedBackgroundColor: ColorToken.white,
