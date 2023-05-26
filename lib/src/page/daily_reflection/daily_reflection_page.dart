@@ -59,7 +59,8 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                               child: SingleChildScrollView(
                                 child: Padding(
                                   padding: const EdgeInsets.symmetric(
-                                      horizontal: 32.0),
+                                    horizontal: 32.0,
+                                  ),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     crossAxisAlignment:
@@ -72,7 +73,7 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                                             color: ColorToken.white,
                                             fontSize: const FontSize(20),
                                             fontWeight: FontWeight.w700,
-                                          )
+                                          ),
                                         },
                                       ),
                                       const SizedBox(
@@ -82,10 +83,11 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                                         data: source,
                                         style: {
                                           "body": Style(
-                                              color: ColorToken.white,
-                                              fontSize: const FontSize(14),
-                                              fontWeight: FontWeight.w700,
-                                              textAlign: TextAlign.center),
+                                            color: ColorToken.white,
+                                            fontSize: const FontSize(14),
+                                            fontWeight: FontWeight.w700,
+                                            textAlign: TextAlign.center,
+                                          ),
                                         },
                                       ),
                                     ],
@@ -131,7 +133,8 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                           iconLeft: Iconography.share_06,
                           onPressed: () async {
                             screenshotController.capture().then((value) async {
-                              File file = await controller.fileFromUint8List(value!);
+                              File file =
+                                  await controller.fileFromUint8List(value!);
                               Share.shareFiles([file.path]);
                             });
                           },
