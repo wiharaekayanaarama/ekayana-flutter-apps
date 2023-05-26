@@ -1,134 +1,151 @@
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/component/button_component.dart';
 import 'package:ekayanaarama/src/component/circular_button_component.dart';
+import 'package:ekayanaarama/src/controller/daily_reflection_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
 
-class DailyReflectionPage extends StatelessWidget {
+class DailyReflectionPage extends GetView<DailyReflectionController> {
   const DailyReflectionPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: ColorToken.black,
-      child: Stack(
-        children: [
-          SizedBox(
-            height: Get.height - 64,
-            child: Stack(
-              children: [
-                _getBackground(),
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+    return FutureBuilder(
+      future: controller.dailyReflectionJson,
+      builder: (BuildContext context, AsyncSnapshot<dynamic> snapshot) {
+        if (!snapshot.hasData) return const SizedBox.shrink();
+
+        final Map<String, dynamic> json = snapshot.data;
+        final List<String> content = json['content'].cast<String>().toList();
+        final source = json['source'];
+        return Container(
+          color: ColorToken.black,
+          child: Stack(
+            children: [
+              SizedBox(
+                height: Get.height - 64,
+                child: Stack(
                   children: [
-                    Padding(
-                      padding: EdgeInsets.only(
-                        top: MediaQuery.of(context).padding.top + 16,
-                        left: 16,
-                      ),
-                      child: CircularButtonComponent(
-                        icon: Iconography.close,
-                        onPressed: () {
-                          Get.back();
-                        },
-                      ),
-                    ),
-                    Expanded(
-                      child: Center(
-                        child: SingleChildScrollView(
-                          child: Padding(
-                            padding:
-                                const EdgeInsets.symmetric(horizontal: 32.0),
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                Text(
-                                  "Melalui cara kita berpikir dan melalui cara kita memercayai sesuatu, dunia kita terbentuk. Di abad pertengahan, setiap orang hanya menerima gagasan yang diberikan, atas dasar rasa takut, bahwa hanya ada satu cara untuk percaya; jika anda mempunyai kepercayaan yang lain, anda adalah musuh. Kondisi seperti itu merupakan lonceng kematian bagi pola pemikiran bebas dan kreatif.",
-                                  style: TypographyToken.headingSmall.apply(
-                                    color: ColorToken.white,
-                                  ),
+                    _getBackground(),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(
+                            top: MediaQuery.of(context).padding.top + 16,
+                            left: 16,
+                          ),
+                          child: CircularButtonComponent(
+                            icon: Iconography.close,
+                            onPressed: () {
+                              Get.back();
+                            },
+                          ),
+                        ),
+                        Expanded(
+                          child: Center(
+                            child: SingleChildScrollView(
+                              child: Padding(
+                                padding: const EdgeInsets.symmetric(
+                                    horizontal: 32.0),
+                                child: Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.center,
+                                  children: [
+                                    Html(
+                                      data: content.join('<br><br>'),
+                                      style: {
+                                        "body": Style(
+                                          color: ColorToken.white,
+                                          fontSize: const FontSize(20),
+                                          fontWeight: FontWeight.w700,
+                                        )
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      height: 42,
+                                    ),
+                                    Html(
+                                      data: source,
+                                      style: {
+                                        "body": Style(
+                                            color: ColorToken.white,
+                                            fontSize: const FontSize(14),
+                                            fontWeight: FontWeight.w700,
+                                            textAlign: TextAlign.center),
+                                      },
+                                    ),
+                                  ],
                                 ),
-                                const SizedBox(
-                                  height: 42,
-                                ),
-                                Text(
-                                  "Pema Chodron",
-                                  style: TypographyToken.textMediumBold.apply(
-                                    color: ColorToken.white,
-                                  ),
-                                ),
-                                Text(
-                                  "Kebijakan Seajti, Hal.51",
-                                  style: TypographyToken.textMediumBold.apply(
-                                    color: ColorToken.white,
-                                  ),
-                                ),
-                              ],
+                              ),
                             ),
                           ),
+                        )
+                      ],
+                    ),
+                    Align(
+                      alignment: Alignment.bottomRight,
+                      child: Padding(
+                        padding: const EdgeInsets.all(16.0),
+                        child: Wrap(
+                          children: const [
+                            CircularButtonComponent(icon: Iconography.columns),
+                            SizedBox(
+                              width: 8,
+                            ),
+                            CircularButtonComponent(
+                                icon: Iconography.volumeMax),
+                          ],
                         ),
                       ),
                     )
                   ],
                 ),
-                Align(
-                  alignment: Alignment.bottomRight,
-                  child: Padding(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Wrap(
-                      children: const [
-                        CircularButtonComponent(icon: Iconography.columns),
-                        SizedBox(
-                          width: 8,
-                        ),
-                        CircularButtonComponent(icon: Iconography.volumeMax),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            ),
-          ),
-          Align(
-            alignment: Alignment.bottomCenter,
-            child: Padding(
-              padding: const EdgeInsets.symmetric(horizontal: 16.0),
-              child: Row(
-                children: const [
-                  Expanded(
-                    child: ButtonComponent(
-                      text: "Share",
-                      iconLeft: Iconography.share_06,
-                    ),
-                  ),
-                  SizedBox(width: 32,),
-                  Expanded(
-                    child: ButtonComponent(
-                      text: "Unduh",
-                      iconLeft: Iconography.download_01,
-                      style: EkaButtonStyle.naked,
-                    ),
-                  ),
-                ],
               ),
-            ),
+              Align(
+                alignment: Alignment.bottomCenter,
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  child: Row(
+                    children: const [
+                      Expanded(
+                        child: ButtonComponent(
+                          text: "Share",
+                          iconLeft: Iconography.share_06,
+                        ),
+                      ),
+                      SizedBox(
+                        width: 32,
+                      ),
+                      Expanded(
+                        child: ButtonComponent(
+                          text: "Unduh",
+                          iconLeft: Iconography.download_01,
+                          style: EkaButtonStyle.naked,
+                        ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+            ],
           ),
-        ],
-      ),
+        );
+      },
     );
   }
 
   Widget _getBackground() {
     return Container(
-      decoration: const BoxDecoration(
-        borderRadius: BorderRadius.only(
+      decoration: BoxDecoration(
+        borderRadius: const BorderRadius.only(
           bottomLeft: Radius.circular(8),
           bottomRight: Radius.circular(8),
         ),
         image: DecorationImage(
           image: AssetImage(
-            'asset/drawable/bg_blue.png',
+            'asset/drawable/${controller.background}',
           ),
           fit: BoxFit.fill,
         ),

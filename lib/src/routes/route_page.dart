@@ -1,5 +1,7 @@
 import 'package:ekayanaarama/src/bindings/buddhavacana_binding.dart';
 import 'package:ekayanaarama/src/bindings/buddhavacana_detail_binding.dart';
+import 'package:ekayanaarama/src/bindings/daily_reflection_binding.dart';
+import 'package:ekayanaarama/src/controller/daily_reflection_controller.dart';
 import 'package:ekayanaarama/src/page/buddhavacana/buddhavacana_detail_page.dart';
 import 'package:ekayanaarama/src/page/buddhavacana/buddhavacana_page.dart';
 import 'package:ekayanaarama/src/page/daily_reflection/daily_reflection_page.dart';
@@ -31,6 +33,7 @@ class RoutePage {
     GetPage(
       name: RouteName.dailyReflection,
       page: () => const DailyReflectionPage(),
+      binding: DailyReflectionBinding(),
     ),
   ];
 }

@@ -70,6 +70,7 @@ flutter:
   assets:
     - asset/icon/
     - asset/json/
+    - asset/json/daily_reflection/
     - asset/drawable/
 
   # An image asset can refer to one or more resolution-specific "variants", see
