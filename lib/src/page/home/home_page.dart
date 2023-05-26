@@ -30,11 +30,11 @@ class HomePage extends StatelessWidget {
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                 child: _MenuDopeSection(
                   menuDopes: [
-                    _MenuDope(
-                      title: "Renungan Harian",
-                      backgroundColor: Color(0xFF4B62EA),
-                      deeplink: "",
-                    ),
+                    // _MenuDope(
+                    //   title: "Renungan Harian",
+                    //   backgroundColor: Color(0xFF4B62EA),
+                    //   deeplink: "",
+                    // ),
                     _MenuDope(
                       title: "Kegiatan Rutin",
                       backgroundColor: Color(0xFFF918A8),
