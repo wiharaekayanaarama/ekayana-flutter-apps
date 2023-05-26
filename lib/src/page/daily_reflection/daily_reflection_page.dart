@@ -1,4 +1,5 @@
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/component/button_component.dart';
 import 'package:ekayanaarama/src/component/circular_button_component.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -13,7 +14,7 @@ class DailyReflectionPage extends StatelessWidget {
       child: Stack(
         children: [
           SizedBox(
-            height: Get.height - 80,
+            height: Get.height - 64,
             child: Stack(
               children: [
                 _getBackground(),
@@ -36,7 +37,8 @@ class DailyReflectionPage extends StatelessWidget {
                       child: Center(
                         child: SingleChildScrollView(
                           child: Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 32.0),
+                            padding:
+                                const EdgeInsets.symmetric(horizontal: 32.0),
                             child: Column(
                               mainAxisAlignment: MainAxisAlignment.center,
                               crossAxisAlignment: CrossAxisAlignment.center,
@@ -90,9 +92,26 @@ class DailyReflectionPage extends StatelessWidget {
           ),
           Align(
             alignment: Alignment.bottomCenter,
-            child: ElevatedButton(
-              onPressed: () {},
-              child: Text("asd"),
+            child: Padding(
+              padding: const EdgeInsets.symmetric(horizontal: 16.0),
+              child: Row(
+                children: const [
+                  Expanded(
+                    child: ButtonComponent(
+                      text: "Share",
+                      iconLeft: Iconography.share_06,
+                    ),
+                  ),
+                  SizedBox(width: 32,),
+                  Expanded(
+                    child: ButtonComponent(
+                      text: "Unduh",
+                      iconLeft: Iconography.download_01,
+                      style: EkaButtonStyle.naked,
+                    ),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
