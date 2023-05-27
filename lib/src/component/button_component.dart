@@ -29,7 +29,6 @@ class ButtonComponent extends StatelessWidget {
       },
       style: TextButton.styleFrom(
         backgroundColor: style?.backgroundColor,
-        elevation: 0,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
