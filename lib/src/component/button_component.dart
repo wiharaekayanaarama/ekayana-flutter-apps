@@ -23,12 +23,13 @@ class ButtonComponent extends StatelessWidget {
     final iconLeft = this.iconLeft;
     final iconRight = this.iconRight;
 
-    return ElevatedButton(
+    return TextButton(
       onPressed: () {
         onPressed?.call();
       },
-      style: ElevatedButton.styleFrom(
+      style: TextButton.styleFrom(
         backgroundColor: style?.backgroundColor,
+        elevation: 0,
       ),
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
