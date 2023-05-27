@@ -1,6 +1,5 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ekayanaarama/ekayana.dart';
-import 'package:ekayanaarama/src/component/nav_bar_component.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

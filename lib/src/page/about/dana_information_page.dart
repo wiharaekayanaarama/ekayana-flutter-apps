@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/component/button_component.dart';
 import 'package:ekayanaarama/src/component/circular_button_component.dart';
@@ -8,7 +6,6 @@ import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
 import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:path_provider/path_provider.dart';
 
 class DanaInformationPage extends StatelessWidget {
   const DanaInformationPage({Key? key}) : super(key: key);

@@ -1,4 +1,3 @@
-import 'package:ekayanaarama/src/component/nav_bar_component.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
 

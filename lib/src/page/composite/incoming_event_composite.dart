@@ -26,7 +26,7 @@ class InComingEventComposite extends StatelessWidget {
             itemCount: 3,
             pageSnapping: true,
             itemBuilder: (context, index) {
-              return EventItemComponent();
+              return const EventItemComponent();
             },
           ),
         ),

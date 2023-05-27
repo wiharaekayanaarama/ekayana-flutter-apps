@@ -1,5 +1,4 @@
 import 'package:ekayanaarama/ekayana.dart';
-import 'package:ekayanaarama/src/component/buddhavacana_item_component.dart';
 import 'package:ekayanaarama/src/controller/buddhavacana_controller.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
