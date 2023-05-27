@@ -12,4 +12,5 @@ class Iconography {
   static const String volumeMax = "asset/icon/volume-max.svg";
   static const String columns = "asset/icon/columns-01.svg";
   static const String phone = "asset/icon/phone.svg";
+  static const String copy_06 = "asset/icon/copy-06.svg";
 }

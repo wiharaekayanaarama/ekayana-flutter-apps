@@ -6,4 +6,5 @@ class RouteName {
   static const dailyReflection = "/daily-reflection";
   static const aboutEkayana = "/about-ekayana";
   static const aboutDetailEkayana = "/about-detail-ekayana";
+  static const danaInformation = "/dana-information";
 }

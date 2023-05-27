@@ -51,13 +51,16 @@ class AboutEkayanaPage extends StatelessWidget {
                   const SizedBox(
                     height: 32,
                   ),
-                  Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 12),
-                    child: TextIconComponent(
-                      text: "Informasi Dana",
-                      iconRight: Iconography.chevronRight,
-                      iconColor: ColorToken.primary_500,
-                      textStyle: TypographyToken.textMediumSemiBold,
+                  InkWell(
+                    onTap: () => Get.toNamed(RouteName.danaInformation),
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 12),
+                      child: TextIconComponent(
+                        text: "Informasi Dana",
+                        iconRight: Iconography.chevronRight,
+                        iconColor: ColorToken.primary_500,
+                        textStyle: TypographyToken.textMediumSemiBold,
+                      ),
                     ),
                   ),
                   InkWell(

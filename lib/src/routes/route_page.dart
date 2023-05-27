@@ -4,6 +4,7 @@ import 'package:ekayanaarama/src/bindings/buddhavacana_detail_binding.dart';
 import 'package:ekayanaarama/src/bindings/daily_reflection_binding.dart';
 import 'package:ekayanaarama/src/page/about/about_detail_page.dart';
 import 'package:ekayanaarama/src/page/about/about_ekayana_page.dart';
+import 'package:ekayanaarama/src/page/about/dana_information_page.dart';
 import 'package:ekayanaarama/src/page/buddhavacana/buddhavacana_detail_page.dart';
 import 'package:ekayanaarama/src/page/buddhavacana/buddhavacana_page.dart';
 import 'package:ekayanaarama/src/page/daily_reflection/daily_reflection_page.dart';
@@ -45,6 +46,10 @@ class RoutePage {
       name: RouteName.aboutDetailEkayana,
       page: () => const AboutDetailPage(),
       binding: AboutDetailBinding(),
-    )
+    ),
+    GetPage(
+      name: RouteName.danaInformation,
+      page: () => const DanaInformationPage(),
+    ),
   ];
 }
