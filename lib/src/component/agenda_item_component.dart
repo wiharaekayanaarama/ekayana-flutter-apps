@@ -49,7 +49,7 @@ class AgendaItemComponent extends StatelessWidget {
               textStyle: TypographyToken.textSmallSemiBold.apply(
                 color: ColorToken.gray_500,
               ),
-              icon: Iconography.clock,
+              iconLeft: Iconography.clock,
               iconColor: ColorToken.gray_500,
             ),
           ),
@@ -63,7 +63,7 @@ class AgendaItemComponent extends StatelessWidget {
               textStyle: TypographyToken.textSmallSemiBold.apply(
                 color: ColorToken.gray_500,
               ),
-              icon: Iconography.markerPin_01,
+              iconLeft: Iconography.markerPin_01,
               iconColor: ColorToken.gray_500,
             ),
           )

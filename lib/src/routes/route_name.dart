@@ -4,4 +4,6 @@ class RouteName {
   static const buddavacana = "/buddhavacana";
   static const buddavacanaDetail = "/buddhavacana/detail";
   static const dailyReflection = "/daily-reflection";
+  static const aboutEkayana = "/about-ekayana";
+  static const aboutDetailEkayana = "/about-detail-ekayana";
 }

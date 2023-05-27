@@ -104,7 +104,7 @@ class _PreviousEvent extends StatelessWidget {
                               textStyle: TypographyToken.textSmallRegular.apply(
                                 color: ColorToken.gray_500,
                               ),
-                              icon: Iconography.calendar,
+                              iconLeft: Iconography.calendar,
                               iconColor: ColorToken.gray_500,
                             ),
                           ),

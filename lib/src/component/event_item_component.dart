@@ -93,7 +93,7 @@ class EventItemComponent extends StatelessWidget {
                 const Flexible(
                   child: TextIconComponent(
                     text: "08:00 - 12:00 WIB",
-                    icon: Iconography.clock,
+                    iconLeft: Iconography.clock,
                     iconColor: ColorToken.white,
                   ),
                 ),
@@ -103,7 +103,7 @@ class EventItemComponent extends StatelessWidget {
                 const Flexible(
                   child: TextIconComponent(
                     text: "Indonesia  (ICE) BSD City",
-                    icon: Iconography.markerPin_01,
+                    iconLeft: Iconography.markerPin_01,
                     iconColor: ColorToken.white,
                   ),
                 ),

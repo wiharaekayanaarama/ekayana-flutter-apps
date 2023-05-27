@@ -50,11 +50,11 @@ class HomePage extends StatelessWidget {
                       backgroundColor: Color(0xFFFF6369),
                       deeplink: "/buddhavacana",
                     ),
-                    _MenuDope(
-                      title: "Lagu Buddhis",
-                      backgroundColor: Color(0xFFFF63F6),
-                      deeplink: "",
-                    ),
+                    // _MenuDope(
+                    //   title: "Lagu Buddhis",
+                    //   backgroundColor: Color(0xFFFF63F6),
+                    //   deeplink: "",
+                    // ),
                     _MenuDope(
                       title: "Ebook Buddhis",
                       backgroundColor: Color(0xFF4BC1EA),
@@ -68,7 +68,7 @@ class HomePage extends StatelessWidget {
                     _MenuDope(
                       title: "Tentang Ekayana",
                       backgroundColor: Color(0xFFFF8C00),
-                      deeplink: "",
+                      deeplink: RouteName.aboutEkayana,
                     ),
                   ],
                 ),

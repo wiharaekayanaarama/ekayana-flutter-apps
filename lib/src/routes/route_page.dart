@@ -1,7 +1,9 @@
+import 'package:ekayanaarama/src/bindings/about_detail_binding.dart';
 import 'package:ekayanaarama/src/bindings/buddhavacana_binding.dart';
 import 'package:ekayanaarama/src/bindings/buddhavacana_detail_binding.dart';
 import 'package:ekayanaarama/src/bindings/daily_reflection_binding.dart';
-import 'package:ekayanaarama/src/controller/daily_reflection_controller.dart';
+import 'package:ekayanaarama/src/page/about/about_detail_page.dart';
+import 'package:ekayanaarama/src/page/about/about_ekayana_page.dart';
 import 'package:ekayanaarama/src/page/buddhavacana/buddhavacana_detail_page.dart';
 import 'package:ekayanaarama/src/page/buddhavacana/buddhavacana_page.dart';
 import 'package:ekayanaarama/src/page/daily_reflection/daily_reflection_page.dart';
@@ -35,5 +37,14 @@ class RoutePage {
       page: () => const DailyReflectionPage(),
       binding: DailyReflectionBinding(),
     ),
+    GetPage(
+      name: RouteName.aboutEkayana,
+      page: () => const AboutEkayanaPage(),
+    ),
+    GetPage(
+      name: RouteName.aboutDetailEkayana,
+      page: () => const AboutDetailPage(),
+      binding: AboutDetailBinding(),
+    )
   ];
 }
