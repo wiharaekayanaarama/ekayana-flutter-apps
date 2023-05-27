@@ -5,6 +5,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 class CircularButtonComponent extends StatelessWidget {
   final VoidCallback? onPressed;
   final String icon;
+  final EkaCircularButtonStyle style;
 
   static const double textButtonSize = 32;
 
@@ -12,6 +13,7 @@ class CircularButtonComponent extends StatelessWidget {
     Key? key,
     required this.icon,
     this.onPressed,
+    this.style = EkaCircularButtonStyle.black,
   }) : super(key: key);
 
   @override
@@ -19,7 +21,7 @@ class CircularButtonComponent extends StatelessWidget {
     return TextButton(
       onPressed: onPressed,
       style: TextButton.styleFrom(
-        backgroundColor: ColorToken.black,
+        backgroundColor: style.backgroundColor,
         minimumSize: const Size(textButtonSize, textButtonSize),
         padding: EdgeInsets.zero,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
@@ -32,8 +34,28 @@ class CircularButtonComponent extends StatelessWidget {
         icon,
         height: 16,
         width: 16,
-        color: ColorToken.white,
+        color: style.foregroundColor,
       ),
     );
   }
+}
+
+class EkaCircularButtonStyle {
+  final Color backgroundColor;
+  final Color foregroundColor;
+
+  const EkaCircularButtonStyle({
+    required this.backgroundColor,
+    required this.foregroundColor,
+  });
+
+  static const white = EkaCircularButtonStyle(
+    backgroundColor: ColorToken.white,
+    foregroundColor: ColorToken.black,
+  );
+
+  static const black = EkaCircularButtonStyle(
+    backgroundColor: ColorToken.black,
+    foregroundColor: ColorToken.white,
+  );
 }
