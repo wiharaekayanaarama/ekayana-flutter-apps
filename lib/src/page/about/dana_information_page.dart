@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/component/button_component.dart';
 import 'package:ekayanaarama/src/component/circular_button_component.dart';
@@ -5,6 +7,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:image_gallery_saver/image_gallery_saver.dart';
+import 'package:path_provider/path_provider.dart';
 
 class DanaInformationPage extends StatelessWidget {
   const DanaInformationPage({Key? key}) : super(key: key);
@@ -159,13 +163,38 @@ class _BankAccountComponent extends StatelessWidget {
                 child: ButtonComponent(
                   text: "Simpan QRIS",
                   style: EkaButtonStyle.outline,
-                  onPressed: () {},
+                  onPressed: () {
+                    saveToGallery(qrisPath);
+                  },
                 ),
-              )
+              ),
             ],
-          )
+          ),
         ],
       ),
     );
+  }
+
+  Future<void> saveToGallery(String qrisPath) async {
+    ByteData byteData = await rootBundle.load(qrisPath);
+    final result = await ImageGallerySaver.saveImage(byteData.buffer.asUint8List());
+
+    if (result['isSuccess']) {
+      Get.snackbar(
+        "Berhasil simpan",
+        "Kode QRIS",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: ColorToken.success_500,
+        colorText: ColorToken.white,
+      );
+    } else {
+      Get.snackbar(
+        "Gagal simpan",
+        "${result['errorMessage']}",
+        snackPosition: SnackPosition.BOTTOM,
+        backgroundColor: ColorToken.error_500,
+        colorText: ColorToken.white,
+      );
+    }
   }
 }

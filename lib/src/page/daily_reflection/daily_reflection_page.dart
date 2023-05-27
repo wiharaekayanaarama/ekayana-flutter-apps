@@ -1,5 +1,4 @@
 import 'dart:io';
-import 'dart:typed_data';
 
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/component/button_component.dart';
@@ -8,8 +7,6 @@ import 'package:ekayanaarama/src/controller/daily_reflection_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
-import 'package:image_gallery_saver/image_gallery_saver.dart';
-import 'package:path_provider/path_provider.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
