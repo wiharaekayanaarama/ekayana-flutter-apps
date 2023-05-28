@@ -1,7 +1,7 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="id.or.ekayana.ekayanaarama.ekayanaarama">
    <application
-        android:label="ekayanaarama"
+        android:label="Ekayana Arama"
         android:name="${applicationName}"
         android:icon="@mipmap/ic_launcher">
         <activity

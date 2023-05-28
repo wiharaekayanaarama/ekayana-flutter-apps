@@ -1,7 +1,6 @@
-import 'package:ekayanaarama/src/page/home/home_page.dart';
+import 'package:ekayanaarama/src/presentation/modules/home/pages/home_page.dart';
 import 'package:ekayanaarama/src/routes/route_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter/rendering.dart';
 import 'package:get/get.dart';
 
 void main() {
