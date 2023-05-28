@@ -17,7 +17,16 @@ class AboutEkayanaPage extends StatelessWidget {
       body: SingleChildScrollView(
         child: Column(
           children: [
-            Image.asset('asset/drawable/ekayana.png'),
+            Container(
+              height: 200,
+              decoration: const BoxDecoration(
+                color: ColorToken.white,
+                image: DecorationImage(
+                  image: ExactAssetImage('asset/drawable/ekayana.png'),
+                  fit: BoxFit.cover,
+                ), //DecorationImage
+              ), //BoxDecoration
+            ),
             const SizedBox(
               height: 14,
             ),

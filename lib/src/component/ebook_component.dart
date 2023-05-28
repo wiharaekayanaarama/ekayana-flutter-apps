@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/component/loading_placeholder_component.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -76,12 +77,20 @@ class EbookComponent extends StatelessWidget {
                     child: CachedNetworkImage(
                       imageUrl:
                           "https://is3.cloudhost.id/ekayana-prod/cover_a803c685-6ce1-4f0b-839c-e31cb71a9543.png",
+                      placeholder: (context, _) {
+                        return SizedBox(
+                          width: Get.width,
+                          child: const LoadingPlaceholder(),
+                        );
+                      },
                     ),
                   ),
                 ),
               ],
             ),
-            const SizedBox(height: 8,),
+            const SizedBox(
+              height: 8,
+            ),
             Text(
               title,
               style: TypographyToken.textSmallBold,
