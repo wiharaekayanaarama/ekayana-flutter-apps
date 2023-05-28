@@ -46,6 +46,7 @@ dependencies:
   path_provider: ^2.0.11
   image_gallery_saver: ^1.7.1
   get: ^4.6.5
+  flutter_cached_pdfview: ^0.4.1
 
 dev_dependencies:
   flutter_test:

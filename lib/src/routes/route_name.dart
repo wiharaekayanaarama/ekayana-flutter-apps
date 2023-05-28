@@ -7,4 +7,6 @@ class RouteName {
   static const aboutEkayana = "/about-ekayana";
   static const aboutDetailEkayana = "/about-detail-ekayana";
   static const danaInformation = "/dana-information";
+  static const ebooks = "/ebooks";
+  static const ebookViewer = "/ebook-viewer";
 }

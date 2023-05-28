@@ -58,7 +58,7 @@ class HomePage extends StatelessWidget {
                     _MenuDope(
                       title: "Ebook Buddhis",
                       backgroundColor: Color(0xFF4BC1EA),
-                      deeplink: "",
+                      deeplink: RouteName.ebooks,
                     ),
                     _MenuDope(
                       title: "Kalendar Lunar",
