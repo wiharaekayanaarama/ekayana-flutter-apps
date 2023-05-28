@@ -32,7 +32,7 @@ class DanaInformationPage extends StatelessWidget {
               _BankAccountComponent(
                 accountName: 'PU Wihara Ekayana Arama',
                 accountNumber: '3973019968',
-                qrisPath: 'asset/drawable/qris_pu_ekayana.png',
+                qrisPath: 'asset/drawable/qris_pu_ekayana.jpg',
               ),
               SizedBox(
                 height: 24,
@@ -40,7 +40,7 @@ class DanaInformationPage extends StatelessWidget {
               _BankAccountComponent(
                 accountName: 'Wihara Ekayana Arama',
                 accountNumber: '1273012978',
-                qrisPath: 'asset/drawable/qris_ekayana.png',
+                qrisPath: 'asset/drawable/qris_ekayana.jpg',
               ),
             ],
           ),
@@ -82,7 +82,10 @@ class _BankAccountComponent extends StatelessWidget {
                 accountName,
                 style: TypographyToken.textSmallBold,
               ),
-              Image.asset('asset/drawable/bca.png')
+              Image.asset(
+                'asset/drawable/bca.png',
+                width: 40,
+              )
             ],
           ),
           const SizedBox(
@@ -132,7 +135,7 @@ class _BankAccountComponent extends StatelessWidget {
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
                           Padding(
-                            padding: const EdgeInsets.symmetric(horizontal: 42),
+                            padding: const EdgeInsets.symmetric(horizontal: 16),
                             child: CircularButtonComponent(
                               icon: Iconography.close,
                               style: EkaCircularButtonStyle.white,
@@ -144,8 +147,11 @@ class _BankAccountComponent extends StatelessWidget {
                           const SizedBox(
                             height: 16,
                           ),
-                          Center(
-                            child: Image.asset(qrisPath),
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Center(
+                              child: Image.asset(qrisPath),
+                            ),
                           ),
                         ],
                       ),

@@ -60,11 +60,11 @@ class HomePage extends StatelessWidget {
                       backgroundColor: Color(0xFF4BC1EA),
                       deeplink: RouteName.ebooks,
                     ),
-                    _MenuDope(
-                      title: "Kalendar Lunar",
-                      backgroundColor: Color(0xFF20C98F),
-                      deeplink: "",
-                    ),
+                    // _MenuDope(
+                    //   title: "Kalendar Lunar",
+                    //   backgroundColor: Color(0xFF20C98F),
+                    //   deeplink: "",
+                    // ),
                     _MenuDope(
                       title: "Tentang Ekayana",
                       backgroundColor: Color(0xFFFF8C00),
