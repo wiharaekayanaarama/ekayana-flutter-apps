@@ -84,21 +84,26 @@ class EbookComponent extends StatelessWidget {
               ),
             ],
           ),
-          const SizedBox(
-            height: 8,
-          ),
-          Text(
-            title,
-            style: TypographyToken.textSmallBold,
-            maxLines: 2,
-          ),
-          Text(
-            publisher,
-            style: TypographyToken.textSmallRegular.apply(
-              color: ColorToken.gray_500,
-            ),
-            maxLines: 1,
-          ),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              const SizedBox(
+                height: 8,
+              ),
+              Text(
+                title,
+                style: TypographyToken.textSmallBold,
+                maxLines: 2,
+              ),
+              Text(
+                publisher,
+                style: TypographyToken.textSmallRegular.apply(
+                  color: ColorToken.gray_500,
+                ),
+                maxLines: 1,
+              ),
+            ],
+          )
         ],
       ),
     );

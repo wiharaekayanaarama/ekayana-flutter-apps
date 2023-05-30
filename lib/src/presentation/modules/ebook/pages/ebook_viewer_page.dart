@@ -18,7 +18,7 @@ class EbookViewerPage extends GetView<EbookViewerController> {
       body: Column(
         children: [
           ConstrainedBox(
-            constraints: BoxConstraints(maxHeight: Get.height - 150),
+            constraints: BoxConstraints(maxHeight: Get.height - 180),
             child: PDF(
               swipeHorizontal: true,
               onViewCreated: (PDFViewController pdfViewController) async {
@@ -39,41 +39,43 @@ class EbookViewerPage extends GetView<EbookViewerController> {
                 () {
                   final isFirstPage = controller.currentPage.value == 0;
                   final isLastPage = controller.currentPage.value == controller.totalPage.value - 1;
-                  return Padding(
-                    padding: const EdgeInsets.symmetric(vertical: 16),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        InkWell(
-                          onTap: !isFirstPage ? () async {
-                            await snapshot.data?.setPage(controller.currentPage.value - 1);
-                          } : null,
-                          child: SvgPicture.asset(
-                            Iconography.chevronLeft,
-                            height: 18,
-                            width: 18,
-                            color: !isFirstPage ? ColorToken.black : ColorToken.gray_400,
+                  return Expanded(
+                    child: Padding(
+                      padding: const EdgeInsets.symmetric(vertical: 24,),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          InkWell(
+                            onTap: !isFirstPage ? () async {
+                              await snapshot.data?.setPage(controller.currentPage.value - 1);
+                            } : null,
+                            child: SvgPicture.asset(
+                              Iconography.chevronLeft,
+                              height: 18,
+                              width: 18,
+                              color: !isFirstPage ? ColorToken.black : ColorToken.gray_400,
+                            ),
                           ),
-                        ),
-                        Padding(
-                          padding: const EdgeInsets.symmetric(horizontal: 16.0),
-                          child: Text(
-                            "Hal ${controller.currentPage.value + 1} / ${controller.totalPage.value}",
-                            style: TypographyToken.textSmallSemiBold,
+                          Padding(
+                            padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                            child: Text(
+                              "Hal ${controller.currentPage.value + 1} / ${controller.totalPage.value}",
+                              style: TypographyToken.textSmallSemiBold,
+                            ),
                           ),
-                        ),
-                        InkWell(
-                          onTap: !isLastPage ? () async {
-                            await snapshot.data?.setPage(controller.currentPage.value + 1);
-                          } : null,
-                          child: SvgPicture.asset(
-                            Iconography.chevronRight,
-                            height: 18,
-                            width: 18,
-                            color: !isLastPage ? ColorToken.black : ColorToken.gray_400,
-                          ),
-                        )
-                      ],
+                          InkWell(
+                            onTap: !isLastPage ? () async {
+                              await snapshot.data?.setPage(controller.currentPage.value + 1);
+                            } : null,
+                            child: SvgPicture.asset(
+                              Iconography.chevronRight,
+                              height: 18,
+                              width: 18,
+                              color: !isLastPage ? ColorToken.black : ColorToken.gray_400,
+                            ),
+                          )
+                        ],
+                      ),
                     ),
                   );
                 },

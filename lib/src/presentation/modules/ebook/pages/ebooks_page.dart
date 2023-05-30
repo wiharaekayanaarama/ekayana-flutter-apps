@@ -65,8 +65,8 @@ class EbooksPage extends GetView<EbooksController> {
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
                   PlaceholderComponent.rectangle(
-                    width: 160,
-                    height: 200,
+                    width: double.infinity,
+                    height: 240,
                     radius: BorderRadius.circular(4),
                   ),
                   const SizedBox(
