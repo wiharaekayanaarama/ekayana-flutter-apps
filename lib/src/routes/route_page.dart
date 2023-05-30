@@ -9,6 +9,7 @@ import 'package:ekayanaarama/src/presentation/modules/about/pages/about_ekayana_
 import 'package:ekayanaarama/src/presentation/modules/about/pages/dana_information_page.dart';
 import 'package:ekayanaarama/src/presentation/modules/buddhavacana/pages/buddhavacana_detail_page.dart';
 import 'package:ekayanaarama/src/presentation/modules/daily_reflection/pages/daily_reflection_page.dart';
+import 'package:ekayanaarama/src/presentation/modules/ebook/bindings/ebooks_binding.dart';
 import 'package:ekayanaarama/src/presentation/modules/ebook/pages/ebook_viewer_page.dart';
 import 'package:ekayanaarama/src/presentation/modules/ebook/pages/ebooks_page.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/pages/event_detail_page.dart';
@@ -57,6 +58,7 @@ class RoutePage {
     GetPage(
       name: RouteName.ebooks,
       page: () => const EbooksPage(),
+      binding: EbookBinding(),
     ),
     GetPage(
       name: RouteName.ebookViewer,

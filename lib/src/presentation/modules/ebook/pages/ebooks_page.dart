@@ -1,9 +1,12 @@
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_component.dart';
+import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
+import 'package:ekayanaarama/src/presentation/modules/ebook/controllers/ebooks_controller.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
-class EbooksPage extends StatelessWidget {
+class EbooksPage extends GetView<EbooksController> {
   const EbooksPage({Key? key}) : super(key: key);
 
   @override
@@ -14,30 +17,81 @@ class EbooksPage extends StatelessWidget {
         title: "Ebook Buddhis",
         onNavigationTap: () => Get.back(),
       ),
-      body: GridView.builder(
-        padding: const EdgeInsets.symmetric(horizontal: 16),
-        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2,
-          childAspectRatio: 145 / 220,
-          crossAxisSpacing: 16,
-          mainAxisSpacing: 16,
-        ),
-        itemCount: 6,
-        itemBuilder: (BuildContext ctx, index) {
-          return EbookComponent(
-            title: 'Buddha dan Dhammanyaa',
-            coverUrl: 'https://is3.cloudhost.id/ekayana-prod/cover_a803c685-6ce1-4f0b-839c-e31cb71a9543.png',
-            publisher: 'Dari Dian Dharma',
-            onTap: () {
-              Get.toNamed(
-                RouteName.ebookViewer,
-                arguments: {
-                  'title': 'Buddha dan Dhammanyaa',
-                  'pdfUrl': 'https://is3.cloudhost.id/ekayana-prod/book_b226df34-2e4e-48c8-a367-6dff74e4286f.pdf',
+      body: controller.obx(
+        (data) {
+          return GridView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 16),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 145 / 220,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+            ),
+            itemCount: data?.length,
+            itemBuilder: (BuildContext ctx, index) {
+              final title = data?[index].title ?? "";
+              final coverUrl = data?[index].coverUrl ?? "";
+              final publisher = data?[index].publisher ?? "";
+              final pdfUrl = data?[index].fileUrl ?? "";
+              return EbookComponent(
+                title: title,
+                coverUrl: coverUrl,
+                publisher: publisher,
+                onTap: () {
+                  Get.toNamed(
+                    RouteName.ebookViewer,
+                    arguments: {
+                      'title': title,
+                      'pdfUrl': pdfUrl,
+                    },
+                  );
                 },
               );
             },
           );
+        },
+        onLoading: Shimmer(
+          child: GridView.builder(
+            padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
+            gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+              crossAxisCount: 2,
+              childAspectRatio: 145 / 220,
+              crossAxisSpacing: 16,
+              mainAxisSpacing: 16,
+            ),
+            itemCount: 6,
+            itemBuilder: (BuildContext ctx, index) {
+              return Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  PlaceholderComponent.rectangle(
+                    width: 160,
+                    height: 200,
+                    radius: BorderRadius.circular(4),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  PlaceholderComponent.rectangle(
+                    width: 140,
+                    height: 20,
+                    radius: BorderRadius.circular(4),
+                  ),
+                  const SizedBox(
+                    height: 4,
+                  ),
+                  PlaceholderComponent.rectangle(
+                    width: 110,
+                    height: 12,
+                    radius: BorderRadius.circular(4),
+                  ),
+                ],
+              );
+            },
+          ),
+        ),
+        onError: (error) {
+          return Text(error ?? "");
         },
       ),
     );
