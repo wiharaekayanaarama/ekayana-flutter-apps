@@ -12,6 +12,9 @@ import 'package:ekayanaarama/src/presentation/modules/daily_reflection/pages/dai
 import 'package:ekayanaarama/src/presentation/modules/ebook/bindings/ebooks_binding.dart';
 import 'package:ekayanaarama/src/presentation/modules/ebook/pages/ebook_viewer_page.dart';
 import 'package:ekayanaarama/src/presentation/modules/ebook/pages/ebooks_page.dart';
+import 'package:ekayanaarama/src/presentation/modules/event/bindings/incoming_events_binding.dart';
+import 'package:ekayanaarama/src/presentation/modules/event/bindings/previous_events_binding.dart';
+import 'package:ekayanaarama/src/presentation/modules/event/controller/previous_event_controller.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/pages/event_detail_page.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/pages/event_page.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
@@ -22,6 +25,10 @@ class RoutePage {
     GetPage(
       name: RouteName.event,
       page: () => const EventPage(),
+      bindings: [
+        IncomingEventsBinding(),
+        PreviousEventsBinding(),
+      ],
     ),
     GetPage(
       name: RouteName.eventDetail,

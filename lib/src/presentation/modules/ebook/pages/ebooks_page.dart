@@ -72,18 +72,22 @@ class EbooksPage extends GetView<EbooksController> {
                   const SizedBox(
                     height: 8,
                   ),
-                  PlaceholderComponent.rectangle(
-                    width: 140,
-                    height: 20,
-                    radius: BorderRadius.circular(4),
+                  Expanded(
+                    child: PlaceholderComponent.rectangle(
+                      width: 140,
+                      height: 20,
+                      radius: BorderRadius.circular(4),
+                    ),
                   ),
                   const SizedBox(
                     height: 4,
                   ),
-                  PlaceholderComponent.rectangle(
-                    width: 110,
-                    height: 12,
-                    radius: BorderRadius.circular(4),
+                  Expanded(
+                    child: PlaceholderComponent.rectangle(
+                      width: 110,
+                      height: 12,
+                      radius: BorderRadius.circular(4),
+                    ),
                   ),
                 ],
               );

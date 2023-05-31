@@ -1,9 +1,9 @@
 import 'package:ekayanaarama/src/data/entity/ebook_entity.dart';
-import 'package:ekayanaarama/src/data/providers/ebook_api_provider.dart';
+import 'package:ekayanaarama/src/data/providers/api_provider.dart';
 import 'package:ekayanaarama/src/domain/repositories/ebook_repository.dart';
 
 class EbookRepositoryImpl implements EbookRepository {
-  final EbookApiProvider provider;
+  final ApiProvider provider;
 
   const EbookRepositoryImpl({
     required this.provider,

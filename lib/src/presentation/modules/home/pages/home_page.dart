@@ -241,7 +241,7 @@ class _InComingEventSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        InComingEventComposite(
+        InComingEventView(
           pageController: pageController,
         ),
         Center(

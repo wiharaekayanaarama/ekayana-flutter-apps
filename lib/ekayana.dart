@@ -18,7 +18,7 @@ export 'package:ekayanaarama/src/presentation/component/buddhavacana_item_compon
 export 'package:ekayanaarama/src/presentation/component/image_load_placeholder_component.dart';
 
 // Composite
-export 'package:ekayanaarama/src/presentation/modules/event/pages/incoming_event_composite.dart';
+export 'package:ekayanaarama/src/presentation/modules/event/view/incoming_event_view.dart';
 
 // Controller
 export 'package:ekayanaarama/src/presentation/modules/about/controllers/about_detail_controller.dart';

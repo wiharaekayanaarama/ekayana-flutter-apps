@@ -2,6 +2,7 @@ import 'package:ekayanaarama/src/presentation/modules/home/pages/home_page.dart'
 import 'package:ekayanaarama/src/routes/route_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:intl/date_symbol_data_local.dart';
 
 void main() {
   runApp(const MyApp());
@@ -12,7 +13,8 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    // debugPaintSizeEnabled = true;
+    initializeDateFormatting('id_ID', null);
+
     return GetMaterialApp(
       initialRoute: '/',
       getPages: RoutePage.pages,

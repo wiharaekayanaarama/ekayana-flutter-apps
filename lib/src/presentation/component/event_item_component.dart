@@ -1,12 +1,26 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/utils/date_utils.dart';
 import 'package:flutter/material.dart';
 
 class EventItemComponent extends StatelessWidget {
+  final String coverImageUrl;
+  final DateTime startDate;
+  final DateTime endDate;
+  final String title;
+  final String location;
+
   final double _width = 225;
   final double _height = 280;
 
-  const EventItemComponent({Key? key}) : super(key: key);
+  const EventItemComponent({
+    Key? key,
+    required this.coverImageUrl,
+    required this.startDate,
+    required this.endDate,
+    required this.title,
+    required this.location,
+  }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -14,13 +28,14 @@ class EventItemComponent extends StatelessWidget {
       children: [
         ClipRRect(
           borderRadius: BorderRadius.circular(16),
-          child: Image(
-            image: const CachedNetworkImageProvider(
-              'https://via.placeholder.com/225x280',
-            ),
+          child: CachedNetworkImage(
+            imageUrl: coverImageUrl,
             fit: BoxFit.cover,
             width: _width,
             height: _height,
+            placeholder: (context, _) {
+              return const ImageLoadPlaceholderComponent();
+            },
           ),
         ),
         Container(
@@ -33,7 +48,7 @@ class EventItemComponent extends StatelessWidget {
               end: Alignment.bottomCenter,
               colors: [
                 Colors.transparent,
-                Colors.black.withOpacity(0.5),
+                Colors.black.withOpacity(0.85),
               ],
             ),
           ),
@@ -50,13 +65,13 @@ class EventItemComponent extends StatelessWidget {
               mainAxisSize: MainAxisSize.min,
               children: [
                 Text(
-                  "Nov",
+                  startDate.month.getMonthString,
                   style: TypographyToken.textMediumSemiBold.apply(
                     color: ColorToken.black,
                   ),
                 ),
                 Text(
-                  "28",
+                  startDate.day.toString(),
                   style: TypographyToken.textMediumBold.apply(
                     color: ColorToken.primary_500,
                   ),
@@ -76,7 +91,7 @@ class EventItemComponent extends StatelessWidget {
               children: [
                 Flexible(
                   child: Text(
-                    "Title event",
+                    title,
                     style: TypographyToken.textMediumBold.apply(
                       color: ColorToken.white,
                     ),
@@ -85,13 +100,15 @@ class EventItemComponent extends StatelessWidget {
                 const SizedBox(
                   height: 12,
                 ),
-                const Flexible(
-                  child: TextIconComponent(
-                    text: "08:00 - 12:00 WIB",
-                    iconLeft: Iconography.clock,
-                    iconColor: ColorToken.white,
+                if (startDate.hour != 0 && startDate.minute != 0 && startDate.second != 0) ...[
+                  Flexible(
+                    child: TextIconComponent(
+                      text: "${startDate.hour}:${startDate.minute} - 12:00 WIB",
+                      iconLeft: Iconography.clock,
+                      iconColor: ColorToken.white,
+                    ),
                   ),
-                ),
+                ],
                 const SizedBox(
                   height: 12,
                 ),
