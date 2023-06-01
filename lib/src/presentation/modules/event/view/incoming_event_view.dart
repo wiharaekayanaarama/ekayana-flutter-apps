@@ -2,6 +2,7 @@ import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_component.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/controller/incoming_events_controller.dart';
+import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -32,12 +33,17 @@ class InComingEventView extends GetView<IncomingEventsController> {
                 itemCount: data?.length,
                 pageSnapping: true,
                 itemBuilder: (context, index) {
-                  return EventItemComponent(
-                    coverImageUrl: data?[index].coverImageUrl ?? "",
-                    startDate: data?[index].startDate ?? DateTime.now(),
-                    endDate: data?[index].endDate ?? DateTime.now(),
-                    title: data?[index].title ?? "",
-                    location: data?[index].location ?? "",
+                  return InkWell(
+                    onTap: () => Get.toNamed(RouteName.eventDetail, arguments: {
+                      'id': data?[index].id,
+                    }),
+                    child: EventItemComponent(
+                      coverImageUrl: data?[index].coverImageUrl ?? "",
+                      startDate: data?[index].startDate ?? DateTime.now(),
+                      endDate: data?[index].endDate ?? DateTime.now(),
+                      title: data?[index].title ?? "",
+                      location: data?[index].location ?? "",
+                    ),
                   );
                 },
               ),
@@ -54,7 +60,9 @@ class InComingEventView extends GetView<IncomingEventsController> {
               height: 15,
               radius: BorderRadius.circular(4),
             ),
-            const SizedBox(height: 12,),
+            const SizedBox(
+              height: 12,
+            ),
             Row(
               children: [
                 Expanded(
@@ -67,7 +75,9 @@ class InComingEventView extends GetView<IncomingEventsController> {
                     ),
                   ),
                 ),
-                const SizedBox(width: 8,),
+                const SizedBox(
+                  width: 8,
+                ),
                 Expanded(
                   child: AspectRatio(
                     aspectRatio: 225 / 280,

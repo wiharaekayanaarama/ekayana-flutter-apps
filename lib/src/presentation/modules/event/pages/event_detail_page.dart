@@ -1,93 +1,227 @@
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_component.dart';
+import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
+import 'package:ekayanaarama/src/presentation/modules/event/controller/event_detail_controller.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
+import 'package:get/get.dart';
+import 'package:intl/intl.dart';
 
-class EventDetailPage extends StatelessWidget {
+class EventDetailPage extends GetView<EventDetailController> {
   const EventDetailPage({Key? key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      body: CustomScrollView(
-        slivers: [
-          CollapsingNavBarComponent(
-            title: 'Detail Event',
-            image: "https://via.placeholder.com/250x280",
-            onNavigationTap: () {},
-          ),
-          SliverToBoxAdapter(
-            child: Container(
-              height: MediaQuery.of(context).size.height,
-              color: ColorToken.white,
-              padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    return controller.obx(
+      (data) {
+        final startDate = data?.startDate;
+        final endDate = data?.endDate;
+        return Scaffold(
+          body: CustomScrollView(
+            slivers: [
+              CollapsingNavBarComponent(
+                title: 'Detail Event',
+                image: data?.coverImageUrl ?? "",
+                onNavigationTap: () => Get.back(),
+              ),
+              SliverFillRemaining(
+                child: Container(
+                  height: MediaQuery.of(context).size.height,
+                  color: ColorToken.white,
+                  padding:
+                      const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          Text(
-                            "Title Event",
-                            style: TypographyToken.headingSmall,
-                          ),
-                          const SizedBox(
-                            height: 4,
-                          ),
-                          Text(
-                            "Dari Ekayana",
-                            style: TypographyToken.textSmallRegular.apply(
-                              color: ColorToken.gray_500,
+                          Expanded(
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  data?.title ?? "",
+                                  style: TypographyToken.headingSmall,
+                                ),
+                                const SizedBox(
+                                  height: 4,
+                                ),
+                                Text(
+                                  "Dari ${data?.organizer ?? ""}",
+                                  style: TypographyToken.textSmallRegular.apply(
+                                    color: ColorToken.gray_500,
+                                  ),
+                                ),
+                              ],
                             ),
+                          ),
+                          SvgPicture.asset(
+                            Iconography.share_07,
+                            color: ColorToken.primary_500,
+                            width: 16,
+                            height: 16,
                           ),
                         ],
                       ),
-                      SvgPicture.asset(
-                        Iconography.share_07,
-                        color: ColorToken.primary_500,
-                        width: 16,
-                        height: 16,
+                      const SizedBox(
+                        height: 30,
                       ),
+                      _EventIconText(
+                        icon: Iconography.calendar,
+                        title: DateFormat('dd MMMM yyyy', 'id_ID').format(
+                          startDate ?? DateTime.now(),
+                        ),
+                        subtitle: startDate?.hour != 0 &&
+                                startDate?.minute != 0 &&
+                                startDate?.second != 0
+                            ? "${startDate?.hour}:${startDate?.minute} - ${endDate?.hour}:${endDate?.minute} WIB"
+                            : null,
+                      ),
+                      const SizedBox(
+                        height: 24,
+                      ),
+                      _EventIconText(
+                        icon: Iconography.markerPin_01,
+                        title: data?.location ?? "",
+                        subtitle: null,
+                      ),
+                      const SizedBox(
+                        height: 40,
+                      ),
+                      Text(
+                        "Deskripsi",
+                        style: TypographyToken.textMediumBold,
+                      ),
+                      const SizedBox(
+                        height: 8,
+                      ),
+                      Expanded(
+                          child: Html(
+                        data: data?.description,
+                      ))
                     ],
                   ),
-                  const SizedBox(
-                    height: 30,
-                  ),
-                  const _EventIconText(
-                    icon: Iconography.calendar,
-                    title: "28 November 2023",
-                    subtitle: "08:00 - 12:00 WIB",
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  const _EventIconText(
-                    icon: Iconography.markerPin_01,
-                    title: "Jakarta Barat, Indonesia",
-                    subtitle: "Indonesia Convention Exhibition",
-                  ),
-                  const SizedBox(
-                    height: 40,
-                  ),
-                  Text(
-                    "Deskripsi",
-                    style: TypographyToken.textMediumBold,
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Text(
-                    "Lorem ipsum dolor sit amet consectetur. Fusce faucibus turpis potenti risus velit sapien. Amet sit vitae metus felis. Sodales id tempus libero interdum gravida aenean. Ac tellus tellus viverra amet egestas facilisis etiam ullamcorper malesuada. Accumsan pretium tellus quam aliquet cursus viverra semper. " +
-                        "Eget nunc tellus elementum elementum cras aliquam sit. At sed lobortis interdum tortor. Platea varius viverra elit auctor bibendum vel purus. Lorem ipsum dolor sit amet consectetur. Fusce faucibus turpis potenti risus velit sapien. Amet sit vitae metus felis. Sodales id tempus libero interdum gravida aenean. Ac tellus tellus viverra amet egestas facilisis etiam ullamcorper malesuada. Accumsan pretium tellus quam aliquet cursus viverra semper." +
-                        "Eget nunc tellus elementum elementum cras aliquam sit. At sed lobortis interdum tortor. Platea varius viverra elit auctor bibendum vel purus.",
-                  )
-                ],
+                ),
               ),
-            ),
+            ],
           ),
-        ],
+        );
+      },
+      onLoading: Container(
+        color: ColorToken.white,
+        child: Shimmer(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              PlaceholderComponent.rectangle(
+                width: Get.width,
+                height: 250,
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: PlaceholderComponent.rectangle(
+                  width: Get.width / 2,
+                  height: 24,
+                ),
+              ),
+              const SizedBox(
+                height: 4,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: PlaceholderComponent.rectangle(
+                  width: Get.width / 4,
+                  height: 16,
+                ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: PlaceholderComponent.rectangle(
+                  width: Get.width / 2.5,
+                  height: 12,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: PlaceholderComponent.rectangle(
+                  width: Get.width / 4,
+                  height: 12,
+                ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: PlaceholderComponent.rectangle(
+                  width: Get.width / 2.5,
+                  height: 12,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: PlaceholderComponent.rectangle(
+                  width: Get.width / 4,
+                  height: 12,
+                ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: PlaceholderComponent.rectangle(
+                  width: Get.width / 6,
+                  height: 16,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: PlaceholderComponent.rectangle(
+                  width: Get.width,
+                  height: 12,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: PlaceholderComponent.rectangle(
+                  width: Get.width,
+                  height: 12,
+                ),
+              ),
+              const SizedBox(
+                height: 8,
+              ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                child: PlaceholderComponent.rectangle(
+                  width: Get.width,
+                  height: 12,
+                ),
+              ),
+            ],
+          ),
+        ),
       ),
     );
   }
@@ -96,13 +230,13 @@ class EventDetailPage extends StatelessWidget {
 class _EventIconText extends StatelessWidget {
   final String icon;
   final String title;
-  final String subtitle;
+  final String? subtitle;
 
   const _EventIconText({
     Key? key,
     required this.icon,
     required this.title,
-    required this.subtitle,
+    this.subtitle,
   }) : super(key: key);
 
   @override
@@ -130,19 +264,26 @@ class _EventIconText extends StatelessWidget {
         Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Text(
-              title,
-              style: TypographyToken.textSmallSemiBold.apply(
-                color: ColorToken.gray_500,
+            if (subtitle != null) ...[
+              Text(
+                title,
+                style: TypographyToken.textSmallSemiBold.apply(
+                  color: ColorToken.gray_500,
+                ),
               ),
-            ),
-            const SizedBox(
-              height: 4,
-            ),
-            Text(
-              subtitle,
-              style: TypographyToken.textSmallBold,
-            ),
+              const SizedBox(
+                height: 4,
+              ),
+              Text(
+                subtitle!,
+                style: TypographyToken.textSmallBold,
+              ),
+            ] else ...[
+              Text(
+                title,
+                style: TypographyToken.textSmallBold,
+              ),
+            ]
           ],
         ),
       ],

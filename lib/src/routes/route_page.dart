@@ -12,6 +12,7 @@ import 'package:ekayanaarama/src/presentation/modules/daily_reflection/pages/dai
 import 'package:ekayanaarama/src/presentation/modules/ebook/bindings/ebooks_binding.dart';
 import 'package:ekayanaarama/src/presentation/modules/ebook/pages/ebook_viewer_page.dart';
 import 'package:ekayanaarama/src/presentation/modules/ebook/pages/ebooks_page.dart';
+import 'package:ekayanaarama/src/presentation/modules/event/bindings/event_detail_binding.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/bindings/incoming_events_binding.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/bindings/previous_events_binding.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/controller/previous_event_controller.dart';
@@ -33,6 +34,7 @@ class RoutePage {
     GetPage(
       name: RouteName.eventDetail,
       page: () => const EventDetailPage(),
+      binding: EventDetailBinding(),
     ),
     GetPage(
       name: RouteName.buddavacana,

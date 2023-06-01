@@ -31,4 +31,13 @@ class EventRepositoryImpl implements EventRepository {
         .toList();
   }
 
+  @override
+  Future<EventEntity> getEventById(int id) async {
+    final events = await provider.getEventById(id);
+    if (events.status.hasError) {
+      return Future.error(events.statusText ?? "");
+    }
+    return EventEntity.fromJson(events.body?.data as Map<String, dynamic>);
+  }
+
 }

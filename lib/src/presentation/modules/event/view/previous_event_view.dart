@@ -14,111 +14,111 @@ class PreviousEventView extends GetView<PreviousEventsController> {
 
   @override
   Widget build(BuildContext context) {
-    return controller.obx(
-      (data) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "Event sebelumnya",
-              style: TypographyToken.textLargeBold,
-            ),
-            const SizedBox(
-              height: 8,
-            ),
-            ListView.separated(
-              itemCount: data?.length ?? 0,
-              shrinkWrap: true,
-              physics: const NeverScrollableScrollPhysics(),
-              itemBuilder: (BuildContext context, index) {
-                return InkWell(
-                  onTap: () => Get.toNamed(RouteName.eventDetail),
-                  child: Container(
-                    padding: const EdgeInsets.all(6),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(12),
-                      color: ColorToken.gray_0,
-                    ),
-                    child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        ClipRRect(
-                          borderRadius: BorderRadius.circular(10),
-                          child: CachedNetworkImage(
-                            imageUrl: data?[index].coverImageUrl ?? "",
-                            fit: BoxFit.cover,
-                            width: 72,
-                            height: 72,
-                            placeholder: (context, _) {
-                              return const Padding(
-                                padding: EdgeInsets.all(16.0),
-                                child: ImageLoadPlaceholderComponent(),
-                              );
-                            },
-                          ),
-                        ),
-                        const SizedBox(
-                          width: 12,
-                        ),
-                        Expanded(
-                          child: Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            children: [
-                              Text(
-                                data?[index].title ?? "",
-                                style: TypographyToken.textMediumBold,
-                                maxLines: 1,
-                                overflow: TextOverflow.ellipsis,
-                              ),
-                              Text(
-                                "Dari ${data?[index].organizer}",
-                                style: TypographyToken.textSmallRegular.apply(
-                                  color: ColorToken.gray_500,
-                                ),
-                              ),
-                              const SizedBox(
-                                height: 22,
-                              ),
-                              Wrap(
-                                children: [
-                                  SvgPicture.asset(
-                                    Iconography.calendar,
-                                    height: 16,
-                                    width: 16,
-                                  ),
-                                  const SizedBox(
-                                    width: 4,
-                                  ),
-                                  Text(
-                                    DateFormat('dd MMMM yyyy', 'id_ID').format(
-                                      data?[index].startDate ?? DateTime.now(),
-                                    ),
-                                    style:
-                                        TypographyToken.textSmallRegular.apply(
-                                      color: ColorToken.gray_500,
-                                    ),
-                                  )
-                                ],
-                              )
-                            ],
-                          ),
-                        )
-                      ],
-                    ),
+    return controller.obx((data) {
+      return Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Text(
+            "Event sebelumnya",
+            style: TypographyToken.textLargeBold,
+          ),
+          const SizedBox(
+            height: 8,
+          ),
+          ListView.separated(
+            itemCount: data?.length ?? 0,
+            shrinkWrap: true,
+            physics: const NeverScrollableScrollPhysics(),
+            itemBuilder: (BuildContext context, index) {
+              return InkWell(
+                onTap: () => Get.toNamed(RouteName.eventDetail, arguments: {
+                  'id': data?[index].id,
+                }),
+                child: Container(
+                  padding: const EdgeInsets.all(6),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(12),
+                    color: ColorToken.gray_0,
                   ),
-                );
-              },
-              separatorBuilder: (BuildContext context, int index) {
-                return const SizedBox(
-                  height: 8,
-                );
-              },
-            )
-          ],
-        );
-      },
-      onLoading: Shimmer(
-        child: Column(
+                  child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      ClipRRect(
+                        borderRadius: BorderRadius.circular(10),
+                        child: CachedNetworkImage(
+                          imageUrl: data?[index].coverImageUrl ?? "",
+                          fit: BoxFit.cover,
+                          width: 72,
+                          height: 72,
+                          placeholder: (context, _) {
+                            return const Padding(
+                              padding: EdgeInsets.all(16.0),
+                              child: ImageLoadPlaceholderComponent(),
+                            );
+                          },
+                        ),
+                      ),
+                      const SizedBox(
+                        width: 12,
+                      ),
+                      Expanded(
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              data?[index].title ?? "",
+                              style: TypographyToken.textMediumBold,
+                              maxLines: 1,
+                              overflow: TextOverflow.ellipsis,
+                            ),
+                            Text(
+                              "Dari ${data?[index].organizer}",
+                              style: TypographyToken.textSmallRegular.apply(
+                                color: ColorToken.gray_500,
+                              ),
+                            ),
+                            const SizedBox(
+                              height: 22,
+                            ),
+                            Wrap(
+                              children: [
+                                SvgPicture.asset(
+                                  Iconography.calendar,
+                                  height: 16,
+                                  width: 16,
+                                ),
+                                const SizedBox(
+                                  width: 4,
+                                ),
+                                Text(
+                                  DateFormat('dd MMMM yyyy', 'id_ID').format(
+                                    data?[index].startDate ?? DateTime.now(),
+                                  ),
+                                  style: TypographyToken.textSmallRegular.apply(
+                                    color: ColorToken.gray_500,
+                                  ),
+                                )
+                              ],
+                            )
+                          ],
+                        ),
+                      )
+                    ],
+                  ),
+                ),
+              );
+            },
+            separatorBuilder: (BuildContext context, int index) {
+              return const SizedBox(
+                height: 8,
+              );
+            },
+          )
+        ],
+      );
+    },
+        onLoading: Shimmer(
+            child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             PlaceholderComponent.rectangle(
@@ -126,27 +126,31 @@ class PreviousEventView extends GetView<PreviousEventsController> {
               height: 12,
               radius: BorderRadius.circular(4),
             ),
-            const SizedBox(height: 12,),
+            const SizedBox(
+              height: 12,
+            ),
             PlaceholderComponent.rectangle(
               width: double.infinity,
               height: 80,
               radius: BorderRadius.circular(4),
             ),
-            const SizedBox(height: 12,),
+            const SizedBox(
+              height: 12,
+            ),
             PlaceholderComponent.rectangle(
               width: double.infinity,
               height: 80,
               radius: BorderRadius.circular(4),
             ),
-            const SizedBox(height: 12,),
+            const SizedBox(
+              height: 12,
+            ),
             PlaceholderComponent.rectangle(
               width: double.infinity,
               height: 80,
               radius: BorderRadius.circular(4),
             ),
           ],
-        )
-      )
-    );
+        )));
   }
 }

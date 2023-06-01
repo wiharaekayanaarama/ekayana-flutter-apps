@@ -19,4 +19,9 @@ class ApiProvider extends BaseProvider {
     '/event?type=PAST',
     decoder: (json) => BaseResponse.fromJson(json),
   );
+
+  Future<Response<BaseResponse<EventEntity>>> getEventById(int id) => get(
+    '/event/$id',
+    decoder: (json) => BaseResponse.fromJson(json),
+  );
 }

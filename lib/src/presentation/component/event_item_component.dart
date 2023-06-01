@@ -103,7 +103,7 @@ class EventItemComponent extends StatelessWidget {
                 if (startDate.hour != 0 && startDate.minute != 0 && startDate.second != 0) ...[
                   Flexible(
                     child: TextIconComponent(
-                      text: "${startDate.hour}:${startDate.minute} - 12:00 WIB",
+                      text: "${startDate.hour}:${startDate.minute} - ${endDate.hour}:${endDate.minute} WIB",
                       iconLeft: Iconography.clock,
                       iconColor: ColorToken.white,
                     ),

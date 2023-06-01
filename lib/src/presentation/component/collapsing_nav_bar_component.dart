@@ -1,3 +1,4 @@
+import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -44,15 +45,15 @@ class CollapsingNavBarComponent extends StatelessWidget {
       ],
     );
     return SliverAppBar(
-      // title: content,
       expandedHeight: expandedHeight,
       backgroundColor: backgroundColor,
       flexibleSpace: LayoutBuilder(
         builder: (BuildContext context, BoxConstraints constraints) {
           return FlexibleSpaceBar(
-            background: Image.network(
-              image,
-              fit: BoxFit.cover,
+            background: CachedNetworkImage(
+              imageUrl: image,
+              fit: BoxFit.fill,
+              placeholder: (_, __) => const ImageLoadPlaceholderComponent(),
             ),
             centerTitle: true,
             title: AnimatedOpacity(
