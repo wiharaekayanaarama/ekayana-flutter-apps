@@ -24,8 +24,8 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Padding(
+            children: [
+              const Padding(
                 padding: EdgeInsets.only(
                   left: 16,
                   top: 0,
@@ -34,14 +34,14 @@ class HomePage extends StatelessWidget {
                 ),
                 child: _HeaderSection(),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(
                   vertical: 12,
                   horizontal: 16.0,
                 ),
                 child: InComingEventView(),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                 child: _MenuDopeSection(
                   menuDopes: [
@@ -89,8 +89,15 @@ class HomePage extends StatelessWidget {
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16.0),
-                child: HomeActivityView(),
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text("Agenda hari ini", style: TypographyToken.headingSmall,),
+                    const SizedBox(height: 24,),
+                    const HomeActivityView(),
+                  ],
+                ),
               ),
             ],
           ),
