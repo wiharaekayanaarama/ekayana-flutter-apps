@@ -1,4 +1,5 @@
 import 'package:ekayanaarama/src/presentation/modules/home/pages/home_page.dart';
+import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:ekayanaarama/src/routes/route_page.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -16,14 +17,13 @@ class MyApp extends StatelessWidget {
     initializeDateFormatting('id_ID', null);
 
     return GetMaterialApp(
-      initialRoute: '/',
+      initialRoute: RouteName.home,
       getPages: RoutePage.pages,
       title: 'Ekayana',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: "Inter",
       ),
-      home: const HomePage(),
     );
   }
 }

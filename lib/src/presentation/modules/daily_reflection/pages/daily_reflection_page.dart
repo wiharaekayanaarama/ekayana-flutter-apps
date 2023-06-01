@@ -27,7 +27,7 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
           child: Stack(
             children: [
               SizedBox(
-                height: Get.height - 64,
+                height: GetPlatform.isIOS ? Get.height - 80 : Get.height - 64,
                 child: Stack(
                   children: [
                     Screenshot(
@@ -117,7 +117,9 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
               Align(
                 alignment: Alignment.bottomCenter,
                 child: Padding(
-                  padding: const EdgeInsets.symmetric(horizontal: 16.0),
+                  padding: GetPlatform.isIOS
+                      ? const EdgeInsets.only(left: 16.0, bottom: 24, right: 16)
+                      : const EdgeInsets.symmetric(horizontal: 16.0),
                   child: Row(
                     children: [
                       Expanded(

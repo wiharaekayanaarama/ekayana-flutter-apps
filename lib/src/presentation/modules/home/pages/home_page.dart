@@ -1,4 +1,6 @@
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/presentation/modules/home/view/home_activity_view.dart';
+import 'package:ekayanaarama/src/presentation/modules/routine_activity/view/routine_activity_view.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -16,8 +18,8 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Padding(
+            children: [
+              const Padding(
                 padding: EdgeInsets.only(
                   left: 16,
                   top: 0,
@@ -27,6 +29,15 @@ class HomePage extends StatelessWidget {
                 child: _HeaderSection(),
               ),
               Padding(
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 16.0,
+                ),
+                child: InComingEventView(
+                  pageController: PageController(),
+                ),
+              ),
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                 child: _MenuDopeSection(
                   menuDopes: [
@@ -38,17 +49,17 @@ class HomePage extends StatelessWidget {
                     _MenuDope(
                       title: "Kegiatan Rutin",
                       backgroundColor: Color(0xFFF918A8),
-                      deeplink: "",
+                      deeplink: RouteName.routineActivity,
                     ),
                     _MenuDope(
                       title: "Event",
                       backgroundColor: Color(0xFF7F18F9),
-                      deeplink: "/event",
+                      deeplink: RouteName.event,
                     ),
                     _MenuDope(
                       title: "Buddhavacana",
                       backgroundColor: Color(0xFFFF6369),
-                      deeplink: "/buddhavacana",
+                      deeplink: RouteName.buddavacana,
                     ),
                     // _MenuDope(
                     //   title: "Lagu Buddhis",
@@ -73,13 +84,9 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
+              const Padding(
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16.0),
-                child: _InComingEventSection(),
-              ),
-              Padding(
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16.0),
-                child: _AgendaSection(),
+                child: HomeActivityView(),
               ),
             ],
           ),
@@ -230,39 +237,6 @@ class _MenuDope {
     required this.backgroundColor,
     required this.deeplink,
   });
-}
-
-class _InComingEventSection extends StatelessWidget {
-  const _InComingEventSection({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final pageController = PageController(viewportFraction: 0.63);
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        InComingEventView(
-          pageController: pageController,
-        ),
-        Center(
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 16.0),
-            child: SmoothPageIndicator(
-              count: 3,
-              effect: const ExpandingDotsEffect(
-                activeDotColor: ColorToken.primary_500,
-                dotColor: ColorToken.primary_50,
-                dotHeight: 6,
-                dotWidth: 6,
-                expansionFactor: 4,
-              ),
-              controller: pageController,
-            ),
-          ),
-        ),
-      ],
-    );
-  }
 }
 
 class _AgendaSection extends StatelessWidget {

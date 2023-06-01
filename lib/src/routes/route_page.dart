@@ -15,14 +15,25 @@ import 'package:ekayanaarama/src/presentation/modules/ebook/pages/ebooks_page.da
 import 'package:ekayanaarama/src/presentation/modules/event/bindings/event_detail_binding.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/bindings/incoming_events_binding.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/bindings/previous_events_binding.dart';
-import 'package:ekayanaarama/src/presentation/modules/event/controller/previous_event_controller.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/pages/event_detail_page.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/pages/event_page.dart';
+import 'package:ekayanaarama/src/presentation/modules/home/bindings/home_activity_binding.dart';
+import 'package:ekayanaarama/src/presentation/modules/home/pages/home_page.dart';
+import 'package:ekayanaarama/src/presentation/modules/routine_activity/binding/routine_activity_binding.dart';
+import 'package:ekayanaarama/src/presentation/modules/routine_activity/page/routine_page.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:get/get.dart';
 
 class RoutePage {
   static final pages = [
+    GetPage(
+      name: RouteName.home,
+      page: () => const HomePage(),
+      bindings: [
+        HomeActivityBinding(),
+        IncomingEventsBinding(),
+      ],
+    ),
     GetPage(
       name: RouteName.event,
       page: () => const EventPage(),
@@ -73,6 +84,11 @@ class RoutePage {
       name: RouteName.ebookViewer,
       page: () => const EbookViewerPage(),
       binding: EbookViewerBinding(),
+    ),
+    GetPage(
+      name: RouteName.routineActivity,
+      page: () => const RoutinePage(),
+      binding: RoutineActivityBinding(),
     ),
   ];
 }

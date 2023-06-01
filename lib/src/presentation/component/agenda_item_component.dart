@@ -36,7 +36,14 @@ class AgendaItemComponent extends StatelessWidget {
               const SizedBox(
                 width: 8,
               ),
-              Text(title, style: TypographyToken.textMediumBold),
+              Expanded(
+                child: Text(
+                  title,
+                  style: TypographyToken.textMediumBold,
+                  maxLines: 2,
+                  overflow: TextOverflow.ellipsis,
+                ),
+              ),
             ],
           ),
           const SizedBox(

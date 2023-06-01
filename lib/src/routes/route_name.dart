@@ -1,4 +1,5 @@
 class RouteName {
+  static const home = "/home";
   static const event = "/event";
   static const eventDetail = "/event-detail";
   static const buddavacana = "/buddhavacana";
@@ -9,4 +10,5 @@ class RouteName {
   static const danaInformation = "/dana-information";
   static const ebooks = "/ebooks";
   static const ebookViewer = "/ebook-viewer";
+  static const routineActivity = "/routine-activity";
 }

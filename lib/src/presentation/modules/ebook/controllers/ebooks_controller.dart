@@ -12,8 +12,8 @@ class EbooksController extends GetxController with StateMixin<List<EbookEntity>>
   @override
   void onInit() {
     super.onInit();
-    getEbooks();
     change(null, status: RxStatus.loading());
+    getEbooks();
   }
 
   void getEbooks() async {
