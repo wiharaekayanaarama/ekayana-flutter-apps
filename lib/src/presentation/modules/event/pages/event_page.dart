@@ -23,7 +23,7 @@ class EventPage extends StatelessWidget {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: const [
               InComingEventView(),
-              SizedBox(height: 8,),
+              SizedBox(height: 32,),
               PreviousEventView(),
             ],
           ),
