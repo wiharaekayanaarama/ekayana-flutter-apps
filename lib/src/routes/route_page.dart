@@ -19,8 +19,8 @@ import 'package:ekayanaarama/src/presentation/modules/event/pages/event_detail_p
 import 'package:ekayanaarama/src/presentation/modules/event/pages/event_page.dart';
 import 'package:ekayanaarama/src/presentation/modules/home/bindings/home_activity_binding.dart';
 import 'package:ekayanaarama/src/presentation/modules/home/pages/home_page.dart';
-import 'package:ekayanaarama/src/presentation/modules/routine_activity/binding/routine_activity_binding.dart';
-import 'package:ekayanaarama/src/presentation/modules/routine_activity/page/routine_page.dart';
+import 'package:ekayanaarama/src/presentation/modules/routine_activity/binding/routine_activity_view_binding.dart';
+import 'package:ekayanaarama/src/presentation/modules/routine_activity/page/routine_activity_page.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:get/get.dart';
 
@@ -87,8 +87,10 @@ class RoutePage {
     ),
     GetPage(
       name: RouteName.routineActivity,
-      page: () => const RoutinePage(),
-      binding: RoutineActivityBinding(),
+      page: () => const RoutineActivityPage(),
+      bindings: [
+        RoutineActivityViewBinding(),
+      ]
     ),
   ];
 }

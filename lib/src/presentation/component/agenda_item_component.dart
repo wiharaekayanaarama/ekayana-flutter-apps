@@ -1,16 +1,19 @@
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 class AgendaItemComponent extends StatelessWidget {
   final String title;
   final String time;
   final String location;
+  final String icon;
 
   const AgendaItemComponent({
     Key? key,
     required this.title,
     required this.time,
     required this.location,
+    required this.icon,
   }) : super(key: key);
 
   @override
@@ -31,6 +34,13 @@ class AgendaItemComponent extends StatelessWidget {
                 decoration: const BoxDecoration(
                   shape: BoxShape.circle,
                   color: ColorToken.white,
+                ),
+                child: Padding(
+                  padding: const EdgeInsets.all(6.0),
+                  child: SvgPicture.asset(
+                    icon,
+                    color: ColorToken.primary_500,
+                  ),
                 ),
               ),
               const SizedBox(

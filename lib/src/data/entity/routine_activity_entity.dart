@@ -31,4 +31,9 @@ class RoutineActivityEntity {
       startTimeUTC: json['StartTime'] != null ? DateTime.parse(json['StartTime']) : null,
     );
   }
+
+  @override
+  String toString() {
+    return "category: $category";
+  }
 }

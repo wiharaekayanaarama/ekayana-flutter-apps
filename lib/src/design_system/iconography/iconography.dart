@@ -13,4 +13,10 @@ class Iconography {
   static const String columns = "asset/icon/columns-01.svg";
   static const String phone = "asset/icon/phone.svg";
   static const String copy_06 = "asset/icon/copy-06.svg";
+  static const String dhammachakkra = "asset/icon/dhammachakkra.svg";
+  static const String giveLove = "asset/icon/give-love.svg";
+  static const String lotus = "asset/icon/lotus.svg";
+  static const String meditate = "asset/icon/meditate.svg";
+  static const String sport = "asset/icon/sport.svg";
+  static const String check = "asset/icon/check.svg";
 }

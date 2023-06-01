@@ -2,6 +2,7 @@ import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_component.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
 import 'package:ekayanaarama/src/presentation/modules/home/controllers/home_activity_controller.dart';
+import 'package:ekayanaarama/src/presentation/modules/routine_activity/utils/routine_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -21,6 +22,7 @@ class HomeActivityView extends GetView<HomeActivityController> {
               title: data?[index].title ?? "",
               time: "${data?[index].time} WIB",
               location: data?[index].location ?? "",
+              icon: data?[index].category?.getActivityIcon ?? "",
             );
           },
           separatorBuilder: (BuildContext context, int index) {
