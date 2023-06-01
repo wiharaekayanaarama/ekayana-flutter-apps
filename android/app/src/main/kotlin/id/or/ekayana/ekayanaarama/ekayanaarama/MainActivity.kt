@@ -1,4 +1,4 @@
-package id.or.ekayana.ekayanaarama.ekayanaarama
+package id.or.ekayana.ekayanaarama
 
 import io.flutter.embedding.android.FlutterActivity
 
