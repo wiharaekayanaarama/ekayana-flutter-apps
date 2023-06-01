@@ -46,10 +46,15 @@ class CollapsingNavBarComponent extends StatelessWidget {
       ],
     );
     return SliverAppBar(
-      title: Tappable(
-        onTap: onNavigationTap,
-        borderRadius: BorderRadius.circular(100),
-        child: SvgPicture.asset(Iconography.chevronLeft),
+      title: Row(
+        crossAxisAlignment: CrossAxisAlignment.center,
+        children: [
+          Tappable(
+            onTap: onNavigationTap,
+            borderRadius: BorderRadius.circular(100),
+            child: SvgPicture.asset(Iconography.chevronLeft),
+          ),
+        ],
       ),
       expandedHeight: expandedHeight,
       backgroundColor: backgroundColor,
