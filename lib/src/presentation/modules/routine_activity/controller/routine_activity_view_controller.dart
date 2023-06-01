@@ -31,6 +31,7 @@ class RoutineActivityViewController extends GetxController
   }
 
   void filterActivities(String selectedCategory) {
+    this.selectedCategory.value = selectedCategory;
     if (selectedCategory == "semua") {
       change(entities, status: RxStatus.success());
       return;

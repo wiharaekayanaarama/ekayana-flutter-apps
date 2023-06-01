@@ -18,45 +18,45 @@ class RoutineActivityPage extends GetView<RoutineActivityViewController> {
         onNavigationTap: () => Get.back(),
       ),
       body: SingleChildScrollView(
-          child: Wrap(
-            children: [
-              SizedBox(
-                height: 104,
-                child: ListView.separated(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 16,
-                  ),
-                  scrollDirection: Axis.horizontal,
-                  itemCount: controller.categories.length,
-                  itemBuilder: (context, index) {
-                    return Obx(() {
-                        return FilterActivityComponent(
-                          category: controller.categories[index].capitalize ?? "",
-                          icon: controller.categories[index].getActivityIcon,
-                          isSelected: controller.selectedCategory.value == controller.categories[index],
-                          onTap: () {
-                            controller.selectedCategory.value = controller.categories[index];
-                            controller.filterActivities(controller.categories[index]);
-                          },
-                        );
-                      }
-                    );
-                  },
-                  separatorBuilder: (BuildContext context, int index) {
-                    return const SizedBox(
-                      width: 8,
-                    );
-                  },
+        child: Wrap(
+          children: [
+            SizedBox(
+              height: 104,
+              child: ListView.separated(
+                padding: const EdgeInsets.symmetric(
+                  horizontal: 16,
+                  vertical: 16,
                 ),
+                scrollDirection: Axis.horizontal,
+                itemCount: controller.categories.length,
+                itemBuilder: (context, index) {
+                  return Obx(
+                    () {
+                      return FilterActivityComponent(
+                        category: controller.categories[index].capitalize ?? "",
+                        icon: controller.categories[index].getActivityIcon,
+                        isSelected: controller.selectedCategory.value == controller.categories[index],
+                        onTap: () {
+                          controller.filterActivities(controller.categories[index]);
+                        },
+                      );
+                    },
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return const SizedBox(
+                    width: 8,
+                  );
+                },
               ),
-              const Padding(
-                padding: EdgeInsets.only(top: 34.0),
-                child: RoutineActivityView(),
-              ),
-            ],
-          ),
+            ),
+            const Padding(
+              padding: EdgeInsets.only(top: 34.0),
+              child: RoutineActivityView(),
+            ),
+          ],
         ),
+      ),
     );
   }
 }
