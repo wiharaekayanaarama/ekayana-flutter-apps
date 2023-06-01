@@ -25,14 +25,16 @@ class EventDetailPage extends GetView<EventDetailController> {
                 image: data?.coverImageUrl ?? "",
                 onNavigationTap: () => Get.back(),
               ),
-              SliverFillRemaining(
+              // SliverToBoxAdapter(
+              //   child: Text(data!.description + data!.description),
+              // )
+              SliverToBoxAdapter(
                 child: Container(
-                  height: MediaQuery.of(context).size.height,
                   color: ColorToken.white,
                   padding:
                       const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
+                  child: Wrap(
+                    crossAxisAlignment: WrapCrossAlignment.start,
                     children: [
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -65,42 +67,47 @@ class EventDetailPage extends GetView<EventDetailController> {
                           ),
                         ],
                       ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      _EventIconText(
-                        icon: Iconography.calendar,
-                        title: DateFormat('dd MMMM yyyy', 'id_ID').format(
-                          startDate ?? DateTime.now(),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 30),
+                        child: _EventIconText(
+                          icon: Iconography.calendar,
+                          title: DateFormat('dd MMMM yyyy', 'id_ID').format(
+                            startDate ?? DateTime.now(),
+                          ),
+                          subtitle: startDate?.hour != 0 &&
+                                  startDate?.minute != 0 &&
+                                  startDate?.second != 0
+                              ? "${startDate?.hour}:${startDate?.minute} - ${endDate?.hour}:${endDate?.minute} WIB"
+                              : null,
                         ),
-                        subtitle: startDate?.hour != 0 &&
-                                startDate?.minute != 0 &&
-                                startDate?.second != 0
-                            ? "${startDate?.hour}:${startDate?.minute} - ${endDate?.hour}:${endDate?.minute} WIB"
-                            : null,
                       ),
-                      const SizedBox(
-                        height: 24,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 24.0),
+                        child: _EventIconText(
+                          icon: Iconography.markerPin_01,
+                          title: data?.location ?? "",
+                          subtitle: null,
+                        ),
                       ),
-                      _EventIconText(
-                        icon: Iconography.markerPin_01,
-                        title: data?.location ?? "",
-                        subtitle: null,
+                      Padding(
+                        padding: const EdgeInsets.only(top: 40.0),
+                        child: Text(
+                          "Deskripsi",
+                          style: TypographyToken.textMediumBold,
+                        ),
                       ),
-                      const SizedBox(
-                        height: 40,
-                      ),
-                      Text(
-                        "Deskripsi",
-                        style: TypographyToken.textMediumBold,
-                      ),
-                      const SizedBox(
-                        height: 8,
-                      ),
-                      Expanded(
-                          child: Html(
-                        data: data?.description,
-                      ))
+                      Padding(
+                        padding: const EdgeInsets.only(top: 8.0),
+                        child: Html(
+                          data: data?.description,
+                          style: {
+                            "body": Style(
+                              fontSize: FontSize(TypographyToken.textSmallRegular.fontSize),
+                              margin: EdgeInsets.zero,
+                            ),
+                          },
+                        ),
+                      )
                     ],
                   ),
                 ),

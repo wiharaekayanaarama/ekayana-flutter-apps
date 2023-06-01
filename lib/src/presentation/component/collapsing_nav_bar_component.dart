@@ -30,10 +30,10 @@ class CollapsingNavBarComponent extends StatelessWidget {
   Widget build(BuildContext context) {
     final content = Row(
       children: [
-        InkWell(
-          onTap: onNavigationTap,
-          child: SvgPicture.asset(Iconography.chevronLeft),
-        ),
+        // InkWell(
+        //   onTap: onNavigationTap,
+        //   child: SvgPicture.asset(Iconography.chevronLeft),
+        // ),
         const Spacer(),
         Text(
           title,
@@ -45,6 +45,10 @@ class CollapsingNavBarComponent extends StatelessWidget {
       ],
     );
     return SliverAppBar(
+      title: InkWell(
+        onTap: onNavigationTap,
+        child: SvgPicture.asset(Iconography.chevronLeft),
+      ),
       expandedHeight: expandedHeight,
       backgroundColor: backgroundColor,
       flexibleSpace: LayoutBuilder(
