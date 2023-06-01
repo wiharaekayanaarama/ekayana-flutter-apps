@@ -53,6 +53,7 @@ class EventDetailPage extends GetView<EventDetailController> {
                         padding: const EdgeInsets.only(top: 12.0),
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
                             Expanded(
                               child: Column(
