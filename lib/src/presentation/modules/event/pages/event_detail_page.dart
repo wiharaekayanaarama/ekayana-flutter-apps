@@ -63,6 +63,7 @@ class EventDetailPage extends GetView<EventDetailController> {
                             ),
                           ),
                           Tappable(
+                            borderRadius: BorderRadius.circular(100),
                             onTap: () async {
                               File file = await controller.urlToFile(
                                 data?.coverImageUrl ?? "",

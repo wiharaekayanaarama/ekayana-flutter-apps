@@ -100,7 +100,7 @@ class _BankAccountComponent extends StatelessWidget {
                 width: 8,
               ),
               Tappable(
-                borderRadius: BorderRadius.circular(8),
+                borderRadius: BorderRadius.circular(100),
                 onTap: () async {
                   await Clipboard.setData(ClipboardData(text: accountNumber));
                 },
