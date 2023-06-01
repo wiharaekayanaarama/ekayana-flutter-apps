@@ -1,3 +1,5 @@
+import 'dart:io';
+
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_component.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
@@ -7,6 +9,7 @@ import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
+import 'package:share_plus/share_plus.dart';
 
 class EventDetailPage extends GetView<EventDetailController> {
   const EventDetailPage({Key? key}) : super(key: key);
@@ -14,7 +17,7 @@ class EventDetailPage extends GetView<EventDetailController> {
   @override
   Widget build(BuildContext context) {
     return controller.obx(
-      (data) {
+          (data) {
         final startDate = data?.startDate;
         final endDate = data?.endDate;
         return Scaffold(
@@ -25,14 +28,13 @@ class EventDetailPage extends GetView<EventDetailController> {
                 image: data?.coverImageUrl ?? "",
                 onNavigationTap: () => Get.back(),
               ),
-              // SliverToBoxAdapter(
-              //   child: Text(data!.description + data!.description),
-              // )
               SliverToBoxAdapter(
                 child: Container(
                   color: ColorToken.white,
-                  padding:
-                      const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
+                  padding: const EdgeInsets.symmetric(
+                    vertical: 16,
+                    horizontal: 16,
+                  ),
                   child: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.start,
                     children: [
@@ -59,11 +61,31 @@ class EventDetailPage extends GetView<EventDetailController> {
                               ],
                             ),
                           ),
-                          SvgPicture.asset(
-                            Iconography.share_07,
-                            color: ColorToken.primary_500,
-                            width: 16,
-                            height: 16,
+                          InkWell(
+                            onTap: () async {
+                              File file = await controller.urlToFile(
+                                data?.coverImageUrl ?? "",
+                              );
+                              Share.shareFiles(
+                                [file.path],
+                                text:
+                                "${data?.title} \n${data?.description
+                                    .replaceAll("<div>", "").replaceAll(
+                                    "<p>", '\n')
+                                    .replaceAll("</div>", "")
+                                    .replaceAll("</p>", "")
+                                }",
+                              );
+                            },
+                            child: Padding(
+                              padding: const EdgeInsets.all(10.0),
+                              child: SvgPicture.asset(
+                                Iconography.share_07,
+                                color: ColorToken.primary_500,
+                                width: 20,
+                                height: 20,
+                              ),
+                            ),
                           ),
                         ],
                       ),
@@ -75,9 +97,11 @@ class EventDetailPage extends GetView<EventDetailController> {
                             startDate ?? DateTime.now(),
                           ),
                           subtitle: startDate?.hour != 0 &&
-                                  startDate?.minute != 0 &&
-                                  startDate?.second != 0
-                              ? "${startDate?.hour}:${startDate?.minute} - ${endDate?.hour}:${endDate?.minute} WIB"
+                              startDate?.minute != 0 &&
+                              startDate?.second != 0
+                              ? "${startDate?.hour}:${startDate
+                              ?.minute} - ${endDate?.hour}:${endDate
+                              ?.minute} WIB"
                               : null,
                         ),
                       ),
@@ -102,7 +126,8 @@ class EventDetailPage extends GetView<EventDetailController> {
                           data: data?.description,
                           style: {
                             "body": Style(
-                              fontSize: FontSize(TypographyToken.textSmallRegular.fontSize),
+                              fontSize: FontSize(
+                                  TypographyToken.textSmallRegular.fontSize),
                               margin: EdgeInsets.zero,
                             ),
                           },
@@ -285,12 +310,13 @@ class _EventIconText extends StatelessWidget {
                 subtitle!,
                 style: TypographyToken.textSmallBold,
               ),
-            ] else ...[
-              Text(
-                title,
-                style: TypographyToken.textSmallBold,
-              ),
-            ]
+            ] else
+              ...[
+                Text(
+                  title,
+                  style: TypographyToken.textSmallBold,
+                ),
+              ]
           ],
         ),
       ],
