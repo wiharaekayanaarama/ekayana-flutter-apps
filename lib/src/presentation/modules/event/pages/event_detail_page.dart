@@ -39,57 +39,70 @@ class EventDetailPage extends GetView<EventDetailController> {
                   child: Wrap(
                     crossAxisAlignment: WrapCrossAlignment.start,
                     children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Expanded(
-                            child: Column(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                Text(
-                                  data?.title ?? "",
-                                  style: TypographyToken.headingSmall,
-                                ),
-                                const SizedBox(
-                                  height: 4,
-                                ),
-                                Text(
-                                  "Dari ${data?.organizer ?? ""}",
-                                  style: TypographyToken.textSmallRegular.apply(
-                                    color: ColorToken.gray_500,
-                                  ),
-                                ),
-                              ],
-                            ),
+                      Center(
+                        child: Container(
+                          height: 3,
+                          width: 56,
+                          decoration: BoxDecoration(
+                            color: ColorToken.gray_200,
+                            borderRadius: BorderRadius.circular(16)
                           ),
-                          Tappable(
-                            borderRadius: BorderRadius.circular(100),
-                            onTap: () async {
-                              File file = await controller.urlToFile(
-                                data?.coverImageUrl ?? "",
-                              );
-                              Share.shareFiles(
-                                [file.path],
-                                text:
-                                "${data?.title} \n${data?.description
-                                    .replaceAll("<div>", "").replaceAll(
-                                    "<p>", '\n')
-                                    .replaceAll("</div>", "")
-                                    .replaceAll("</p>", "")
-                                }",
-                              );
-                            },
-                            child: Padding(
-                              padding: const EdgeInsets.all(10.0),
-                              child: SvgPicture.asset(
-                                Iconography.share_07,
-                                color: ColorToken.primary_500,
-                                width: 20,
-                                height: 20,
+                        ),
+                      ),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 12.0),
+                        child: Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Expanded(
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                children: [
+                                  Text(
+                                    data?.title ?? "",
+                                    style: TypographyToken.headingSmall,
+                                  ),
+                                  const SizedBox(
+                                    height: 4,
+                                  ),
+                                  Text(
+                                    "Dari ${data?.organizer ?? ""}",
+                                    style: TypographyToken.textSmallRegular.apply(
+                                      color: ColorToken.gray_500,
+                                    ),
+                                  ),
+                                ],
                               ),
                             ),
-                          ),
-                        ],
+                            Tappable(
+                              borderRadius: BorderRadius.circular(100),
+                              onTap: () async {
+                                File file = await controller.urlToFile(
+                                  data?.coverImageUrl ?? "",
+                                );
+                                Share.shareFiles(
+                                  [file.path],
+                                  text:
+                                  "${data?.title} \n${data?.description
+                                      .replaceAll("<div>", "").replaceAll(
+                                      "<p>", '\n')
+                                      .replaceAll("</div>", "")
+                                      .replaceAll("</p>", "")
+                                  }",
+                                );
+                              },
+                              child: Padding(
+                                padding: const EdgeInsets.all(10.0),
+                                child: SvgPicture.asset(
+                                  Iconography.share_07,
+                                  color: ColorToken.primary_500,
+                                  width: 20,
+                                  height: 20,
+                                ),
+                              ),
+                            ),
+                          ],
+                        ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 30),
