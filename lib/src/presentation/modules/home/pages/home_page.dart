@@ -18,8 +18,8 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
+            children: const [
+              Padding(
                 padding: EdgeInsets.only(
                   left: 16,
                   top: 0,
@@ -29,15 +29,13 @@ class HomePage extends StatelessWidget {
                 child: _HeaderSection(),
               ),
               Padding(
-                padding: const EdgeInsets.symmetric(
+                padding: EdgeInsets.symmetric(
                   vertical: 12,
                   horizontal: 16.0,
                 ),
-                child: InComingEventView(
-                  pageController: PageController(),
-                ),
+                child: InComingEventView(),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                 child: _MenuDopeSection(
                   menuDopes: [
@@ -84,7 +82,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16.0),
                 child: HomeActivityView(),
               ),
@@ -237,57 +235,4 @@ class _MenuDope {
     required this.backgroundColor,
     required this.deeplink,
   });
-}
-
-class _AgendaSection extends StatelessWidget {
-  const _AgendaSection({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Text("Jadwal acara hari ini", style: TypographyToken.headingSmall),
-        const SizedBox(
-          height: 24,
-        ),
-        const AgendaItemComponent(
-          title: "Kebaktian Umum",
-          time:
-              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
-          location: "Wihara Ekayana Arama",
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        const AgendaItemComponent(
-          title: "Kebaktian Umum",
-          time:
-              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
-          location: "Wihara Ekayana Arama",
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        const AgendaItemComponent(
-          title: "Kebaktian Umum",
-          time:
-              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
-          location: "Wihara Ekayana Arama",
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-        const AgendaItemComponent(
-          title: "Kebaktian Umum",
-          time:
-              "Minggu, 08:00 - 12:00 WIB (Mandari)\nMinggu, 17:00 - 19:00 WIB (Pali)",
-          location: "Wihara Ekayana Arama",
-        ),
-        const SizedBox(
-          height: 8,
-        ),
-      ],
-    );
-  }
 }

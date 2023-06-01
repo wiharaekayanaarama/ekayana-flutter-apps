@@ -5,13 +5,12 @@ import 'package:ekayanaarama/src/presentation/modules/event/controller/incoming_
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class InComingEventView extends GetView<IncomingEventsController> {
-  final PageController pageController;
 
   const InComingEventView({
     Key? key,
-    required this.pageController,
   }) : super(key: key);
 
   @override
@@ -27,11 +26,9 @@ class InComingEventView extends GetView<IncomingEventsController> {
             ),
             SizedBox(
               height: 280,
-              child: PageView.builder(
-                controller: pageController,
-                padEnds: true,
-                itemCount: data?.length,
-                pageSnapping: true,
+              child: ListView.separated(
+                scrollDirection: Axis.horizontal,
+                itemCount: data?.length ?? 0,
                 itemBuilder: (context, index) {
                   return InkWell(
                     onTap: () => Get.toNamed(RouteName.eventDetail, arguments: {
@@ -44,6 +41,11 @@ class InComingEventView extends GetView<IncomingEventsController> {
                       title: data?[index].title ?? "",
                       location: data?[index].location ?? "",
                     ),
+                  );
+                },
+                separatorBuilder: (BuildContext context, int index) {
+                  return const SizedBox(
+                    width: 8,
                   );
                 },
               ),

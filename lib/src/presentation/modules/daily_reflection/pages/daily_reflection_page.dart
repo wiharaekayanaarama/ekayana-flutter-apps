@@ -92,25 +92,25 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                         },
                       ),
                     ),
-                    Align(
-                      alignment: Alignment.bottomRight,
-                      child: Padding(
-                        padding: const EdgeInsets.all(16.0),
-                        child: Wrap(
-                          children: const [
-                            CircularButtonComponent(
-                              icon: Iconography.columns,
-                            ),
-                            SizedBox(
-                              width: 8,
-                            ),
-                            CircularButtonComponent(
-                              icon: Iconography.volumeMax,
-                            ),
-                          ],
-                        ),
-                      ),
-                    ),
+                    // Align(
+                    //   alignment: Alignment.bottomRight,
+                    //   child: Padding(
+                    //     padding: const EdgeInsets.all(16.0),
+                    //     child: Wrap(
+                    //       children: const [
+                    //         CircularButtonComponent(
+                    //           icon: Iconography.columns,
+                    //         ),
+                    //         SizedBox(
+                    //           width: 8,
+                    //         ),
+                    //         CircularButtonComponent(
+                    //           icon: Iconography.volumeMax,
+                    //         ),
+                    //       ],
+                    //     ),
+                    //   ),
+                    // ),
                   ],
                 ),
               ),

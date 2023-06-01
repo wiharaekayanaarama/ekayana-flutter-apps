@@ -22,12 +22,10 @@ class EventPage extends StatelessWidget {
           padding: const EdgeInsets.all(16.0),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              InComingEventView(
-                pageController: PageController(viewportFraction: 0.63),
-              ),
-              const SizedBox(height: 8,),
-              const PreviousEventView(),
+            children: const [
+              InComingEventView(),
+              SizedBox(height: 8,),
+              PreviousEventView(),
             ],
           ),
         ),
