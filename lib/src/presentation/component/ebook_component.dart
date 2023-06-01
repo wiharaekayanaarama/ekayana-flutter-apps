@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -19,8 +20,9 @@ class EbookComponent extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return InkWell(
+    return Tappable(
       onTap: () => onTap?.call(),
+      borderRadius: BorderRadius.circular(4),
       child: Wrap(
         children: [
           Stack(

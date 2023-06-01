@@ -60,7 +60,7 @@ class BuddhavacanaPage extends GetView<BuddhavacanaController> {
                   Align(
                     alignment: Alignment.bottomCenter,
                     child: Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 32, vertical: 16),
+                      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 16),
                       child: NumberPaginator(
                         numberPages: (buddhavacanaLength / 7).ceil(),
                         initialPage: controller.currentPage.value,

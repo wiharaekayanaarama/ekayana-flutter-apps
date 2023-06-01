@@ -1,4 +1,5 @@
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -98,15 +99,19 @@ class _BankAccountComponent extends StatelessWidget {
               const SizedBox(
                 width: 8,
               ),
-              InkWell(
+              Tappable(
+                borderRadius: BorderRadius.circular(8),
                 onTap: () async {
                   await Clipboard.setData(ClipboardData(text: accountNumber));
                 },
-                child: SvgPicture.asset(
-                  Iconography.copy_06,
-                  color: ColorToken.gray_600,
-                  height: 16,
-                  width: 16,
+                child: Padding(
+                  padding: const EdgeInsets.all(4.0),
+                  child: SvgPicture.asset(
+                    Iconography.copy_06,
+                    color: ColorToken.gray_600,
+                    height: 16,
+                    width: 16,
+                  ),
                 ),
               ),
             ],

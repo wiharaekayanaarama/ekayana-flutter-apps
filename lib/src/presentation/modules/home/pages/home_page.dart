@@ -1,11 +1,10 @@
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:ekayanaarama/src/presentation/modules/home/view/home_activity_view.dart';
-import 'package:ekayanaarama/src/presentation/modules/routine_activity/view/routine_activity_view.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
-import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
@@ -126,7 +125,8 @@ class _HeaderSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        InkWell(
+        Tappable(
+          borderRadius: BorderRadius.circular(16),
           onTap: () => Get.toNamed(RouteName.dailyReflection),
           child: Container(
             padding: const EdgeInsets.symmetric(
@@ -200,22 +200,25 @@ class _MenuDopeSection extends StatelessWidget {
       shrinkWrap: true,
       physics: const NeverScrollableScrollPhysics(),
       itemBuilder: (context, index) {
-        return InkWell(
-          onTap: () {
-            Get.toNamed(menuDopes[index].deeplink);
-          },
-          child: Container(
-            height: 64,
-            alignment: Alignment.bottomLeft,
-            padding: const EdgeInsets.all(8),
-            decoration: BoxDecoration(
-              color: menuDopes[index].backgroundColor,
-              borderRadius: BorderRadius.circular(8),
-            ),
-            child: Text(
-              menuDopes[index].title,
-              style: TypographyToken.textMediumBold.copyWith(
-                color: ColorToken.white,
+        return Container(
+          decoration: BoxDecoration(
+            color: menuDopes[index].backgroundColor,
+            borderRadius: BorderRadius.circular(8),
+          ),
+          child: Tappable(
+            borderRadius: BorderRadius.circular(8),
+            onTap: () {
+              Get.toNamed(menuDopes[index].deeplink);
+            },
+            child: Container(
+              height: 64,
+              alignment: Alignment.bottomLeft,
+              padding: const EdgeInsets.all(8),
+              child: Text(
+                menuDopes[index].title,
+                style: TypographyToken.textMediumBold.copyWith(
+                  color: ColorToken.white,
+                ),
               ),
             ),
           ),

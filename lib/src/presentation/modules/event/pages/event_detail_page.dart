@@ -3,6 +3,7 @@ import 'dart:io';
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_component.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
+import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/controller/event_detail_controller.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
@@ -61,7 +62,7 @@ class EventDetailPage extends GetView<EventDetailController> {
                               ],
                             ),
                           ),
-                          InkWell(
+                          Tappable(
                             onTap: () async {
                               File file = await controller.urlToFile(
                                 data?.coverImageUrl ?? "",

@@ -1,6 +1,7 @@
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_component.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
+import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/controller/incoming_events_controller.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
@@ -30,17 +31,17 @@ class InComingEventView extends GetView<IncomingEventsController> {
                 scrollDirection: Axis.horizontal,
                 itemCount: data?.length ?? 0,
                 itemBuilder: (context, index) {
-                  return InkWell(
-                    onTap: () => Get.toNamed(RouteName.eventDetail, arguments: {
-                      'id': data?[index].id,
-                    }),
-                    child: EventItemComponent(
-                      coverImageUrl: data?[index].coverImageUrl ?? "",
-                      startDate: data?[index].startDate ?? DateTime.now(),
-                      endDate: data?[index].endDate ?? DateTime.now(),
-                      title: data?[index].title ?? "",
-                      location: data?[index].location ?? "",
-                    ),
+                  return EventItemComponent(
+                    coverImageUrl: data?[index].coverImageUrl ?? "",
+                    startDate: data?[index].startDate ?? DateTime.now(),
+                    endDate: data?[index].endDate ?? DateTime.now(),
+                    title: data?[index].title ?? "",
+                    location: data?[index].location ?? "",
+                    onTap: () {
+                      Get.toNamed(RouteName.eventDetail, arguments: {
+                        'id': data?[index].id,
+                      });
+                    },
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {

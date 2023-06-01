@@ -40,7 +40,6 @@ class Tappable extends StatelessWidget {
   }
 
   Widget _getInk() {
-    final borderRadius = this.borderRadius ?? BorderRadius.circular(100);
     if (tapEffect == TapEffect.rippleBorderless
         || tapEffect == TapEffect.rippleBorderlessOnly) {
       return InkResponse(

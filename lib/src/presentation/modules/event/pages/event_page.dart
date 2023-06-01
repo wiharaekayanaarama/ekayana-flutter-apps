@@ -1,5 +1,4 @@
 import 'package:ekayanaarama/ekayana.dart';
-import 'package:ekayanaarama/src/presentation/modules/event/view/incoming_event_view.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/view/previous_event_view.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';

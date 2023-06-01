@@ -27,6 +27,7 @@ class NavBarComponent extends StatelessWidget implements PreferredSizeWidget {
             if (onNavigationTap != null) ...[
               Tappable(
                 onTap: onNavigationTap,
+                borderRadius: BorderRadius.circular(100),
                 child: Padding(
                   padding: const EdgeInsets.all(16.0),
                   child: SvgPicture.asset(

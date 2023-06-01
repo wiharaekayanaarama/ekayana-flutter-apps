@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:ekayanaarama/src/utils/date_utils.dart';
 import 'package:flutter/material.dart';
 
@@ -9,6 +10,7 @@ class EventItemComponent extends StatelessWidget {
   final DateTime endDate;
   final String title;
   final String location;
+  final VoidCallback? onTap;
 
   final double _width = 225;
   final double _height = 280;
@@ -20,6 +22,7 @@ class EventItemComponent extends StatelessWidget {
     required this.endDate,
     required this.title,
     required this.location,
+    this.onTap,
   }) : super(key: key);
 
   @override
@@ -38,18 +41,22 @@ class EventItemComponent extends StatelessWidget {
             },
           ),
         ),
-        Container(
-          width: _width,
-          height: _height,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(16),
-            gradient: LinearGradient(
-              begin: Alignment.topCenter,
-              end: Alignment.bottomCenter,
-              colors: [
-                Colors.transparent,
-                Colors.black.withOpacity(0.85),
-              ],
+        Tappable(
+          onTap: onTap,
+          borderRadius: BorderRadius.circular(16),
+          child: Container(
+            width: _width,
+            height: _height,
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(16),
+              gradient: LinearGradient(
+                begin: Alignment.topCenter,
+                end: Alignment.bottomCenter,
+                colors: [
+                  Colors.transparent,
+                  Colors.black.withOpacity(0.85),
+                ],
+              ),
             ),
           ),
         ),

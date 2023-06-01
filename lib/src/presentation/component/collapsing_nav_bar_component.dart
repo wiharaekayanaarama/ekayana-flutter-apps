@@ -1,5 +1,6 @@
 import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ekayanaarama/ekayana.dart';
+import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 
@@ -45,8 +46,9 @@ class CollapsingNavBarComponent extends StatelessWidget {
       ],
     );
     return SliverAppBar(
-      title: InkWell(
+      title: Tappable(
         onTap: onNavigationTap,
+        borderRadius: BorderRadius.circular(100),
         child: SvgPicture.asset(Iconography.chevronLeft),
       ),
       expandedHeight: expandedHeight,

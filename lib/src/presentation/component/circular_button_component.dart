@@ -25,7 +25,7 @@ class CircularButtonComponent extends StatelessWidget {
         minimumSize: const Size(textButtonSize, textButtonSize),
         padding: EdgeInsets.zero,
         tapTargetSize: MaterialTapTargetSize.shrinkWrap,
-        primary: ColorToken.white,
+        primary: Colors.transparent,
         shape: RoundedRectangleBorder(
           borderRadius: BorderRadius.circular(100),
         ),
