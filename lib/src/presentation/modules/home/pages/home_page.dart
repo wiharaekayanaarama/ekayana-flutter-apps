@@ -5,12 +5,19 @@ import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 
 class HomePage extends StatelessWidget {
   const HomePage({Key? key}) : super(key: key);
 
+  void requestPermission() async {
+    await Permission.notification.request();
+  }
+
   @override
   Widget build(BuildContext context) {
+    requestPermission();
+
     return Scaffold(
       appBar: const _NavBarSection(),
       body: SafeArea(

@@ -53,7 +53,7 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                                       style: {
                                         "body": Style(
                                           color: ColorToken.white,
-                                          fontSize: const FontSize(20),
+                                          fontSize: FontSize(20),
                                           fontWeight: FontWeight.w700,
                                         ),
                                       },
@@ -66,7 +66,7 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                                       style: {
                                         "body": Style(
                                           color: ColorToken.white,
-                                          fontSize: const FontSize(14),
+                                          fontSize: FontSize(14),
                                           fontWeight: FontWeight.w700,
                                           textAlign: TextAlign.center,
                                         ),

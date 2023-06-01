@@ -18,7 +18,7 @@ class EventDetailPage extends GetView<EventDetailController> {
   @override
   Widget build(BuildContext context) {
     return controller.obx(
-          (data) {
+      (data) {
         final startDate = data?.startDate;
         final endDate = data?.endDate;
         return Scaffold(
@@ -44,9 +44,8 @@ class EventDetailPage extends GetView<EventDetailController> {
                           height: 3,
                           width: 56,
                           decoration: BoxDecoration(
-                            color: ColorToken.gray_200,
-                            borderRadius: BorderRadius.circular(16)
-                          ),
+                              color: ColorToken.gray_200,
+                              borderRadius: BorderRadius.circular(16)),
                         ),
                       ),
                       Padding(
@@ -68,7 +67,8 @@ class EventDetailPage extends GetView<EventDetailController> {
                                   ),
                                   Text(
                                     "Dari ${data?.organizer ?? ""}",
-                                    style: TypographyToken.textSmallRegular.apply(
+                                    style:
+                                        TypographyToken.textSmallRegular.apply(
                                       color: ColorToken.gray_500,
                                     ),
                                   ),
@@ -84,12 +84,7 @@ class EventDetailPage extends GetView<EventDetailController> {
                                 Share.shareFiles(
                                   [file.path],
                                   text:
-                                  "${data?.title} \n${data?.description
-                                      .replaceAll("<div>", "").replaceAll(
-                                      "<p>", '\n')
-                                      .replaceAll("</div>", "")
-                                      .replaceAll("</p>", "")
-                                  }",
+                                      "${data?.title} \n${data?.description.replaceAll("<div>", "").replaceAll("<p>", '\n').replaceAll("</div>", "").replaceAll("</p>", "")}",
                                 );
                               },
                               child: Padding(
@@ -113,11 +108,9 @@ class EventDetailPage extends GetView<EventDetailController> {
                             startDate ?? DateTime.now(),
                           ),
                           subtitle: startDate?.hour != 0 &&
-                              startDate?.minute != 0 &&
-                              startDate?.second != 0
-                              ? "${startDate?.hour}:${startDate
-                              ?.minute} - ${endDate?.hour}:${endDate
-                              ?.minute} WIB"
+                                  startDate?.minute != 0 &&
+                                  startDate?.second != 0
+                              ? "${startDate?.hour}:${startDate?.minute} - ${endDate?.hour}:${endDate?.minute} WIB"
                               : null,
                         ),
                       ),
@@ -143,8 +136,9 @@ class EventDetailPage extends GetView<EventDetailController> {
                           style: {
                             "body": Style(
                               fontSize: FontSize(
-                                  TypographyToken.textSmallRegular.fontSize),
-                              margin: EdgeInsets.zero,
+                                TypographyToken.textSmallRegular.fontSize ?? 0,
+                              ),
+                              margin: Margins.zero,
                             ),
                           },
                         ),
@@ -326,13 +320,12 @@ class _EventIconText extends StatelessWidget {
                 subtitle!,
                 style: TypographyToken.textSmallBold,
               ),
-            ] else
-              ...[
-                Text(
-                  title,
-                  style: TypographyToken.textSmallBold,
-                ),
-              ]
+            ] else ...[
+              Text(
+                title,
+                style: TypographyToken.textSmallBold,
+              ),
+            ]
           ],
         ),
       ],
