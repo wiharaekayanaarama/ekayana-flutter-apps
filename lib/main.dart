@@ -7,6 +7,7 @@ import 'package:ekayanaarama/src/routes/route_page.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
@@ -88,6 +89,8 @@ void main() async {
   await Firebase.initializeApp(
     options: DefaultFirebaseOptions.currentPlatform,
   );
+
+  await FlutterDownloader.initialize(debug: true, ignoreSsl: true);
 
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 

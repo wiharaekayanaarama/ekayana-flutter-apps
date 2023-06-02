@@ -1,8 +1,12 @@
+import 'dart:io';
+
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cached_pdfview/flutter_cached_pdfview.dart';
+import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
+import 'package:path_provider/path_provider.dart';
 
 class EbookViewerPage extends GetView<EbookViewerController> {
   const EbookViewerPage({Key? key}) : super(key: key);
@@ -14,6 +18,17 @@ class EbookViewerPage extends GetView<EbookViewerController> {
       appBar: NavBarComponent(
         title: controller.title,
         onNavigationTap: () => Get.back(),
+        menuIcon: Iconography.download_01,
+        onMenuTap: () async {
+          final Directory appDir = await getApplicationDocumentsDirectory();
+          await FlutterDownloader.enqueue(
+            url: controller.pdfUrl,
+            savedDir: appDir.path,
+            showNotification: true,
+            openFileFromNotification: true,
+            saveInPublicStorage: true,
+          );
+        },
       ),
       body: Column(
         children: [
