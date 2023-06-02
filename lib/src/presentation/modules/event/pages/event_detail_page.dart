@@ -84,7 +84,7 @@ class EventDetailPage extends GetView<EventDetailController> {
                                 Share.shareFiles(
                                   [file.path],
                                   text:
-                                      "${data?.title} \n${data?.description.replaceAll("<div>", "").replaceAll("<p>", '\n').replaceAll("</div>", "").replaceAll("</p>", "")}",
+                                      "${data?.title} \n${data?.description?.replaceAll("<div>", "").replaceAll("<p>", '\n').replaceAll("</div>", "").replaceAll("</p>", "")}",
                                 );
                               },
                               child: Padding(

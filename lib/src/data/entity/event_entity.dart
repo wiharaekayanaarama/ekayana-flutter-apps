@@ -1,19 +1,19 @@
 class EventEntity {
-  final int id;
-  final String title;
-  final String heroImageUrl;
-  final String coverImageUrl;
+  final int? id;
+  final String? title;
+  final String? heroImageUrl;
+  final String? coverImageUrl;
   final List<String>? images;
-  final String description;
-  final String organizer;
-  final String location;
-  final String address;
-  final String registrationUrl;
-  final String contactUrl;
-  final String mapsUrl;
-  final DateTime startDate;
-  final DateTime endDate;
-  final bool isActive;
+  final String? description;
+  final String? organizer;
+  final String? location;
+  final String? address;
+  final String? registrationUrl;
+  final String? contactUrl;
+  final String? mapsUrl;
+  final DateTime? startDate;
+  final DateTime? endDate;
+  final bool? isActive;
 
   EventEntity({
     required this.id,
@@ -47,8 +47,8 @@ class EventEntity {
       registrationUrl: json['registrationUrl'],
       contactUrl: json['contactUrl'],
       mapsUrl: json['mapsUrl'],
-      startDate: DateTime.parse(json['startDate']),
-      endDate: DateTime.parse(json['endDate']),
+      startDate: json['startDate'] != null ? DateTime.parse(json['startDate']) : null,
+      endDate: json['endDate'] != null ? DateTime.parse(json['endDate']) : null,
       isActive: json['isActive'],
     );
   }

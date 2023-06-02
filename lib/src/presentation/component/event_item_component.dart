@@ -119,9 +119,9 @@ class EventItemComponent extends StatelessWidget {
                 const SizedBox(
                   height: 12,
                 ),
-                const Flexible(
+                Flexible(
                   child: TextIconComponent(
-                    text: "Indonesia  (ICE) BSD City",
+                    text: location,
                     iconLeft: Iconography.markerPin_01,
                     iconColor: ColorToken.white,
                   ),
