@@ -141,10 +141,7 @@ class _HeaderSection extends StatelessWidget {
       children: [
         Tappable(
           borderRadius: BorderRadius.circular(16),
-          onTap: () {
-            throw Exception("asd");
-            // Get.toNamed(RouteName.dailyReflection),
-          },
+          onTap: () => Get.toNamed(RouteName.dailyReflection),
           child: Container(
             padding: const EdgeInsets.symmetric(
               vertical: 18,
