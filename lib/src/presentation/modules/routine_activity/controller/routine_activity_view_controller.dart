@@ -44,8 +44,14 @@ class RoutineActivityViewController extends GetxController
 
   void getRoutineActivities() async {
     await repository.getRoutineActivities().then((value) {
-      entities.value = value;
-      change(value, status: RxStatus.success());
+      List<RoutineActivityEntity> distinctArray = value.fold<List<RoutineActivityEntity>>([], (list, entity) {
+        if (!list.any((e) => e.id == entity.id)) {
+          list.add(entity);
+        }
+        return list;
+      });
+      entities.value = distinctArray;
+      change(distinctArray, status: RxStatus.success());
     }, onError: (error) {
       change(null, status: RxStatus.error(error));
     });

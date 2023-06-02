@@ -34,6 +34,6 @@ class RoutineActivityEntity {
 
   @override
   String toString() {
-    return "category: $category";
+    return 'RoutineActivityEntity{id: $id, title: $title, time: $time, location: $location, day: $day, category: $category, startTime: $startTime, startTimeUTC: $startTimeUTC}';
   }
 }
