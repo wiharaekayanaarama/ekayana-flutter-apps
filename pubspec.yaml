@@ -29,6 +29,7 @@ dependencies:
   permission_handler: ^10.2.0
   flutter_local_notifications: ^14.1.1
   flutter_timezone: ^1.0.4
+  firebase_core: ^2.13.1
 
 dev_dependencies:
   flutter_test:
