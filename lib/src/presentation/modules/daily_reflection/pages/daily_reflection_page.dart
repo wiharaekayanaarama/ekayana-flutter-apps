@@ -36,6 +36,17 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                         child: Stack(
                           children: [
                             _getBackground(),
+                            Align(
+                              alignment: Alignment.bottomLeft,
+                              child: Padding(
+                                padding: const EdgeInsets.all(16.0),
+                                child: Image.asset(
+                                  'asset/drawable/logo_full.png',
+                                  width: 64,
+                                  height: 64,
+                                ),
+                              ),
+                            ),
                             Center(
                               child: Padding(
                                 padding: const EdgeInsets.only(
@@ -47,7 +58,8 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                                 child: SingleChildScrollView(
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
-                                    crossAxisAlignment: CrossAxisAlignment.center,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.center,
                                     children: [
                                       Html(
                                         data: content.join('<br><br>'),
@@ -119,7 +131,8 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                   alignment: Alignment.bottomCenter,
                   child: Padding(
                     padding: GetPlatform.isIOS
-                        ? const EdgeInsets.only(left: 16.0, bottom: 24, right: 16)
+                        ? const EdgeInsets.only(
+                            left: 16.0, bottom: 24, right: 16)
                         : const EdgeInsets.symmetric(horizontal: 16.0),
                     child: Row(
                       children: [
@@ -128,7 +141,9 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                             text: "Share",
                             iconLeft: Iconography.share_06,
                             onPressed: () async {
-                              screenshotController.capture().then((value) async {
+                              screenshotController
+                                  .capture()
+                                  .then((value) async {
                                 File file =
                                     await controller.fileFromUint8List(value!);
                                 Share.shareFiles([file.path]);
@@ -145,7 +160,9 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                             iconLeft: Iconography.download_01,
                             style: EkaButtonStyle.naked,
                             onPressed: () async {
-                              screenshotController.capture().then((value) async {
+                              screenshotController
+                                  .capture()
+                                  .then((value) async {
                                 controller.saveToGallery(value!);
                               });
                             },
