@@ -11,6 +11,7 @@ import 'package:flutter_svg/svg.dart';
 import 'package:get/get.dart';
 import 'package:intl/intl.dart';
 import 'package:share_plus/share_plus.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class EventDetailPage extends GetView<EventDetailController> {
   const EventDetailPage({Key? key}) : super(key: key);
@@ -140,6 +141,9 @@ class EventDetailPage extends GetView<EventDetailController> {
                               ),
                               margin: Margins.zero,
                             ),
+                          },
+                          onLinkTap: (String? url, Map<String, String> attributes, __) async {
+                            await launchUrl(Uri.parse(url ?? ""), mode: LaunchMode.externalApplication);
                           },
                         ),
                       )
