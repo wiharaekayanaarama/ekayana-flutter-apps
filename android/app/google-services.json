@@ -1,0 +1,40 @@
+{
+  "project_info": {
+    "project_number": "515390596473",
+    "firebase_url": "https://ekayana-6b906.firebaseio.com",
+    "project_id": "ekayana-6b906",
+    "storage_bucket": "ekayana-6b906.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:515390596473:android:d387f908e730a992",
+        "android_client_info": {
+          "package_name": "id.or.ekayana.ekayanaarama"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "515390596473-66nq2aki4j4614386ehva5kdr84tlacm.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyApGZlTrLDcZ__mkPvJQHUoW3EDzKxIh8Y"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "515390596473-66nq2aki4j4614386ehva5kdr84tlacm.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
