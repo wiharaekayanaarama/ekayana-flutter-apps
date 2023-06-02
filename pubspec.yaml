@@ -30,6 +30,7 @@ dependencies:
   flutter_local_notifications: ^14.1.1
   flutter_timezone: ^1.0.4
   firebase_core: ^2.13.1
+  firebase_crashlytics: ^3.3.2
 
 dev_dependencies:
   flutter_test:
