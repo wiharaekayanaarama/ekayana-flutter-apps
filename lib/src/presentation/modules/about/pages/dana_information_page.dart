@@ -102,6 +102,14 @@ class _BankAccountComponent extends StatelessWidget {
               Tappable(
                 borderRadius: BorderRadius.circular(100),
                 onTap: () async {
+                  Get.snackbar(
+                    "Berhasil menyalin",
+                    "Nomor Rekening",
+                    snackPosition: SnackPosition.BOTTOM,
+                    backgroundColor: ColorToken.success_500,
+                    colorText: ColorToken.white,
+                    margin: const EdgeInsets.all(16),
+                  );
                   await Clipboard.setData(ClipboardData(text: accountNumber));
                 },
                 child: Padding(
@@ -192,6 +200,7 @@ class _BankAccountComponent extends StatelessWidget {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: ColorToken.success_500,
         colorText: ColorToken.white,
+        margin: const EdgeInsets.all(16),
       );
     } else {
       Get.snackbar(
@@ -200,6 +209,7 @@ class _BankAccountComponent extends StatelessWidget {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: ColorToken.error_500,
         colorText: ColorToken.white,
+        margin: const EdgeInsets.all(16),
       );
     }
   }

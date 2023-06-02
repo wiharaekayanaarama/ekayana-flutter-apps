@@ -61,6 +61,7 @@ class DailyReflectionController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: ColorToken.success_500,
         colorText: ColorToken.white,
+        margin: const EdgeInsets.all(16),
       );
     } else {
       Get.snackbar(
@@ -69,6 +70,7 @@ class DailyReflectionController extends GetxController {
         snackPosition: SnackPosition.BOTTOM,
         backgroundColor: ColorToken.error_500,
         colorText: ColorToken.white,
+        margin: const EdgeInsets.all(16),
       );
     }
   }
