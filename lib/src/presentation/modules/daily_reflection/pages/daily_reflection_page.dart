@@ -41,7 +41,7 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                               child: Padding(
                                 padding: const EdgeInsets.all(16.0),
                                 child: Image.asset(
-                                  'asset/drawable/logo_full.png',
+                                  'asset/drawable/logo_small.png',
                                   width: 64,
                                   height: 64,
                                 ),
