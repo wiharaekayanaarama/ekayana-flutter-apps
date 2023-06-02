@@ -19,6 +19,7 @@ class HomePage extends StatelessWidget {
     requestPermission();
 
     return Scaffold(
+      backgroundColor: ColorToken.white,
       appBar: const _NavBarSection(),
       body: SafeArea(
         child: SingleChildScrollView(
