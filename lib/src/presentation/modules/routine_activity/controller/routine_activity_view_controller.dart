@@ -17,7 +17,7 @@ class RoutineActivityViewController extends GetxController
     "lainnya",
   ];
 
-  RxList<RoutineActivityEntity> entities = RxList();
+  RxList<RoutineActivityEntity>? entities = RxList();
 
   RoutineActivityViewController({
     required this.repository,
@@ -36,7 +36,7 @@ class RoutineActivityViewController extends GetxController
       change(entities, status: RxStatus.success());
       return;
     }
-    final filteredArray = entities.where((element) {
+    final filteredArray = entities?.where((element) {
       return element.category == selectedCategory;
     }).toList();
     change(filteredArray, status: RxStatus.success());
@@ -44,13 +44,13 @@ class RoutineActivityViewController extends GetxController
 
   void getRoutineActivities() async {
     await repository.getRoutineActivities().then((value) {
-      List<RoutineActivityEntity> distinctArray = value.fold<List<RoutineActivityEntity>>([], (list, entity) {
+      List<RoutineActivityEntity>? distinctArray = value?.fold<List<RoutineActivityEntity>>([], (list, entity) {
         if (!list.any((e) => e.id == entity.id)) {
           list.add(entity);
         }
         return list;
       });
-      entities.value = distinctArray;
+      entities?.value = distinctArray ?? [];
       change(distinctArray, status: RxStatus.success());
     }, onError: (error) {
       change(null, status: RxStatus.error(error));

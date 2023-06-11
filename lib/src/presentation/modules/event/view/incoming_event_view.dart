@@ -10,48 +10,55 @@ import 'package:smooth_page_indicator/smooth_page_indicator.dart';
 
 class InComingEventView extends GetView<IncomingEventsController> {
 
+  final EdgeInsetsGeometry padding;
+
   const InComingEventView({
     Key? key,
+    this.padding = const EdgeInsets.all(0),
   }) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
     return controller.obx(
       (data) {
-        return Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text("Event yang akan datang", style: TypographyToken.headingSmall),
-            const SizedBox(
-              height: 24,
-            ),
-            SizedBox(
-              height: 280,
-              child: ListView.separated(
-                scrollDirection: Axis.horizontal,
-                itemCount: data?.length ?? 0,
-                itemBuilder: (context, index) {
-                  return EventItemComponent(
-                    coverImageUrl: data?[index].coverImageUrl ?? "",
-                    startDate: data?[index].startDate ?? DateTime.now(),
-                    endDate: data?[index].endDate ?? DateTime.now(),
-                    title: data?[index].title ?? "",
-                    location: data?[index].location ?? "",
-                    onTap: () {
-                      Get.toNamed(RouteName.eventDetail, arguments: {
-                        'id': data?[index].id,
-                      });
-                    },
-                  );
-                },
-                separatorBuilder: (BuildContext context, int index) {
-                  return const SizedBox(
-                    width: 8,
-                  );
-                },
+        if (data == null) return const SizedBox.shrink();
+        return Padding(
+          padding: padding,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text("Event yang akan datang", style: TypographyToken.headingSmall),
+              const SizedBox(
+                height: 24,
               ),
-            ),
-          ],
+              SizedBox(
+                height: 280,
+                child: ListView.separated(
+                  scrollDirection: Axis.horizontal,
+                  itemCount: data.length ?? 0,
+                  itemBuilder: (context, index) {
+                    return EventItemComponent(
+                      coverImageUrl: data[index].coverImageUrl ?? "",
+                      startDate: data[index].startDate ?? DateTime.now(),
+                      endDate: data[index].endDate ?? DateTime.now(),
+                      title: data[index].title ?? "",
+                      location: data[index].location ?? "",
+                      onTap: () {
+                        Get.toNamed(RouteName.eventDetail, arguments: {
+                          'id': data[index].id,
+                        });
+                      },
+                    );
+                  },
+                  separatorBuilder: (BuildContext context, int index) {
+                    return const SizedBox(
+                      width: 8,
+                    );
+                  },
+                ),
+              ),
+            ],
+          ),
         );
       },
       onLoading: Shimmer(

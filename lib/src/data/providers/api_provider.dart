@@ -7,32 +7,40 @@ import 'package:get/get.dart';
 
 class ApiProvider extends BaseProvider {
   Future<Response<BaseResponse<List<EbookEntity>>>> getEbooks() => get(
-      '/ebook',
-    decoder: (json) => BaseResponse.fromJson(json),
-  );
+        '/ebook',
+        decoder: (json) => BaseResponse.fromJson(json),
+        // headers: getHeaders(),
+      );
 
   Future<Response<BaseResponse<List<EventEntity>>>> getEvents() => get(
-    '/event',
-    decoder: (json) => BaseResponse.fromJson(json),
-  );
+        '/event',
+        decoder: (json) => BaseResponse.fromJson(json),
+        // headers: getHeaders(),
+      );
 
   Future<Response<BaseResponse<List<EventEntity>>>> getPastEvents() => get(
-    '/event?type=PAST',
-    decoder: (json) => BaseResponse.fromJson(json),
-  );
+        '/event?type=PAST',
+        decoder: (json) => BaseResponse.fromJson(json),
+        // headers: getHeaders(),
+      );
 
   Future<Response<BaseResponse<EventEntity>>> getEventById(int id) => get(
-    '/event/$id',
-    decoder: (json) => BaseResponse.fromJson(json),
-  );
+        '/event/$id',
+        decoder: (json) => BaseResponse.fromJson(json),
+        // headers: getHeaders(),
+      );
 
-  Future<Response<BaseResponse<List<RoutineActivityEntity>>>> getRoutineActivities() => get(
-    '/activities',
-    decoder: (json) => BaseResponse.fromJson(json),
-  );
+  Future<Response<BaseResponse<List<RoutineActivityEntity>>>>
+      getRoutineActivities() => get(
+            '/activities',
+            decoder: (json) => BaseResponse.fromJson(json),
+            // headers: getHeaders(),
+          );
 
-  Future<Response<BaseResponse<List<RoutineActivityEntity>>>> getTodayActivities() => get(
-    '/home/today-activities',
-    decoder: (json) => BaseResponse.fromJson(json),
-  );
+  Future<Response<BaseResponse<List<RoutineActivityEntity>>>>
+      getTodayActivities() => get(
+            '/home/today-activities',
+            decoder: (json) => BaseResponse.fromJson(json),
+            // headers: getHeaders(),
+          );
 }

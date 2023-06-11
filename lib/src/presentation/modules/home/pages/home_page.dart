@@ -25,8 +25,8 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              const Padding(
+            children: const [
+              Padding(
                 padding: EdgeInsets.only(
                   left: 16,
                   top: 0,
@@ -35,14 +35,13 @@ class HomePage extends StatelessWidget {
                 ),
                 child: _HeaderSection(),
               ),
-              const Padding(
+              InComingEventView(
                 padding: EdgeInsets.symmetric(
                   vertical: 12,
                   horizontal: 16.0,
                 ),
-                child: InComingEventView(),
               ),
-              const Padding(
+              Padding(
                 padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
                 child: _MenuDopeSection(
                   menuDopes: [
@@ -89,16 +88,9 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.all(16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text("Agenda hari ini", style: TypographyToken.headingSmall,),
-                    const SizedBox(height: 24,),
-                    const HomeActivityView(),
-                  ],
-                ),
+              HomeActivityView(
+                title: "Agenda hari ini",
+                padding: EdgeInsets.all(16),
               ),
             ],
           ),
@@ -140,6 +132,7 @@ class _HeaderSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
+        const SizedBox(height: 16,),
         Tappable(
           borderRadius: BorderRadius.circular(16),
           onTap: () => Get.toNamed(RouteName.dailyReflection),

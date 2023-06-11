@@ -10,14 +10,15 @@ class EventRepositoryImpl implements EventRepository {
   });
 
   @override
-  Future<List<EventEntity>> getEvents() async {
+  Future<List<EventEntity>?> getEvents() async {
     final events = await provider.getEvents();
+    print("headers ${events.headers}");
     if (events.status.hasError) {
       return Future.error(events.statusText ?? "");
     }
-    return (events.body?.data as List<dynamic>)
-        .map<EventEntity>((item) => EventEntity.fromJson(item))
-        .toList();
+    return Future.value((events.body?.data as List<dynamic>?)
+        ?.map<EventEntity>((item) => EventEntity.fromJson(item))
+        .toList());
   }
 
   @override

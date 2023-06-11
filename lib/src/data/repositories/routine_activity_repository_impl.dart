@@ -10,24 +10,27 @@ class RoutineActivityRepositoryImpl implements RoutineActivityRepository {
   });
 
   @override
-  Future<List<RoutineActivityEntity>> getRoutineActivities() async {
+  Future<List<RoutineActivityEntity>?> getRoutineActivities() async {
     final routineActivities = await provider.getRoutineActivities();
     if (routineActivities.status.hasError) {
       return Future.error(routineActivities.statusText ?? "");
     }
-    return (routineActivities.body?.data as List<dynamic>)
-        .map<RoutineActivityEntity>((item) => RoutineActivityEntity.fromJson(item))
-        .toList();
+    return Future.value((routineActivities.body?.data as List<dynamic>?)
+        ?.map<RoutineActivityEntity>(
+            (item) => RoutineActivityEntity.fromJson(item))
+        .toList());
   }
 
   @override
-  Future<List<RoutineActivityEntity>> getTodayActivities() async {
+  Future<List<RoutineActivityEntity>?> getTodayActivities() async {
     final routineActivities = await provider.getTodayActivities();
     if (routineActivities.status.hasError) {
       return Future.error(routineActivities.statusText ?? "");
     }
-    return (routineActivities.body?.data as List<dynamic>)
-        .map<RoutineActivityEntity>((item) => RoutineActivityEntity.fromJson(item))
-        .toList();
+    return Future.value((routineActivities.body?.data as List<dynamic>?)
+        ?.map<RoutineActivityEntity>(
+          (item) => RoutineActivityEntity.fromJson(item),
+        )
+        .toList());
   }
 }
