@@ -4,6 +4,8 @@ import 'dart:io';
 import 'package:ekayanaarama/src/firebase_options.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:ekayanaarama/src/routes/route_page.dart';
+import 'package:ekayanaarama/src/utils/app_info.dart';
+import 'package:ekayanaarama/src/utils/device_info.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
@@ -115,6 +117,10 @@ void main() async {
   }
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   FlutterNativeSplash.remove();
+
+  await DeviceInfo.getDeviceInfo();
+  await AppInfo.getPackageInfo();
+
   runApp(const MyApp());
 }
 
