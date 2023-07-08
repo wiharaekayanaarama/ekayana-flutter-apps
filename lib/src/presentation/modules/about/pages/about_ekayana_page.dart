@@ -1,6 +1,7 @@
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/presentation/component/about_item_component.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
+import 'package:ekayanaarama/src/utils/launch_utils.dart';
 import 'package:ekayanaarama/src/utils/map_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
@@ -44,7 +45,8 @@ class AboutEkayanaPage extends StatelessWidget {
                       Expanded(
                         child: TextIconComponent(
                           iconLeft: Iconography.markerPin_01,
-                          text: "Jl. Mangga II No. 8 Duri Kepa, Greenville - Tanjung Duren Barat Jakarta Barat 11510",
+                          text:
+                              "Jl. Mangga II No. 8 Duri Kepa, Greenville - Tanjung Duren Barat Jakarta Barat 11510",
                           textStyle: TypographyToken.textSmallSemiBold,
                         ),
                       ),
@@ -68,6 +70,57 @@ class AboutEkayanaPage extends StatelessWidget {
                     text: "(021) 5687921 / (021) 5687922",
                     textStyle: TypographyToken.textSmallSemiBold,
                   ),
+                ),
+                const SizedBox(
+                  height: 32,
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    CircularButtonComponent(
+                      icon: Iconography.whatsapp,
+                      style: const EkaCircularButtonStyle(
+                        backgroundColor: Color(0xFF25D366),
+                        foregroundColor: ColorToken.white,
+                      ),
+                      onPressed: () {
+                        LaunchUtils.launch(url: "https://api.whatsapp.com/send/?phone=6281317171116&text&type=phone_number&app_absent=0");
+                      },
+                    ),
+                    const SizedBox(width: 16,),
+                    CircularButtonComponent(
+                      icon: Iconography.facebook,
+                      style: const EkaCircularButtonStyle(
+                        backgroundColor: Color(0xFF1877F2),
+                        foregroundColor: ColorToken.white,
+                      ),
+                      onPressed: () {
+                        LaunchUtils.launch(url: "https://www.facebook.com/WiharaEkayana");
+                      },
+                    ),
+                    const SizedBox(width: 16,),
+                    CircularButtonComponent(
+                      icon: Iconography.youtube,
+                      style: const EkaCircularButtonStyle(
+                        backgroundColor: Color(0xFFFF0000),
+                        foregroundColor: ColorToken.white,
+                      ),
+                      onPressed: () {
+                        LaunchUtils.launch(url: "https://www.youtube.com/user/ekayanabudhist");
+                      },
+                    ),
+                    const SizedBox(width: 16,),
+                    CircularButtonComponent(
+                      icon: Iconography.instagram,
+                      style: const EkaCircularButtonStyle(
+                        backgroundColor: Color(0xFFF00073),
+                        foregroundColor: ColorToken.white,
+                      ),
+                      onPressed: () {
+                        LaunchUtils.launch(url: "https://www.instagram.com/ekayanaarama");
+                      },
+                    ),
+                  ],
                 ),
                 const SizedBox(
                   height: 32,

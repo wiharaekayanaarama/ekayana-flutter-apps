@@ -1,4 +1,4 @@
-import 'package:url_launcher/url_launcher.dart';
+import 'package:ekayanaarama/src/utils/launch_utils.dart';
 
 enum Kind { url, coordinate }
 
@@ -21,17 +21,12 @@ class MapUtils {
         kind = Kind.coordinate;
 
   void launch() async {
-    Uri uri;
+    String url;
     if (kind == Kind.url) {
-      uri = Uri.parse(url);
+      url = this.url;
     } else {
-      uri = Uri.parse(
-        "https://www.google.com/maps/search/?api=1&query=$lat,$lng",
-      );
+      url = "https://www.google.com/maps/search/?api=1&query=$lat,$lng";
     }
-    await launchUrl(
-      uri,
-      mode: LaunchMode.externalApplication,
-    );
+    LaunchUtils.launch(url: url);
   }
 }

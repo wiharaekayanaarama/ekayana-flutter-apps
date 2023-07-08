@@ -20,4 +20,8 @@ class Iconography {
   static const String sport = "asset/icon/sport.svg";
   static const String check = "asset/icon/check.svg";
   static const String map_01 = "asset/icon/map-01.svg";
+  static const String whatsapp = "asset/icon/whatsapp.svg";
+  static const String facebook = "asset/icon/facebook.svg";
+  static const String instagram = "asset/icon/instagram.svg";
+  static const String youtube = "asset/icon/youtube.svg";
 }
