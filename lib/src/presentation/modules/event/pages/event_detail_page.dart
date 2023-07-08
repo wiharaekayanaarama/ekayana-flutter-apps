@@ -5,6 +5,7 @@ import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_comp
 import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
 import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/controller/event_detail_controller.dart';
+import 'package:ekayanaarama/src/utils/map_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
@@ -117,10 +118,22 @@ class EventDetailPage extends GetView<EventDetailController> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 24.0),
-                        child: _EventIconText(
-                          icon: Iconography.markerPin_01,
-                          title: data?.location ?? "",
-                          subtitle: null,
+                        child: Row(
+                          children: [
+                            _EventIconText(
+                              icon: Iconography.markerPin_01,
+                              title: data?.location ?? "",
+                              subtitle: null,
+                            ),
+                            const Spacer(),
+                            ButtonComponent.icon(
+                              onPressed: () {
+                                MapUtils.url(
+                                  url: data?.location ?? "",
+                                ).launch();
+                              },
+                            ),
+                          ],
                         ),
                       ),
                       Padding(

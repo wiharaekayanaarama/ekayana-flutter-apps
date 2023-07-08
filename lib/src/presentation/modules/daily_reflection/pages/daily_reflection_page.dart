@@ -137,17 +137,23 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                     child: Row(
                       children: [
                         Expanded(
-                          child: ButtonComponent(
+                          child: ButtonComponent.text(
                             text: "Share",
                             iconLeft: Iconography.share_06,
                             onPressed: () async {
-                              screenshotController
-                                  .capture()
-                                  .then((value) async {
-                                File file =
-                                    await controller.fileFromUint8List(value!);
-                                Share.shareFiles([file.path]);
-                              });
+                              screenshotController.capture().then(
+                                (value) async {
+                                  File file =
+                                      await controller.fileFromUint8List(
+                                    value!,
+                                  );
+                                  Share.shareFiles(
+                                    [file.path],
+                                    text:
+                                        "Renungan Dharma Harian\n\nMari unduh aplikasi Android terbaru Ekayana: https://play.google.com/store/apps/details?id=id.or.ekayana.ekayanaarama\n\nPersembahan penuh kasih,\nWihara Ekayana Arama\nIndonesia Buddhist Centre",
+                                  );
+                                },
+                              );
                             },
                           ),
                         ),
@@ -155,7 +161,7 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                           width: 32,
                         ),
                         Expanded(
-                          child: ButtonComponent(
+                          child: ButtonComponent.text(
                             text: "Unduh",
                             iconLeft: Iconography.download_01,
                             style: EkaButtonStyle.naked,

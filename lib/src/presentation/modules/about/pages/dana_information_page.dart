@@ -137,7 +137,7 @@ class _BankAccountComponent extends StatelessWidget {
           Row(
             children: [
               Expanded(
-                child: ButtonComponent(
+                child: ButtonComponent.text(
                   text: "Lihat QRIS",
                   onPressed: () {
                     Get.dialog(
@@ -174,7 +174,7 @@ class _BankAccountComponent extends StatelessWidget {
                 width: 16,
               ),
               Expanded(
-                child: ButtonComponent(
+                child: ButtonComponent.text(
                   text: "Simpan QRIS",
                   style: EkaButtonStyle.outline,
                   onPressed: () {

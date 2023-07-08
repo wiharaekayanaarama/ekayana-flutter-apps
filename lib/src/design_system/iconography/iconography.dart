@@ -19,4 +19,5 @@ class Iconography {
   static const String meditate = "asset/icon/meditate.svg";
   static const String sport = "asset/icon/sport.svg";
   static const String check = "asset/icon/check.svg";
+  static const String map_01 = "asset/icon/map-01.svg";
 }
