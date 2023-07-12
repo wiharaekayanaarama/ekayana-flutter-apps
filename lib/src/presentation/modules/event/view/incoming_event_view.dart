@@ -1,9 +1,13 @@
+import 'dart:io';
+
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_component.dart';
 import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
 import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/controller/incoming_events_controller.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
+import 'package:ekayanaarama/src/utils/logger_utils.dart';
+import 'package:firebase_crashlytics/firebase_crashlytics.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:smooth_page_indicator/smooth_page_indicator.dart';
@@ -103,6 +107,10 @@ class InComingEventView extends GetView<IncomingEventsController> {
           ],
         ),
       ),
+      onError: (error) {
+        LoggerUtils.logHTTPError(error);
+        return const SizedBox.shrink();
+      },
     );
   }
 }

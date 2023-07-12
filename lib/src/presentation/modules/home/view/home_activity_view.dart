@@ -3,6 +3,7 @@ import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_comp
 import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
 import 'package:ekayanaarama/src/presentation/modules/home/controllers/home_activity_controller.dart';
 import 'package:ekayanaarama/src/presentation/modules/routine_activity/utils/routine_utils.dart';
+import 'package:ekayanaarama/src/utils/logger_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -271,6 +272,10 @@ class HomeActivityView extends GetView<HomeActivityController> {
           ),
         ],
       ),
+      onError: (error) {
+        LoggerUtils.logHTTPError(error);
+        return const SizedBox.shrink();
+      },
     );
   }
 }

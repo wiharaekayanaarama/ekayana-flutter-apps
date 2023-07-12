@@ -7,7 +7,7 @@ import 'package:get/get_connect/connect.dart';
 class BaseProvider extends GetConnect {
   @override
   void onInit() {
-    httpClient.baseUrl = 'http://api.ekayana.or.id/gateway';
+    httpClient.baseUrl = 'https://api.ekayana.or.id/gateway';
     httpClient.timeout = const Duration(minutes: 1);
     httpClient.addAuthenticator<dynamic>((request) async {
       request.headers.addAll(getHeaders());
