@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>515390596473-ffi155jh2a8lavccupemc8pdr9e0k6p0.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.515390596473-ffi155jh2a8lavccupemc8pdr9e0k6p0</string>
+	<key>ANDROID_CLIENT_ID</key>
+	<string>515390596473-isbmbtpj86cgncoq39illbfbjhrdg6en.apps.googleusercontent.com</string>
+	<key>API_KEY</key>
+	<string>AIzaSyB2BHPetPqblC6u5-AvqgykI2bgZiBKZTI</string>
+	<key>GCM_SENDER_ID</key>
+	<string>515390596473</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>id.or.ekayana.ekayanaarama</string>
+	<key>PROJECT_ID</key>
+	<string>ekayana-6b906</string>
+	<key>STORAGE_BUCKET</key>
+	<string>ekayana-6b906.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:515390596473:ios:96e10853f64300f1fffba8</string>
+	<key>DATABASE_URL</key>
+	<string>https://ekayana-6b906.firebaseio.com</string>
+</dict>
+</plist>

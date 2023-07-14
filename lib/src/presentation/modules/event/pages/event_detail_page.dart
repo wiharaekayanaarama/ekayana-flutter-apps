@@ -6,6 +6,7 @@ import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
 import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/controller/event_detail_controller.dart';
 import 'package:ekayanaarama/src/utils/map_utils.dart';
+import 'package:ekayanaarama/src/utils/logger_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:flutter_svg/svg.dart';
@@ -155,8 +156,10 @@ class EventDetailPage extends GetView<EventDetailController> {
                               margin: Margins.zero,
                             ),
                           },
-                          onLinkTap: (String? url, Map<String, String> attributes, __) async {
-                            await launchUrl(Uri.parse(url ?? ""), mode: LaunchMode.externalApplication);
+                          onLinkTap: (String? url,
+                              Map<String, String> attributes, __) async {
+                            await launchUrl(Uri.parse(url ?? ""),
+                                mode: LaunchMode.externalApplication);
                           },
                         ),
                       )
@@ -282,6 +285,10 @@ class EventDetailPage extends GetView<EventDetailController> {
           ),
         ),
       ),
+      onError: (error) {
+        LoggerUtils.logHTTPError(error);
+        return const SizedBox.shrink();
+      },
     );
   }
 }

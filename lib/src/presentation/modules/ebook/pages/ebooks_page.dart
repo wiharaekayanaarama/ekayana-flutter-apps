@@ -3,6 +3,7 @@ import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_comp
 import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
 import 'package:ekayanaarama/src/presentation/modules/ebook/controllers/ebooks_controller.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
+import 'package:ekayanaarama/src/utils/logger_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
@@ -95,7 +96,8 @@ class EbooksPage extends GetView<EbooksController> {
           ),
         ),
         onError: (error) {
-          return Text(error ?? "");
+          LoggerUtils.logHTTPError(error);
+          return const SizedBox.shrink();
         },
       ),
     );

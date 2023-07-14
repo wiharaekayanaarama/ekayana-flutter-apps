@@ -85,22 +85,13 @@ void setScheduleNotification() async {
   );
 }
 
-void main() async {
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
-
-  await Firebase.initializeApp(
-    options: DefaultFirebaseOptions.currentPlatform,
-  );
-
-  await FlutterDownloader.initialize(debug: true, ignoreSsl: true);
-
-  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
-
-  await _configureLocalTimeZone();
-
+Future<void> setupLocalPushNotification() async {
   const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
+  const DarwinInitializationSettings initializationSettingsDarwin = DarwinInitializationSettings();
+
   const InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
+    iOS: initializationSettingsDarwin,
   );
   await flutterLocalNotificationsPlugin.initialize(
     initializationSettings,
@@ -115,6 +106,22 @@ void main() async {
   if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
     initialRoute = RouteName.dailyReflection;
   }
+}
+
+void main() async {
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
+  await FlutterDownloader.initialize(debug: kDebugMode, ignoreSsl: false);
+
+  FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
+
+  await _configureLocalTimeZone();
+  await setupLocalPushNotification();
+
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   FlutterNativeSplash.remove();
 
