@@ -83,8 +83,19 @@ class AboutEkayanaPage extends StatelessWidget {
                         backgroundColor: Color(0xFF25D366),
                         foregroundColor: ColorToken.white,
                       ),
-                      onPressed: () {
+                       onPressed: () {
                         LaunchUtils.launch(url: "https://api.whatsapp.com/send/?phone=6281317171116&text&type=phone_number&app_absent=0");
+                      },
+                    ),
+                    const SizedBox(width: 16,),
+                    CircularButtonComponent(
+                      icon: Iconography.whatsapp,
+                      style: const EkaCircularButtonStyle(
+                        backgroundColor: Color(0xFF25D366),
+                        foregroundColor: ColorToken.white,
+                      ),
+                       onPressed: () {
+                        LaunchUtils.launch(url: "https://api.whatsapp.com/send/?phone=6281317171119&text&type=phone_number&app_absent=0");
                       },
                     ),
                     const SizedBox(width: 16,),
@@ -118,6 +129,13 @@ class AboutEkayanaPage extends StatelessWidget {
                       ),
                       onPressed: () {
                         LaunchUtils.launch(url: "https://www.instagram.com/ekayanaarama");
+                      },
+                    ),
+                    const SizedBox(width: 16,),
+                    CircularButtonComponent(
+                      icon: Iconography.tiktok,
+                      onPressed: () {
+                        LaunchUtils.launch(url: "https://www.tiktok.com/@ekayanaarama");
                       },
                     ),
                   ],

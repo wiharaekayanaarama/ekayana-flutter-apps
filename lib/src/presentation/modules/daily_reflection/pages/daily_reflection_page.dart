@@ -150,7 +150,7 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                                   Share.shareFiles(
                                     [file.path],
                                     text:
-                                        "Renungan Dharma Harian\n\nMari unduh aplikasi Android terbaru Ekayana: https://play.google.com/store/apps/details?id=id.or.ekayana.ekayanaarama\n\nPersembahan penuh kasih,\nWihara Ekayana Arama\nIndonesia Buddhist Centre",
+                                        "Renungan Dharma Harian\n\nMari unduh aplikasi Android terbaru Ekayana: https://onelink.to/c97hnx\n\nPersembahan penuh kasih,\nWihara Ekayana Arama\nIndonesia Buddhist Centre",
                                   );
                                 },
                               );

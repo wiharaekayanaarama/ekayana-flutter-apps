@@ -24,4 +24,5 @@ class Iconography {
   static const String facebook = "asset/icon/facebook.svg";
   static const String instagram = "asset/icon/instagram.svg";
   static const String youtube = "asset/icon/youtube.svg";
+  static const String tiktok = "asset/icon/tiktok.svg";
 }
