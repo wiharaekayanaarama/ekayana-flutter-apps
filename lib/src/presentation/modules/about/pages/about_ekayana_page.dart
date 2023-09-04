@@ -77,26 +77,78 @@ class AboutEkayanaPage extends StatelessWidget {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.center,
                   children: [
-                    CircularButtonComponent(
-                      icon: Iconography.whatsapp,
-                      style: const EkaCircularButtonStyle(
-                        backgroundColor: Color(0xFF25D366),
-                        foregroundColor: ColorToken.white,
-                      ),
-                       onPressed: () {
-                        LaunchUtils.launch(url: "https://api.whatsapp.com/send/?phone=6281317171116&text&type=phone_number&app_absent=0");
-                      },
+                    Stack(
+                      children: [
+                        CircularButtonComponent(
+                          icon: Iconography.whatsapp,
+                          style: const EkaCircularButtonStyle(
+                            backgroundColor: Color(0xFF25D366),
+                            foregroundColor: ColorToken.white,
+                          ),
+                          onPressed: () {
+                            LaunchUtils.launch(url: "https://api.whatsapp.com/send/?phone=6281317171116&text&type=phone_number&app_absent=0");
+                          },
+                        ),
+                        Positioned.fill(
+                          child: Align(
+                            alignment: Alignment.bottomRight,
+                            child: Container(
+                              width: 10,
+                              height: 10,
+                              decoration: BoxDecoration(
+                                color: ColorToken.primary_500,
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                              alignment: Alignment.center,
+                              child: const Text(
+                                "1",
+                                style: TextStyle(
+                                  fontSize: 6,
+                                  fontWeight: FontWeight.w700,
+                                  color: ColorToken.white
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(width: 16,),
-                    CircularButtonComponent(
-                      icon: Iconography.whatsapp,
-                      style: const EkaCircularButtonStyle(
-                        backgroundColor: Color(0xFF25D366),
-                        foregroundColor: ColorToken.white,
-                      ),
-                       onPressed: () {
-                        LaunchUtils.launch(url: "https://api.whatsapp.com/send/?phone=6281317171119&text&type=phone_number&app_absent=0");
-                      },
+                    Stack(
+                      children: [
+                        CircularButtonComponent(
+                          icon: Iconography.whatsapp,
+                          style: const EkaCircularButtonStyle(
+                            backgroundColor: Color(0xFF25D366),
+                            foregroundColor: ColorToken.white,
+                          ),
+                          onPressed: () {
+                            LaunchUtils.launch(url: "https://api.whatsapp.com/send/?phone=6281317171119&text&type=phone_number&app_absent=0");
+                          },
+                        ),
+                        Positioned.fill(
+                          child: Align(
+                            alignment: Alignment.bottomRight,
+                            child: Container(
+                              width: 10,
+                              height: 10,
+                              decoration: BoxDecoration(
+                                color: ColorToken.primary_500,
+                                borderRadius: BorderRadius.circular(2),
+                              ),
+                              alignment: Alignment.center,
+                              child: const Text(
+                                "2",
+                                style: TextStyle(
+                                  fontSize: 6,
+                                  fontWeight: FontWeight.w700,
+                                  color: ColorToken.white
+                                ),
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
                     ),
                     const SizedBox(width: 16,),
                     CircularButtonComponent(
