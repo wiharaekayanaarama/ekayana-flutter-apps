@@ -110,27 +110,28 @@ class EventDetailPage extends GetView<EventDetailController> {
                           title: DateFormat('dd MMMM yyyy', 'id_ID').format(
                             startDate ?? DateTime.now(),
                           ),
-                          subtitle: startDate?.hour != 0 &&
-                                  startDate?.minute != 0 &&
-                                  startDate?.second != 0
-                              ? "${startDate?.hour}:${startDate?.minute} - ${endDate?.hour}:${endDate?.minute} WIB"
-                              : null,
+                          subtitle: "${DateFormat('kk:mm', 'id_ID').format(
+                            startDate ?? DateTime.now(),
+                          )} - ${DateFormat('kk:mm', 'id_ID').format(
+                            endDate ?? DateTime.now(),
+                          )} WIB",
                         ),
                       ),
                       Padding(
                         padding: const EdgeInsets.only(top: 24.0),
                         child: Row(
                           children: [
-                            _EventIconText(
-                              icon: Iconography.markerPin_01,
-                              title: data?.location ?? "",
-                              subtitle: null,
+                            Expanded(
+                              child: _EventIconText(
+                                icon: Iconography.markerPin_01,
+                                title: data?.location ?? "",
+                                subtitle: data?.address,
+                              ),
                             ),
-                            const Spacer(),
                             ButtonComponent.icon(
                               onPressed: () {
                                 MapUtils.url(
-                                  url: data?.location ?? "",
+                                  url: data?.mapsUrl ?? "",
                                 ).launch();
                               },
                             ),
@@ -147,12 +148,24 @@ class EventDetailPage extends GetView<EventDetailController> {
                       Padding(
                         padding: const EdgeInsets.only(top: 8.0),
                         child: Html(
-                          data: data?.description,
+                          data: data?.description?.replaceAll("<br/>", "<p><br/><p>"),
                           style: {
                             "body": Style(
                               fontSize: FontSize(
                                 TypographyToken.textSmallRegular.fontSize ?? 0,
                               ),
+                              margin: Margins.zero,
+                            ),
+                            "p": Style(
+                              fontSize: FontSize(
+                                TypographyToken.textSmallRegular.fontSize ?? 0,
+                              ),
+                              lineHeight: LineHeight.em(1),
+                              margin: Margins.zero,
+                            ),
+                            "p > br": Style(
+                              fontSize: FontSize(4),
+                              lineHeight: LineHeight.em(1),
                               margin: Margins.zero,
                             ),
                           },
@@ -327,30 +340,32 @@ class _EventIconText extends StatelessWidget {
         const SizedBox(
           width: 12,
         ),
-        Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            if (subtitle != null) ...[
-              Text(
-                title,
-                style: TypographyToken.textSmallSemiBold.apply(
-                  color: ColorToken.gray_500,
+        Expanded(
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              if (subtitle != null) ...[
+                Text(
+                  title,
+                  style: TypographyToken.textSmallSemiBold.apply(
+                    color: ColorToken.gray_500,
+                  ),
                 ),
-              ),
-              const SizedBox(
-                height: 4,
-              ),
-              Text(
-                subtitle!,
-                style: TypographyToken.textSmallBold,
-              ),
-            ] else ...[
-              Text(
-                title,
-                style: TypographyToken.textSmallBold,
-              ),
-            ]
-          ],
+                const SizedBox(
+                  height: 4,
+                ),
+                Text(
+                  subtitle!,
+                  style: TypographyToken.textSmallBold,
+                ),
+              ] else ...[
+                Text(
+                  title,
+                  style: TypographyToken.textSmallBold,
+                ),
+              ]
+            ],
+          ),
         ),
       ],
     );

@@ -3,6 +3,7 @@ import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:ekayanaarama/src/utils/date_utils.dart';
 import 'package:flutter/material.dart';
+import 'package:intl/intl.dart';
 
 class EventItemComponent extends StatelessWidget {
   final String coverImageUrl;
@@ -60,73 +61,81 @@ class EventItemComponent extends StatelessWidget {
             ),
           ),
         ),
-        Padding(
-          padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-          child: Container(
-            padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(8),
-              color: ColorToken.white,
-            ),
-            child: Column(
-              mainAxisSize: MainAxisSize.min,
-              children: [
-                Text(
-                  startDate.month.getMonthString,
-                  style: TypographyToken.textMediumSemiBold.apply(
-                    color: ColorToken.black,
+        IgnorePointer(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+            child: Container(
+              padding: const EdgeInsets.symmetric(vertical: 4, horizontal: 8),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                color: ColorToken.white,
+              ),
+              child: Column(
+                mainAxisSize: MainAxisSize.min,
+                children: [
+                  Text(
+                    startDate.month.getMonthString,
+                    style: TypographyToken.textMediumSemiBold.apply(
+                      color: ColorToken.black,
+                    ),
                   ),
-                ),
-                Text(
-                  startDate.day.toString(),
-                  style: TypographyToken.textMediumBold.apply(
-                    color: ColorToken.primary_500,
+                  Text(
+                    startDate.day.toString(),
+                    style: TypographyToken.textMediumBold.apply(
+                      color: ColorToken.primary_500,
+                    ),
                   ),
-                ),
-              ],
+                ],
+              ),
             ),
           ),
         ),
-        SizedBox(
-          width: _width,
-          height: _height,
-          child: Padding(
-            padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                Flexible(
-                  child: Text(
-                    title,
-                    style: TypographyToken.textMediumBold.apply(
-                      color: ColorToken.white,
+        IgnorePointer(
+          child: SizedBox(
+            width: _width,
+            height: _height,
+            child: Padding(
+              padding: const EdgeInsets.symmetric(vertical: 12, horizontal: 12),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                mainAxisAlignment: MainAxisAlignment.end,
+                children: [
+                  Flexible(
+                    child: Text(
+                      title,
+                      style: TypographyToken.textMediumBold.apply(
+                        color: ColorToken.white,
+                      ),
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                if (startDate.hour != 0 && startDate.minute != 0 && startDate.second != 0) ...[
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  if (startDate.isSameDate(endDate)) ...[
+                    Flexible(
+                      child: TextIconComponent(
+                        text: "${DateFormat('kk:mm', 'id_ID').format(
+                            startDate,
+                          )} - ${DateFormat('kk:mm', 'id_ID').format(
+                            endDate,
+                          )} WIB",
+                        iconLeft: Iconography.clock,
+                        iconColor: ColorToken.white,
+                      ),
+                    ),
+                  ],
+                  const SizedBox(
+                    height: 12,
+                  ),
                   Flexible(
                     child: TextIconComponent(
-                      text: "${startDate.hour}:${startDate.minute} - ${endDate.hour}:${endDate.minute} WIB",
-                      iconLeft: Iconography.clock,
+                      text: location,
+                      iconLeft: Iconography.markerPin_01,
                       iconColor: ColorToken.white,
                     ),
                   ),
                 ],
-                const SizedBox(
-                  height: 12,
-                ),
-                Flexible(
-                  child: TextIconComponent(
-                    text: location,
-                    iconLeft: Iconography.markerPin_01,
-                    iconColor: ColorToken.white,
-                  ),
-                ),
-              ],
+              ),
             ),
           ),
         ),
