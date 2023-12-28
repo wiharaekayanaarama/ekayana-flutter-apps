@@ -90,7 +90,7 @@ class RoutePage {
       page: () => const RoutineActivityPage(),
       bindings: [
         RoutineActivityViewBinding(),
-      ]
+      ],
     ),
   ];
 }
