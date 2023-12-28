@@ -1,10 +1,8 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:ekayanaarama/src/routes/middle_path.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter/material.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
 import 'package:get/get.dart';
@@ -24,18 +22,18 @@ Future<void> _configureLocalTimeZone() async {
 }
 
 tz.TZDateTime _nextInstanceOfTenAM() {
-   tz.TZDateTime now = tz.TZDateTime.now(tz.local);
-  // tz.TZDateTime scheduledDate =
-  //     tz.TZDateTime(tz.local, now.year, now.month, now.day, 10);
-  // if (scheduledDate.isBefore(now)) {
-  //   scheduledDate = scheduledDate.add(const Duration(days: 1));
-  // }
-  now = now.add(const Duration(seconds: 15));
-  return now;
+  tz.TZDateTime now = tz.TZDateTime.now(tz.local);
+  tz.TZDateTime scheduledDate =
+      tz.TZDateTime(tz.local, now.year, now.month, now.day, 10);
+  if (scheduledDate.isBefore(now)) {
+    scheduledDate = scheduledDate.add(const Duration(days: 1));
+  }
+  return scheduledDate;
 }
 
 @pragma('vm:entry-point')
-void _localNotificationTapBackground(NotificationResponse notificationResponse) {
+void _localNotificationTapBackground(
+    NotificationResponse notificationResponse) {
   // ignore: avoid_print
   print('notification(${notificationResponse.id}) action tapped: '
       '${notificationResponse.actionId} with'
@@ -48,8 +46,10 @@ void _localNotificationTapBackground(NotificationResponse notificationResponse) 
 }
 
 Future<String?> _setupLocalPushNotification() async {
-  const AndroidInitializationSettings initializationSettingsAndroid = AndroidInitializationSettings('app_icon');
-  const DarwinInitializationSettings initializationSettingsDarwin = DarwinInitializationSettings();
+  const AndroidInitializationSettings initializationSettingsAndroid =
+      AndroidInitializationSettings('app_icon');
+  const DarwinInitializationSettings initializationSettingsDarwin =
+      DarwinInitializationSettings();
 
   const InitializationSettings initializationSettings = InitializationSettings(
     android: initializationSettingsAndroid,
@@ -57,17 +57,19 @@ Future<String?> _setupLocalPushNotification() async {
   );
   await flutterLocalNotificationsPlugin.initialize(
     initializationSettings,
-    onDidReceiveNotificationResponse: (NotificationResponse notificationResponse) {
+    onDidReceiveNotificationResponse:
+        (NotificationResponse notificationResponse) {
       Get.toNamed(RouteName.dailyReflection);
     },
     onDidReceiveBackgroundNotificationResponse: _localNotificationTapBackground,
   );
 
-  final NotificationAppLaunchDetails? notificationAppLaunchDetails = await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
+  final NotificationAppLaunchDetails? notificationAppLaunchDetails =
+      await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
 
   if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
     return RouteName.dailyReflection;
-  }  
+  }
   return null;
 }
 

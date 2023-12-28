@@ -1,6 +1,7 @@
 import 'package:ekayanaarama/src/firebase_options.dart';
 import 'package:ekayanaarama/src/notification/daily_reflection_reminder.dart';
-import 'package:ekayanaarama/src/routes/middle_path.dart';
+import 'package:ekayanaarama/src/presentation/modules/home/bindings/initial_binding.dart';
+import 'package:ekayanaarama/src/presentation/modules/home/pages/home_page.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:ekayanaarama/src/routes/route_page.dart';
 import 'package:ekayanaarama/src/utils/app_info.dart';
@@ -50,10 +51,13 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     initializeDateFormatting('id_ID', null);
     setScheduleNotification();
+
     return GetMaterialApp(
       initialRoute: initialRoute,
       getPages: RoutePage.pages,
       title: 'Ekayana',
+      home: initialRoute != RouteName.home ? const HomePage() : null,
+      initialBinding: initialRoute != RouteName.home ? InitialHomeBinding() : null,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: "Inter",
