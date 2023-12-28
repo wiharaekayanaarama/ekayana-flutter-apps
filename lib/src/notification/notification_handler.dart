@@ -14,6 +14,13 @@ void checkPushNotification() async {
     }
   }
 
+  var remoteMessage = await FirebaseMessaging.instance.getInitialMessage();
+  firebaseMessagingOnClickHandler(remoteMessage);
+}
+
+Future<void> firebaseMessagingOnClickHandler(RemoteMessage? message) async {
+  if (message == null) return;
+  _handleNotification(message.data);
 }
 
 Future<void> localPushNotificationOnClickHandler(
