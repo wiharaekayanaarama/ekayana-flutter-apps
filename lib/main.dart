@@ -1,7 +1,7 @@
 import 'package:ekayanaarama/src/firebase_options.dart';
 import 'package:ekayanaarama/src/notification/daily_reflection_reminder.dart';
-import 'package:ekayanaarama/src/presentation/modules/home/bindings/initial_binding.dart';
-import 'package:ekayanaarama/src/presentation/modules/home/pages/home_page.dart';
+import 'package:ekayanaarama/src/notification/local_notification.dart';
+import 'package:ekayanaarama/src/notification/notification_handler.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:ekayanaarama/src/routes/route_page.dart';
 import 'package:ekayanaarama/src/utils/app_info.dart';
@@ -17,8 +17,6 @@ import 'package:firebase_core/firebase_core.dart';
 
 GlobalKey<NavigatorState> navigatorKey = GlobalKey<NavigatorState>();
 
-String initialRoute = RouteName.home;
-
 void main() async {
   WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
@@ -30,10 +28,8 @@ void main() async {
 
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
-  final targetRoute = await setupDailyReflectionReminder();
-  if (targetRoute != null) {
-    initialRoute = targetRoute;
-  }
+  await LocalNotification.setupFlutterLocalNotifications();
+  await setupDailyReflectionReminder();
 
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
   FlutterNativeSplash.remove();
@@ -53,15 +49,16 @@ class MyApp extends StatelessWidget {
     setScheduleNotification();
 
     return GetMaterialApp(
-      initialRoute: initialRoute,
+      initialRoute: RouteName.home,
       getPages: RoutePage.pages,
       title: 'Ekayana',
-      home: initialRoute != RouteName.home ? const HomePage() : null,
-      initialBinding: initialRoute != RouteName.home ? InitialHomeBinding() : null,
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: "Inter",
       ),
+      onInit: () {
+        checkPushNotification();
+      },
     );
   }
 }

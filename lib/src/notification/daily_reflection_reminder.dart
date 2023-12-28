@@ -1,16 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
-import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter_local_notifications/flutter_local_notifications.dart';
 import 'package:flutter_timezone/flutter_timezone.dart';
-import 'package:get/get.dart';
 import 'package:timezone/data/latest_all.dart' as tz;
 import 'package:timezone/timezone.dart' as tz;
 
-final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
-    FlutterLocalNotificationsPlugin();
+import 'local_notification.dart';
 
 Future<void> _configureLocalTimeZone() async {
   if (kIsWeb || Platform.isLinux) {
@@ -28,59 +25,16 @@ tz.TZDateTime _nextInstanceOfTenAM() {
   if (scheduledDate.isBefore(now)) {
     scheduledDate = scheduledDate.add(const Duration(days: 1));
   }
-  return scheduledDate;
+  now = now.add(const Duration(seconds: 15));
+  return now;
 }
 
-@pragma('vm:entry-point')
-void _localNotificationTapBackground(
-    NotificationResponse notificationResponse) {
-  // ignore: avoid_print
-  print('notification(${notificationResponse.id}) action tapped: '
-      '${notificationResponse.actionId} with'
-      ' payload: ${notificationResponse.payload}');
-  if (notificationResponse.input?.isNotEmpty ?? false) {
-    // ignore: avoid_print
-    print(
-        'notification action tapped with input: ${notificationResponse.input}');
-  }
-}
-
-Future<String?> _setupLocalPushNotification() async {
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('app_icon');
-  const DarwinInitializationSettings initializationSettingsDarwin =
-      DarwinInitializationSettings();
-
-  const InitializationSettings initializationSettings = InitializationSettings(
-    android: initializationSettingsAndroid,
-    iOS: initializationSettingsDarwin,
-  );
-  await flutterLocalNotificationsPlugin.initialize(
-    initializationSettings,
-    onDidReceiveNotificationResponse:
-        (NotificationResponse notificationResponse) {
-      Get.toNamed(RouteName.dailyReflection);
-    },
-    onDidReceiveBackgroundNotificationResponse: _localNotificationTapBackground,
-  );
-
-  final NotificationAppLaunchDetails? notificationAppLaunchDetails =
-      await flutterLocalNotificationsPlugin.getNotificationAppLaunchDetails();
-
-  if (notificationAppLaunchDetails?.didNotificationLaunchApp ?? false) {
-    return RouteName.dailyReflection;
-  }
-  return null;
-}
-
-Future<String?> setupDailyReflectionReminder() async {
+Future<void> setupDailyReflectionReminder() async {
   await _configureLocalTimeZone();
-  final result = await _setupLocalPushNotification();
-  return result;
 }
 
 void setScheduleNotification() async {
-  await flutterLocalNotificationsPlugin.zonedSchedule(
+  await LocalNotification.instance.zonedSchedule(
     0,
     'Ekayana Arama Indonesia Buddhist Center',
     'Renungan Hari Ini',
