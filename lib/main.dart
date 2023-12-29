@@ -4,6 +4,7 @@ import 'package:ekayanaarama/src/firebase_options.dart';
 import 'package:ekayanaarama/src/notification/daily_reflection_reminder.dart';
 import 'package:ekayanaarama/src/notification/local_notification.dart';
 import 'package:ekayanaarama/src/notification/remote_notification.dart';
+import 'package:ekayanaarama/src/remote_config/firebase_remove_config.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:ekayanaarama/src/routes/route_page.dart';
 import 'package:ekayanaarama/src/utils/app_info.dart';
@@ -30,6 +31,7 @@ void main() async {
 
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
+  setupFirebaseRemoteConfig();
   await LocalNotification.setupFlutterLocalNotifications();
   await initializeRemoteNotification();
   await setupDailyReflectionReminder();
