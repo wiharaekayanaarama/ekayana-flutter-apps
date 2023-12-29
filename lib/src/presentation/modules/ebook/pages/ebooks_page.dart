@@ -41,7 +41,7 @@ class EbooksPage extends GetView<EbooksController> {
                 onTap: () {
                   Get.toNamed(
                     RouteName.ebookViewer,
-                    arguments: {
+                    parameters: {
                       'title': title,
                       'pdfUrl': pdfUrl,
                     },

@@ -38,6 +38,11 @@ Future<bool> localPushNotificationOnClickHandler(
 }
 
 bool _handleNotification(Map<String, dynamic> data) {
-  Get.toNamed(RouteName.buddavacana);
+  final url = data["url"] as String;
+  if (!(url.isBlank ?? false)) {
+    final uri = Uri.parse(url);
+    print(uri.path);
+    Get.toNamed(uri.path);
+  }
   return true;
 }
