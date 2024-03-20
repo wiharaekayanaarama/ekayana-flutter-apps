@@ -2,6 +2,7 @@ import 'package:ekayanaarama/src/firebase_options.dart';
 import 'package:ekayanaarama/src/notification/daily_reflection_reminder.dart';
 import 'package:ekayanaarama/src/notification/local_notification.dart';
 import 'package:ekayanaarama/src/notification/notification_handler.dart';
+import 'package:ekayanaarama/src/notification/remote_notification.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:ekayanaarama/src/routes/route_page.dart';
 import 'package:ekayanaarama/src/utils/app_info.dart';
@@ -29,6 +30,7 @@ void main() async {
   FlutterError.onError = FirebaseCrashlytics.instance.recordFlutterFatalError;
 
   await LocalNotification.setupFlutterLocalNotifications();
+  await initializeRemoteNotification();
   await setupDailyReflectionReminder();
 
   FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
@@ -50,6 +52,7 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       initialRoute: RouteName.home,
+      navigatorKey: Get.key,
       getPages: RoutePage.pages,
       title: 'Ekayana',
       theme: ThemeData(
