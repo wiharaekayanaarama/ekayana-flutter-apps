@@ -53,7 +53,6 @@ class MyApp extends StatelessWidget {
 
     return GetMaterialApp(
       initialRoute: RouteName.home,
-      navigatorKey: Get.key,
       getPages: RoutePage.pages,
       initialBinding: LocalStorageBinding(),
       title: 'Ekayana',

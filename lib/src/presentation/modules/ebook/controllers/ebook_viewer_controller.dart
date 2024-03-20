@@ -6,8 +6,8 @@ import 'package:flutter_downloader/flutter_downloader.dart';
 import 'package:get/get.dart';
 
 class EbookViewerController extends GetxController {
-  String title = Get.arguments['title'];
-  String pdfUrl = Get.arguments['pdfUrl'];
+  String title = Get.parameters['title'] ?? "";
+  String pdfUrl = Get.parameters['pdfUrl'] ?? "";
   final RxInt currentPage = 0.obs;
   final RxInt totalPage = 0.obs;
   final Completer<PDFViewController> pdfViewController = Completer<PDFViewController>();

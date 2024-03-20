@@ -41,9 +41,7 @@ class PreviousEventView extends GetView<PreviousEventsController> {
                   child: Tappable(
                     borderRadius: BorderRadius.circular(12),
                     onTap: () {
-                      Get.toNamed(RouteName.eventDetail, arguments: {
-                        'id': data?[index].id,
-                      });
+                      Get.toNamed(RouteName.getEventDetail(data?[index].id));
                     },
                     child: Padding(
                       padding: const EdgeInsets.all(6),

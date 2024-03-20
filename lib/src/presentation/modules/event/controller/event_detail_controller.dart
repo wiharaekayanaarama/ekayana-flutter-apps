@@ -7,7 +7,7 @@ import 'package:path_provider/path_provider.dart';
 
 class EventDetailController extends GetxController
     with StateMixin<EventEntity> {
-  int id = Get.arguments['id'];
+  int id = int.parse(Get.parameters['id'] ?? "");
   final EventRepositoryImpl repository;
 
   EventDetailController({

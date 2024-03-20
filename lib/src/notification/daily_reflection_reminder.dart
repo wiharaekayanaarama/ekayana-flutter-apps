@@ -25,8 +25,7 @@ tz.TZDateTime _nextInstanceOfTenAM() {
   if (scheduledDate.isBefore(now)) {
     scheduledDate = scheduledDate.add(const Duration(days: 1));
   }
-  now = now.add(const Duration(seconds: 15));
-  return now;
+  return scheduledDate;
 }
 
 Future<void> setupDailyReflectionReminder() async {

@@ -48,9 +48,7 @@ class InComingEventView extends GetView<IncomingEventsController> {
                       title: data[index].title ?? "",
                       location: data[index].location ?? "",
                       onTap: () {
-                        Get.toNamed(RouteName.eventDetail, arguments: {
-                          'id': data[index].id,
-                        });
+                        Get.toNamed(RouteName.getEventDetail(data[index].id));
                       },
                     );
                   },
