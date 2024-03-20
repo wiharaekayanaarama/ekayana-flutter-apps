@@ -1,7 +1,8 @@
+import 'package:ekayanaarama/app_lifeycle.dart';
+import 'package:ekayanaarama/src/domain/local/local_bindings.dart';
 import 'package:ekayanaarama/src/firebase_options.dart';
 import 'package:ekayanaarama/src/notification/daily_reflection_reminder.dart';
 import 'package:ekayanaarama/src/notification/local_notification.dart';
-import 'package:ekayanaarama/src/notification/notification_handler.dart';
 import 'package:ekayanaarama/src/notification/remote_notification.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
 import 'package:ekayanaarama/src/routes/route_page.dart';
@@ -54,13 +55,14 @@ class MyApp extends StatelessWidget {
       initialRoute: RouteName.home,
       navigatorKey: Get.key,
       getPages: RoutePage.pages,
+      initialBinding: LocalStorageBinding(),
       title: 'Ekayana',
       theme: ThemeData(
         primarySwatch: Colors.blue,
         fontFamily: "Inter",
       ),
-      onInit: () {
-        checkPushNotification();
+      onInit: () async {
+        onCreate();
       },
     );
   }
