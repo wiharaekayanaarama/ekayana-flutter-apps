@@ -1,7 +1,10 @@
+import 'dart:convert';
+
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:ekayanaarama/src/presentation/modules/home/view/home_activity_view.dart';
 import 'package:ekayanaarama/src/routes/route_name.dart';
+import 'package:firebase_remote_config/firebase_remote_config.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:get/get.dart';
@@ -12,6 +15,18 @@ class HomePage extends StatelessWidget {
 
   void requestPermission() async {
     await Permission.notification.request();
+  }
+
+  String getKalenderData() {
+    final remoteConfig = FirebaseRemoteConfig.instance;
+    final rawData = remoteConfig.getValue("calendar_ebook_data");
+    Map<String, dynamic> data = jsonDecode(rawData.asString());
+
+    final test = RouteName.getEbookViewer(
+      data["title"] ?? "",
+      data["pdfUrl"] ?? "",
+    );
+    return test;
   }
 
   @override
@@ -25,8 +40,8 @@ class HomePage extends StatelessWidget {
         child: SingleChildScrollView(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
-            children: const [
-              Padding(
+            children: [
+              const Padding(
                 padding: EdgeInsets.only(
                   left: 16,
                   top: 0,
@@ -35,52 +50,55 @@ class HomePage extends StatelessWidget {
                 ),
                 child: _HeaderSection(),
               ),
-              InComingEventView(
+              const InComingEventView(
                 padding: EdgeInsets.symmetric(
                   vertical: 12,
                   horizontal: 16.0,
                 ),
               ),
               Padding(
-                padding: EdgeInsets.symmetric(vertical: 12, horizontal: 16),
+                padding: const EdgeInsets.symmetric(
+                  vertical: 12,
+                  horizontal: 16,
+                ),
                 child: _MenuDopeSection(
                   menuDopes: [
-                    // _MenuDope(
-                    //   title: "Renungan Harian",
-                    //   backgroundColor: Color(0xFF4B62EA),
-                    //   deeplink: "",
-                    // ),
                     _MenuDope(
+                      title: "Kalender",
+                      backgroundColor: const Color(0xFF4B62EA),
+                      deeplink: getKalenderData(),
+                    ),
+                    const _MenuDope(
                       title: "Kegiatan Rutin",
                       backgroundColor: Color(0xFFF918A8),
                       deeplink: RouteName.routineActivity,
                     ),
-                    _MenuDope(
+                    const _MenuDope(
                       title: "Event",
                       backgroundColor: Color(0xFF7F18F9),
                       deeplink: RouteName.event,
                     ),
-                    _MenuDope(
+                    const _MenuDope(
                       title: "Buddhavacana",
                       backgroundColor: Color(0xFFFF6369),
                       deeplink: RouteName.buddavacana,
                     ),
-                    // _MenuDope(
+                    // const _MenuDope(
                     //   title: "Lagu Buddhis",
                     //   backgroundColor: Color(0xFFFF63F6),
                     //   deeplink: "",
                     // ),
-                    _MenuDope(
+                    const _MenuDope(
                       title: "Ebook Buddhis",
                       backgroundColor: Color(0xFF4BC1EA),
                       deeplink: RouteName.ebooks,
                     ),
-                    // _MenuDope(
+                    // const _MenuDope(
                     //   title: "Kalendar Lunar",
                     //   backgroundColor: Color(0xFF20C98F),
                     //   deeplink: "",
                     // ),
-                    _MenuDope(
+                    const _MenuDope(
                       title: "Tentang Ekayana",
                       backgroundColor: Color(0xFFFF8C00),
                       deeplink: RouteName.aboutEkayana,
@@ -88,7 +106,7 @@ class HomePage extends StatelessWidget {
                   ],
                 ),
               ),
-              HomeActivityView(
+              const HomeActivityView(
                 title: "Agenda hari ini",
                 padding: EdgeInsets.all(16),
               ),
@@ -132,7 +150,9 @@ class _HeaderSection extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        const SizedBox(height: 16,),
+        const SizedBox(
+          height: 16,
+        ),
         Tappable(
           borderRadius: BorderRadius.circular(16),
           onTap: () => Get.toNamed(RouteName.dailyReflection),
