@@ -5,6 +5,7 @@ import 'package:ekayanaarama/src/presentation/component/shimmer/placeholder_comp
 import 'package:ekayanaarama/src/presentation/component/shimmer/shimmer.dart';
 import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:ekayanaarama/src/presentation/modules/event/controller/event_detail_controller.dart';
+import 'package:ekayanaarama/src/utils/date_utils.dart';
 import 'package:ekayanaarama/src/utils/map_utils.dart';
 import 'package:ekayanaarama/src/utils/logger_utils.dart';
 import 'package:flutter/material.dart';
@@ -22,8 +23,20 @@ class EventDetailPage extends GetView<EventDetailController> {
   Widget build(BuildContext context) {
     return controller.obx(
       (data) {
-        final startDate = data?.startDate;
-        final endDate = data?.endDate;
+        final startDate = data?.startDate ?? DateTime.now();
+        final endDate = data?.endDate ?? DateTime.now();
+
+        var titleDateText = "";
+        String? subtitleDateText;
+
+        if (startDate.isSameDate(endDate)) {
+          titleDateText = DateFormat('dd MMMM yyyy', 'id_ID').format(startDate);
+          subtitleDateText = "${DateFormat('kk:mm', 'id_ID').format(startDate)} - ${DateFormat('kk:mm', 'id_ID').format(endDate)} WIB";
+        } else {
+          titleDateText = "${DateFormat('dd MMMM yyyy kk:mm', 'id_ID').format(startDate)} WIB - ${DateFormat('dd MMMM yyyy kk:mm', 'id_ID').format(endDate)} WIB";
+          subtitleDateText = null;
+        }
+
         return Scaffold(
           body: CustomScrollView(
             slivers: [
@@ -107,14 +120,8 @@ class EventDetailPage extends GetView<EventDetailController> {
                         padding: const EdgeInsets.only(top: 30),
                         child: _EventIconText(
                           icon: Iconography.calendar,
-                          title: DateFormat('dd MMMM yyyy', 'id_ID').format(
-                            startDate ?? DateTime.now(),
-                          ),
-                          subtitle: "${DateFormat('kk:mm', 'id_ID').format(
-                            startDate ?? DateTime.now(),
-                          )} - ${DateFormat('kk:mm', 'id_ID').format(
-                            endDate ?? DateTime.now(),
-                          )} WIB",
+                          title: titleDateText,
+                          subtitle: subtitleDateText,
                         ),
                       ),
                       Padding(
