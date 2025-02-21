@@ -97,8 +97,8 @@ class EventDetailPage extends GetView<EventDetailController> {
                                 File file = await controller.urlToFile(
                                   data?.coverImageUrl ?? "",
                                 );
-                                Share.shareFiles(
-                                  [file.path],
+                                Share.shareXFiles(
+                                  [XFile(file.path)],
                                   text:
                                       "${data?.title} \n${data?.description?.replaceAll("<div>", "").replaceAll("<p>", '\n').replaceAll("</div>", "").replaceAll("</p>", "")}",
                                 );

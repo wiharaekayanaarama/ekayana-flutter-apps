@@ -86,7 +86,7 @@ class ButtonComponent extends StatelessWidget {
           onPressed?.call();
         },
         style: OutlinedButton.styleFrom(
-          primary: ColorToken.gray_700,
+          foregroundColor: ColorToken.gray_700,
         ),
         child: content,
       );
@@ -118,7 +118,7 @@ class ButtonComponent extends StatelessWidget {
           onPressed?.call();
         },
         style: OutlinedButton.styleFrom(
-          primary: ColorToken.gray_700,
+          foregroundColor: ColorToken.gray_700,
         ),
         child: content,
       );

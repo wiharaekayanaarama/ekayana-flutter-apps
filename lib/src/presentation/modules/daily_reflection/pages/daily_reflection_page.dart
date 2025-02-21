@@ -147,8 +147,8 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                                       await controller.fileFromUint8List(
                                     value!,
                                   );
-                                  Share.shareFiles(
-                                    [file.path],
+                                  Share.shareXFiles(
+                                    [XFile(file.path)],
                                     text:
                                         "Renungan Dharma Harian\n\nMari unduh aplikasi Android terbaru Ekayana: https://onelink.to/c97hnx\n\nPersembahan penuh kasih,\nWihara Ekayana Arama\nIndonesia Buddhist Centre",
                                   );
