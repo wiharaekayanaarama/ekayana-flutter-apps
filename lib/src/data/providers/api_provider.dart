@@ -11,6 +11,12 @@ class ApiProvider extends BaseProvider {
         decoder: (json) => BaseResponse.fromJson(json),
         // headers: getHeaders(),
       );
+  Future<Response<BaseResponse<bool>>> postIncrementEbook(int id) => post(
+        '/ebook/update_view/$id',
+        {},
+        decoder: (json) => BaseResponse.fromJson(json),
+        // headers: getHeaders(),
+      );
 
   Future<Response<BaseResponse<List<EventEntity>>>> getEvents() => get(
         '/event',

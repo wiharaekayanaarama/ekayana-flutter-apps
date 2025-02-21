@@ -2,21 +2,22 @@ import 'package:cached_network_image/cached_network_image.dart';
 import 'package:ekayanaarama/ekayana.dart';
 import 'package:ekayanaarama/src/presentation/component/tap_container.dart';
 import 'package:flutter/material.dart';
-import 'package:get/get.dart';
 
 class EbookComponent extends StatelessWidget {
   final String title;
   final String publisher;
   final String coverUrl;
+  final int viewCount;
   final VoidCallback? onTap;
 
   const EbookComponent({
-    Key? key,
+    super.key,
     required this.title,
     required this.publisher,
     required this.coverUrl,
+    required this.viewCount,
     this.onTap,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -99,6 +100,13 @@ class EbookComponent extends StatelessWidget {
               ),
               Text(
                 publisher,
+                style: TypographyToken.textSmallRegular.apply(
+                  color: ColorToken.gray_500,
+                ),
+                maxLines: 1,
+              ),
+              Text(
+                "$viewCount Dilihat",
                 style: TypographyToken.textSmallRegular.apply(
                   color: ColorToken.gray_500,
                 ),

@@ -19,4 +19,13 @@ class EbookRepositoryImpl implements EbookRepository {
         .map<EbookEntity>((item) => EbookEntity.fromJson(item))
         .toList();
   }
+
+  @override
+  Future<bool> incrementEbookView(int id) async {
+    final result = await provider.postIncrementEbook(id);
+    if (result.status.hasError) {
+      return Future.error(result.statusText ?? "");
+    }
+    return Future.value(result.body?.data as bool);
+  }
 }

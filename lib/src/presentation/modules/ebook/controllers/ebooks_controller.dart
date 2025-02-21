@@ -23,4 +23,10 @@ class EbooksController extends GetxController with StateMixin<List<EbookEntity>>
       change(null, status: RxStatus.error(error));
     });
   }
+
+  void incrementView(int id ) async {
+    await repository.incrementEbookView(id).catchError((onError) {
+      return true;
+    });
+  }
 }

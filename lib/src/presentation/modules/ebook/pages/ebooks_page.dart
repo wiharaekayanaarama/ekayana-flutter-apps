@@ -8,7 +8,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 
 class EbooksPage extends GetView<EbooksController> {
-  const EbooksPage({Key? key}) : super(key: key);
+  const EbooksPage({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -34,11 +34,15 @@ class EbooksPage extends GetView<EbooksController> {
               final coverUrl = data?[index].coverUrl ?? "";
               final publisher = data?[index].publisher ?? "";
               final pdfUrl = data?[index].fileUrl ?? "";
+              final viewCount = data?[index].viewCount ?? 0;
+              final id = data?[index].id ?? 0;
               return EbookComponent(
                 title: title,
                 coverUrl: coverUrl,
                 publisher: publisher,
+                viewCount: viewCount,
                 onTap: () {
+                  controller.incrementView(id);
                   Get.toNamed(
                     RouteName.ebookViewer,
                     parameters: {

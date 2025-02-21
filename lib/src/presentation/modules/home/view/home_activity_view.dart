@@ -12,10 +12,10 @@ class HomeActivityView extends GetView<HomeActivityController> {
   final EdgeInsetsGeometry padding;
 
   const HomeActivityView({
-    Key? key,
-    this.title,
+    super.key,
     this.padding = const EdgeInsets.all(0),
-  }) : super(key: key);
+    this.title,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -40,13 +40,13 @@ class HomeActivityView extends GetView<HomeActivityController> {
               ListView.separated(
                 shrinkWrap: true,
                 physics: const NeverScrollableScrollPhysics(),
-                itemCount: data?.length ?? 0,
+                itemCount: data.length,
                 itemBuilder: (context, index) {
                   return AgendaItemComponent(
-                    title: data?[index].title ?? "",
-                    time: "${data?[index].time} WIB",
-                    location: data?[index].location ?? "",
-                    icon: data?[index].category?.getActivityIcon ?? "",
+                    title: data[index].title ?? "",
+                    time: "${data[index].time} WIB",
+                    location: data[index].location ?? "",
+                    icon: data[index].category?.getActivityIcon ?? "",
                   );
                 },
                 separatorBuilder: (BuildContext context, int index) {
