@@ -8,8 +8,6 @@
 	<array>
 		<string>applinks:ekayana.or.id</string>
 		<string>applinks:www.ekayana.or.id</string>
-		<string>applinks:ekayana.id</string>
-		<string>applinks:www.ekayana.id</string>
 	</array>
 </dict>
 </plist>

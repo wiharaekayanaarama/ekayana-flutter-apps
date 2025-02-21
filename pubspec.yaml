@@ -2,7 +2,7 @@ name: ekayanaarama
 description: EkayanaArama
 publish_to: 'none' # Remove this line if you wish to publish to pub.dev
 
-version: 2.1.2+16
+version: 2.2.0+17
 
 environment:
   sdk: '>=3.4.0 <4.0.0'
@@ -21,7 +21,11 @@ dependencies:
   screenshot: ^3.0.0
   share_plus: ^10.1.4
   path_provider: ^2.0.11
-  image_gallery_saver: ^2.0.3
+  image_gallery_saver:
+    git:
+      url: https://github.com/knottx/image_gallery_saver.git
+      ref: knottx-latest
+  #flutter_image_gallery_saver: ^0.0.2 # image_gallery_saver wait for support manifest ^2.0.3
   get: ^4.6.5
   flutter_cached_pdfview: ^0.4.1
   flutter_native_splash: ^2.2.0
