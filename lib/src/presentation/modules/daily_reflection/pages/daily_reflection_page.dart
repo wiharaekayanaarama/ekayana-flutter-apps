@@ -4,6 +4,7 @@ import 'package:ekayanaarama/ekayana.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_html/flutter_html.dart';
 import 'package:get/get.dart';
+import 'package:permission_handler/permission_handler.dart';
 import 'package:screenshot/screenshot.dart';
 import 'package:share_plus/share_plus.dart';
 
@@ -165,12 +166,8 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
                             text: "Unduh",
                             iconLeft: Iconography.download_01,
                             style: EkaButtonStyle.naked,
-                            onPressed: () async {
-                              screenshotController
-                                  .capture()
-                                  .then((value) async {
-                                controller.saveToGallery(value!);
-                              });
+                            onPressed: () {
+                              _onPressed(screenshotController, context);
                             },
                           ),
                         ),
@@ -184,6 +181,91 @@ class DailyReflectionPage extends GetView<DailyReflectionController> {
         );
       },
     );
+  }
+
+  void _onPressed(
+    ScreenshotController screenshotController,
+    BuildContext context,
+  ) async {
+    var permissions = Permission.photosAddOnly;
+    // if (Platform.isAndroid) {
+    //   final androidInfo = await DeviceInfoPlugin().androidInfo;
+    //   if (androidInfo.version.sdkInt <= 32) {
+    //     permissions = Permission.storage;
+    //   } else {
+    //     permissions = Permission.photos;
+    //   }
+    // }
+    final permissionResult = await permissions.status;
+
+    if (permissionResult.isGranted) {
+      _doCaptureAndSave(screenshotController);
+    } else {
+      final result = await showModalBottomSheet(
+        context: context,
+        builder: (context) {
+          return Container(
+            padding: EdgeInsets.all(16),
+            child: Column(
+              spacing: 8,
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text("Ekayana ingin mengakses penyimpananmu",
+                    style: TypographyToken.textLargeBold),
+                Text("Biar kamu bisa download foto di ponselmu.",
+                    style: TypographyToken.textSmallRegular),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  mainAxisSize: MainAxisSize.max,
+                  spacing: 8,
+                  children: [
+                    ButtonComponent.text(
+                      text: "Batalkan",
+                      style: EkaButtonStyle.outline,
+                      onPressed: () {
+                        Navigator.pop(context, false);
+                      },
+                    ),
+                    ButtonComponent.text(
+                      text: "Berikan Akses",
+                      style: EkaButtonStyle.primary,
+                      onPressed: () {
+                        Navigator.pop(context, true);
+                      },
+                    ),
+                  ],
+                ),
+              ],
+            ),
+          );
+        },
+      );
+      if (result == true) {
+        final reqStatus = await permissions.request();
+        if (reqStatus.isGranted) {
+          _doCaptureAndSave(screenshotController);
+        } else if (reqStatus.isPermanentlyDenied) {
+          openAppSettings();
+        } else {
+          Get.snackbar(
+            "Gagal unduh",
+            "Permission Denied",
+            snackPosition: SnackPosition.BOTTOM,
+            backgroundColor: ColorToken.error_500,
+            colorText: ColorToken.white,
+            margin: const EdgeInsets.all(16),
+          );
+        }
+      }
+    }
+  }
+
+  void _doCaptureAndSave(
+    ScreenshotController screenshotController,
+  ) {
+    screenshotController.capture().then((value) async {
+      controller.saveToGallery(value!);
+    });
   }
 
   Widget _getBackground() {

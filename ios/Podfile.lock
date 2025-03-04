@@ -17,22 +17,22 @@ PODS:
   - Firebase/RemoteConfig (11.8.0):
     - Firebase/CoreOnly
     - FirebaseRemoteConfig (~> 11.8.0)
-  - firebase_analytics (11.4.3):
+  - firebase_analytics (11.4.4):
     - Firebase/Analytics (= 11.8.0)
     - firebase_core
     - Flutter
-  - firebase_core (3.12.0):
+  - firebase_core (3.12.1):
     - Firebase/CoreOnly (= 11.8.0)
     - Flutter
-  - firebase_crashlytics (4.3.3):
+  - firebase_crashlytics (4.3.4):
     - Firebase/Crashlytics (= 11.8.0)
     - firebase_core
     - Flutter
-  - firebase_messaging (15.2.3):
+  - firebase_messaging (15.2.4):
     - Firebase/Messaging (= 11.8.0)
     - firebase_core
     - Flutter
-  - firebase_remote_config (5.4.1):
+  - firebase_remote_config (5.4.2):
     - Firebase/RemoteConfig (= 11.8.0)
     - firebase_core
     - Flutter
@@ -108,6 +108,8 @@ PODS:
   - FirebaseSharedSwift (11.8.0)
   - Flutter (1.0.0)
   - flutter_downloader (0.0.1):
+    - Flutter
+  - flutter_image_gallery_saver (0.0.1):
     - Flutter
   - flutter_local_notifications (0.0.1):
     - Flutter
@@ -204,6 +206,7 @@ DEPENDENCIES:
   - firebase_remote_config (from `.symlinks/plugins/firebase_remote_config/ios`)
   - Flutter (from `Flutter`)
   - flutter_downloader (from `.symlinks/plugins/flutter_downloader/ios`)
+  - flutter_image_gallery_saver (from `.symlinks/plugins/flutter_image_gallery_saver/ios`)
   - flutter_local_notifications (from `.symlinks/plugins/flutter_local_notifications/ios`)
   - flutter_native_splash (from `.symlinks/plugins/flutter_native_splash/ios`)
   - flutter_pdfview (from `.symlinks/plugins/flutter_pdfview/ios`)
@@ -256,6 +259,8 @@ EXTERNAL SOURCES:
     :path: Flutter
   flutter_downloader:
     :path: ".symlinks/plugins/flutter_downloader/ios"
+  flutter_image_gallery_saver:
+    :path: ".symlinks/plugins/flutter_image_gallery_saver/ios"
   flutter_local_notifications:
     :path: ".symlinks/plugins/flutter_local_notifications/ios"
   flutter_native_splash:
@@ -284,11 +289,11 @@ EXTERNAL SOURCES:
 SPEC CHECKSUMS:
   device_info_plus: bf2e3232933866d73fe290f2942f2156cdd10342
   Firebase: d80354ed7f6df5f9aca55e9eb47cc4b634735eaf
-  firebase_analytics: 7ec1166af61987fa968766eb11587c562a5650ee
-  firebase_core: 6e223dfa350b2edceb729cea505eaaef59330682
-  firebase_crashlytics: 2a473aeb12dd2d5a3fe150f6ebb8fadc8c9664d7
-  firebase_messaging: 07fde77ae28c08616a1d4d870450efc2b38cf40d
-  firebase_remote_config: daf651047eff182140a133b4dd3d3b43c59b05da
+  firebase_analytics: e3b6782e70e32b7fa18f7cd233e3201975dd86aa
+  firebase_core: ac395f994af4e28f6a38b59e05a88ca57abeb874
+  firebase_crashlytics: 0f3a46f30fce2159f715ac33eef98a2aa5d598f1
+  firebase_messaging: 7e223f4ee7ca053bf4ce43748e84a6d774ec9728
+  firebase_remote_config: a98909ec3fd3aef7a128d5a507181c82abc8694e
   FirebaseABTesting: 7d6eee42b9137541eac2610e5fea3568d956707a
   FirebaseAnalytics: 4fd42def128146e24e480e89f310e3d8534ea42b
   FirebaseCore: 99fe0c4b44a39f37d99e6404e02009d2db5d718d
@@ -303,6 +308,7 @@ SPEC CHECKSUMS:
   FirebaseSharedSwift: 672954eac7b141d6954fab9a32d45d6b1d922df8
   Flutter: e0871f40cf51350855a761d2e70bf5af5b9b5de7
   flutter_downloader: b7301ae057deadd4b1650dc7c05375f10ff12c39
+  flutter_image_gallery_saver: f356b5f265ba4e36f38b2fe96d0468e0712a6b37
   flutter_local_notifications: df98d66e515e1ca797af436137b4459b160ad8c9
   flutter_native_splash: f71420956eb811e6d310720fee915f1d42852e7a
   flutter_pdfview: 2e4d13ffb774858562ffbdfdb61b40744b191adc
@@ -322,6 +328,6 @@ SPEC CHECKSUMS:
   sqflite_darwin: 5a7236e3b501866c1c9befc6771dfd73ffb8702d
   url_launcher_ios: 5334b05cef931de560670eeae103fd3e431ac3fe
 
-PODFILE CHECKSUM: 0a7cb8df82e8de2c7707c399c8e9309150c941ed
+PODFILE CHECKSUM: 018e81e1d1bf2eb0a86e7ca16f83de8f2d5be380
 
 COCOAPODS: 1.15.2
