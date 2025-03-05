@@ -28,8 +28,10 @@
 	<integer>5</integer>
 	<key>LSRequiresIPhoneOS</key>
 	<true/>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>So you can download images to your phone.</string>
 	<key>NSPhotoLibraryAddUsageDescription</key>
-	<string>We need access to your Photos to save the picture</string>
+	<string>So you can download images to your phone.</string>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
 	<key>UIBackgroundModes</key>
